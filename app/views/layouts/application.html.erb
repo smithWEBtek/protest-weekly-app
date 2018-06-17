@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProtestWeeklyApp</title>
+    <title>Protest Weekly App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        </div>
+        <ul class="nav navbar-nav">
+             <li><%= link_to "Sign Up", new_user_path %></li>
+             <li><%= link_to "Sign In", signin_path %></li>
+             <li><%= link_to "Log Out", signout_path, method: :delete %></li>
+            <% end %>
+            </ul>
+            <h1>Find out where your voice is needed this week!</h1>
+          </div>
+        </div>
     <%= yield %>
   </body>
 </html>
