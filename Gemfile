@@ -7,6 +7,8 @@ ruby '2.4.2'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+gem 'thin'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -27,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
