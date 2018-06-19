@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   root 'welcome#welcome'
   
   get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
+  
   get 'sessions/create'
   get 'organizations/show'
   get 'venues/show'
+  delete '/signout', to: 'sessions#destroy'
 
   resources :users
   resources :events
