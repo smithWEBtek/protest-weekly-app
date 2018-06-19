@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   
   get 'sessions/create'
   get 'organizations/show'
+  get 'organizations/new'
+  post 'organizations/create'
   get 'venues/show'
   delete '/signout', to: 'sessions#destroy'
 
