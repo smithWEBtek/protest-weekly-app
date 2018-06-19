@@ -9,16 +9,20 @@ class EventsController < ApplicationController
   end
 
   def show
-  	@event = Event.find_by(:id params[:id])
+  	@event = Event.find(params[:id])
+  end
+
+  def index
+    @event = Event.all
   end
 
   def update
-  	event = Event.find_by(id: params[:id])
+  	event = Event.find(params[:id])
 		event.update(event_params)
 		redirect_to event_path(event)
   end
 
   def destroy
-  	
   end
+
 end
