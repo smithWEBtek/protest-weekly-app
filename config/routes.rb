@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   root 'welcome#welcome'
   
+  get '/signin', to: 'sessions#new'
   get 'sessions/create'
   get 'organizations/show'
   get 'venues/show'
