@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root 'welcome/home'
+  root 'welcome#welcome'
   
   get 'sessions/create'
   get 'organizations/show'
