@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
-	#validate email
-	#validate cell phone
+	validates :name, presence: true
+	validates :email, uniqueness: true, on: :create
 	has_many :events
 	has_many :organizations, through: :events
 
