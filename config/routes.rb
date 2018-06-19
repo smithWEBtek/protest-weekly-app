@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   
-  get 'sessions/create'
-  get 'events/show'
-  get 'events/update'
-  get 'events/destroy'
   root 'welcome/home'
-
+  
+  get 'sessions/create'
   get 'organizations/show'
+  get 'venues/show'
 
   resources :users
   resources :events
