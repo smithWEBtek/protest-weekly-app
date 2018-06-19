@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'events/show'
   get 'events/update'
   get 'events/destroy'
-  # root '/'
+  root 'welcome/home'
 
   get 'organizations/show'
 
