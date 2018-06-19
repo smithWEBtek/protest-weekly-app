@@ -7,6 +7,8 @@ ruby '2.4.2'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+gem 'thin'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -25,7 +27,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+gem 'dotenv-rails'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -52,6 +59,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+  gem 'rspec-rails'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
