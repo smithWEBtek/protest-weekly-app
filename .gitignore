@@ -30,4 +30,4 @@
 .env
 /config/master.key
 
-extra_code.md
+.extra_code.md
