@@ -16,12 +16,4 @@ from welcome.html.erb
   end
 
 
-  Google Client ID
-  Client ID
-302074932140-g1vi86pnuk4513pb75lfj4qjbs1qker3.apps.googleusercontent.com
-
-Google Client Secret
-
-Client Secret
-s4YMMk4AGRA3TxvLnukwdImK
-
+ 
