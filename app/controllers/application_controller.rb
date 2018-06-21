@@ -3,8 +3,12 @@ class ApplicationController < ActionController::Base
     # before_action :current_user
     # before_action :require_logged_in, except: [:new, :create, :home]
 
-    def ride
-    	
+    def needs_ride
+    	@user != can_drive
+    end
+
+    def can_drive
+    	@user != needs_ride
     end
 
 	private
