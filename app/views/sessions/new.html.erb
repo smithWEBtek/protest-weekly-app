@@ -4,7 +4,7 @@
 		<%= f.label :name, "Select your name" %><br>
 		<%= f.collection_select(:name, User.all, :name, :name, {include_blank: "Please select your name"})%>
 	</div>
-
+<!--login with userid and password OR with FB?? -->
 	<div class="form-group">
 		<%= f.label :password, "Your password:" %><br>
 		<%= f.password_field :password, class: "form-control" %>

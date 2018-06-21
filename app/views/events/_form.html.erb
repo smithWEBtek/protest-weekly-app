@@ -12,13 +12,15 @@
 	<%= f.label :date %><br>
 	<%= f.text_field :date, link_to event.event_datetime.strftime("%A, %B %d, %Y at %H:%M") class: "form-control" %></div>
 
+<!-- nested form starts here with reference to Organization model
 <div class="form-group">
-	<%= f.label :organization %><br>
-	<%= f.text_field :organization, class: "form-control" %></div>
+	<%= f.label # :organization %><br>
+	<%= f.text_field $:organization, #class: "form-control" %></div> -->
 
+<!--nested form referencing Venue model starts here
 <div class="form-group">
-	<%= f.label :venue %><br>
-	<%= f.text_field :venue, class: "form-control" %></div>
+	<%= f.label #:venue %><br>
+	<%= f.text_field #:venue, class: "form-control" %></div> -->
 
 <div class="actions">
 	<%= f.submit class: "btn btn-primary" %>
