@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	#before: logged_in
+	before: logged_in
 
 	def new
 		@user = User.new
