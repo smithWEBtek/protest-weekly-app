@@ -16,9 +16,15 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@user = User.find_by(id: params[:id])
 	end
 
 	def update
+		if @user.update(user_params)
+			redirect_to @user, notice: "User was successfully updated." 
+		else
+			render :edit 
+		end
 	end
 
 	def index
