@@ -3,9 +3,13 @@ class UsersController < ApplicationController
 	#before: logged_in
 
 	def new
+		@user = User.new
 	end
 
 	def create
+		@user = User.create(user_params)
+		if @user.save
+			redirect_to @user
 	end
 
 	def edit
