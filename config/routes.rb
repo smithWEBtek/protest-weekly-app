@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
+  post '/session', to: 'sessions#create'
   
   get 'sessions/create'
   get 'organizations/show'
