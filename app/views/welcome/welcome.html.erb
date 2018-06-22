@@ -1,6 +1,5 @@
 	<div class="theme-showcase" role="main">
 	
-
 	<div class="left-pic">
 		<img src="http://www.buzzhunt.co.uk/wp-content/2012/02/20030319_fvdd.jpg" width="600">
 	</div>
@@ -8,9 +7,10 @@
 	<div class="right-info">
 		<h1>Welcome to the Protest Clearinghouse</h1>
 		<%= link_to('Log in with Facebook!', '/auth/facebook') %>
-	</div>
-
-</div>
+		  <h2>Facebook UID: <%= @user.uid %></h2>
+		  <img src="<%= @user.image %>">
+		
+	  	</div>
 
 
 
