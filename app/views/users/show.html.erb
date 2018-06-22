@@ -1,7 +1,6 @@
 	<h3>Hello, <%= @user.name %>! Do we have your correct information? </h3>
-	<p><strong>Name:</strong> <%= @user.name %></p>
-	<p><strong>Email:</strong> <%= @user.email %></p>
-	<p><strong>Cell phone:</strong> <%= @user.cell_phone %></p>
+	
+	<%= render 'form' %>
 	
 	<p><%= link_to 'Edit', edit_user_path(@user) %></p>
 	<p><%= link_to 'Events', events_path %></p>
