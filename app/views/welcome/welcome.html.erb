@@ -6,11 +6,11 @@
 
 	<div class="right-info">
 		<h1>Welcome to the Protest Clearinghouse</h1>
-		
+		<%= link_to('Log in with Facebook!', '/auth/facebook') %>
 		  <h2>Facebook UID: <%= @user.uid %></h2>
 		  <img src="<%= @user.image %>">
 		
-	  	<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+	  	
 		
 	</div>
 
