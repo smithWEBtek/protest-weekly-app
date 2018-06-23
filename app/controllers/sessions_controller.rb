@@ -4,14 +4,6 @@ class SessionsController < ApplicationController
   	@user = User.new
   end
 
-<<<<<<< HEAD
-   def create
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    self.current_user = @user
-    redirect_to '/'
-  end
-  
-=======
   def create
     @user = User.find_by(name: params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
@@ -22,7 +14,6 @@ class SessionsController < ApplicationController
     end
   end
 
->>>>>>> views-branch
   def destroy
     session.delete("user_id")
     redirect_to root_path
