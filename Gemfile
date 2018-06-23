@@ -14,7 +14,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 4.1.12'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -28,7 +28,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.5.0'
+gem 'faraday', '~> 0.15.2'
+gem 'jwt', '~> 2.1.0'
+gem 'sprockets', '~> 3.7.2'
 
 gem 'omniauth'
 
