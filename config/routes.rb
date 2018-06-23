@@ -8,12 +8,10 @@ Rails.application.routes.draw do
   post '/session', to: 'sessions#create'
   
   # get 'sessions/create'
-  get 'organizations/show'
-  get 'organizations/new'
-  post 'organizations/create'
-  get 'venues/show'
+    get 'venues/show'
   delete '/signout', to: 'sessions#destroy', as: '/signout'
 
+  resources :organizations
   resources :users
   resources :events
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

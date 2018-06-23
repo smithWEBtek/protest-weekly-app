@@ -1,9 +1,6 @@
 <h1>Organizations</h1>
 
-<div class="form-group">
-	<%= f.label  :organization_name %><br>
-	<%= f.text_field :organization_name, class: "form-control" %></div> 
-
-<div class="form-group">
-	<%= f.label  :organization_contact_info %><br>
-	<%= f.text_area_field :organization_contact_info, class: "form-control" %></div> 
+	<%  organization.each do |f| %><br>
+	<%= organization.name %> <br>
+	<%= organization.contact_info %> 
+	<% end %>
