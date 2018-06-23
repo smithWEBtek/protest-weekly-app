@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
 
   def create
   	@organization = Organization.find_or_create_by(id: params[:id])
+     render :show
   end
 
   def show
