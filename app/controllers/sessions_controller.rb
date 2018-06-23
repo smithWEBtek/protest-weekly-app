@@ -14,12 +14,6 @@ class SessionsController < ApplicationController
     end
   end
 
-    session[:user_id] = @user.id
-     
-    render 'welcome/welcome'
-  
-
- 
   def destroy
     session.delete("user_id")
     redirect_to root_path
