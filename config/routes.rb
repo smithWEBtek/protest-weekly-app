@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  
+  get '/auth/facebook/callback' => 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
   root 'welcome#welcome'
-  # get '/auth/facebook/callback' => 'sessions#create'
+  
   
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
