@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 		if @user.save
 			redirect_to @user
 		else
-			render :new
+			render :new, notice: "Do you already have an account? Please sign in."
 		end
 	end
 
