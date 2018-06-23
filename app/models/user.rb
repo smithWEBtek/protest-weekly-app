@@ -1,6 +1,11 @@
 class User < ApplicationRecord
 	has_secure_password
+<<<<<<< HEAD
 	validates :name, presence: true
+=======
+	validates_uniqueness_of :name
+	# validates :email, uniqueness: true, on: :create
+>>>>>>> views-branch
 	has_many :events
 	has_many :organizations, through: :events
 

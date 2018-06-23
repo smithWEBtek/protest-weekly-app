@@ -1,3 +1,6 @@
-<h1>Organizations#show</h1>
-<p>Find me in app/views/organizations/show.html.erb</p>
-<!-- list organization info here
+<h1>Organizations</h1>
+
+	<%  @organizations.each do |f| %><br>
+	<%= @organization.name %> <br>
+	<%= @organization.contact_info %> 
+	<% end %>
