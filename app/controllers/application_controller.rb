@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
+  before_action :require_logged_in, only: [:new, :create]
     
     
   def logged_in?
@@ -17,5 +18,5 @@ class ApplicationController < ActionController::Base
    end
 
    helper_method :current_user
-   
+
 end
