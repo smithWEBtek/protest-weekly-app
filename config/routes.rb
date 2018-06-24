@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   post '/session', to: 'sessions#create'
   
   # get 'sessions/create'
-  resources :events do
-    resources :organizations
+  resources :organziations do
+    resources :events
     get 'venues/show'
   end
   
