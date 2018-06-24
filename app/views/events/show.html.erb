@@ -9,11 +9,6 @@
 		<p><strong>Organization:</strong> <%= @event.organization.name %></p>
 		<%yield%>
 			<%= render 'venues/form', f: f %>
-		
-
-<% if current_user.admin %>
-			<%= link_to "New Event", [:new, @event] %><br>
-			<% else %>
 			<%= form_for(:event, method: 'post') do |f| %>
 			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.hidden_field :event_id, value: @event.id %>
