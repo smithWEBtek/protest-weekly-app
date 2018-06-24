@@ -7,13 +7,17 @@ class VenuesController < ApplicationController
   end
 
   def create
-    @venue = Venue.create
+    @venue = Venue.create(venue_params)
+    @venue.save
   end
 
   def show
-    @venue = Venue.find_by(id: params[:id])
   end
-  
-  def destroy
+
+  private
+
+  def venue_params
+    params.require(:venue).permit(:name, :street_address, :city, :state)
   end
+
 end

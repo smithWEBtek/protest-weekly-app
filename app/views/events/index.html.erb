@@ -22,10 +22,6 @@
 			<td><%= organization.name %></td>
 			<td><%= venue.name %></td>
 
-			<% if current_user.admin %>
-			<td><%= link_to "Show #{event.name}", event_path(event) %></td>
-			
-			<% else %>
 			<td><%= link_to "RSVP for #{event.name}", event_path(event) %></td>
 			<% end %>
 		</tr>
@@ -41,3 +37,20 @@
 	<% else %>
 	<br><%= link_to "New Event", new_event_path %> <br>
 <% end %>
+
+			<td><strong>Date & Time</strong></td>
+			<td><strong>Location</strong></td>
+			<td><strong>Organization</strong></td>
+		</tr>
+		<% @events.each do |event| %>
+		<tr>
+			<td><%= event.name %></td>
+			<td><%= event.cause %></td>
+			<td><%= event.datetime %></td>
+			<td><%= link_to venue.name %></td>
+			<td><%= link_to organization.name %></td>
+
+			<%= f.submit "Sign up for this event" %>
+
+			<% end %>
+

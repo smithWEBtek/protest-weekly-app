@@ -1,11 +1,13 @@
 class EventsController < ApplicationController
-
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  
   def new
   	@event = Event.new
   end
 
   def create
-  	@event = Event.create
+  	@event = Event.create(event_params)
+    redirect_to event_path(@event), notice: "Event was successfully created."
   end
 
   def show
@@ -25,4 +27,13 @@ class EventsController < ApplicationController
   def destroy
   end
 
+  private
+
+    def set_event
+      @event = Event.find(params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:name, :cause, :datetime, organizations_attributes: [:name, :contact_info], venues_attributes: [:name, :street_address, :city, :state])
+    end
 end

@@ -13,6 +13,13 @@
 	<div class="actions">
 		<%= f.submit 'Sign In' %>
 	</div>
-	<p>Or login with Facebook:</p>
-	
+
 	<% end %>
+	<% if @user.errors.any? %>
+    	<ul class="Signup_Errors">
+    		<% for message_error in @user.errors.full_messages %>
+     	 	<li>* <%= message_error %></li>
+    		<% end %>
+	   	</ul>
+	  <% end %>
+

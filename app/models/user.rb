@@ -1,11 +1,12 @@
 class User < ApplicationRecord
 	has_secure_password
-
 	validates :name, presence: true
 
 	validates_uniqueness_of :name
+	validates_uniqueness_of :email
 	has_many :events
 	has_many :organizations, through: :events
+	
 
 
 	# def self.from_omniauth(auth)

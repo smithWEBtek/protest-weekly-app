@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user do |f| %>
 	
 <div class="form-group">
 	<%= f.label :name %><br>
@@ -17,9 +17,7 @@
 	<%= f.number_field :cell_phone, class: "form-control" %></div>
 
 <!--need to make ride/drive either/or. Can be one or the other but not both-->
-<div class="form-group">
-	<%= f.label :admin, "Check box if you are an event organizer (admin)" %>
-	<%= f.check_box :admin, class: "form-check-input" %></div>
+
 
 <div class="actions">
 	<%= f.submit class: "btn btn-primary" %>
