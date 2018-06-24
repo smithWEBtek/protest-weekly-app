@@ -20,8 +20,9 @@
 			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
 			<td><%= event.datetime %></td>
-			<td><%= 
-			<%= form_for(:event, method: 'post') do |f| %>
-			<%= f.hidden_field :user_id, value: current_user.id %>
-			<%= f.hidden_field :event_id, value: @event.id %>
+			<td><%= link_to venue.name %></td>
+			<td><%= link_to organization.name %></td>
+
 			<%= f.submit "Sign up for this event" %>
+
+			<% end %>
