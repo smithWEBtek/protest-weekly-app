@@ -1,5 +1,27 @@
 <h1>Current Events</h1>
 
-<!--render 'form', making sure it iterates over every entry 
-	must include organization and location
-	plus link to organization for more info
+<table class="table">
+	<thead>
+		<tr>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td><strong>Name</strong></td>
+			<td><strong>Cause</strong></td>
+			<td><strong>Date & Time</strong></td>
+			<td><strong>Location</strong></td>
+			<td><strong>Organization</strong></td>
+		</tr>
+		<% @events.each do |event| %>
+		<tr>
+			<td><%= event.name %></td>
+			<td><%= event.cause %></td>
+			<td><%= event.datetime %></td>
+			<td><%= 
+			<%= form_for(:event, method: 'post') do |f| %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+			<%= f.hidden_field :event_id, value: @event.id %>
+			<%= f.submit "Sign up for this event" %>
