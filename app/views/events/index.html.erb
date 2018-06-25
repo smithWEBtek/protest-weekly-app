@@ -12,45 +12,24 @@
 			<td><strong>Name</strong></td>
 			<td><strong>Cause</strong></td>
 			<td><strong>Organization</strong></td>
-			<td><strong>Venue</strong></td>
+			<td><strong>Location</strong></td>
 		</tr>
 		<% @events.each do |event| %>
 		<tr>
-
 			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
 			<td><%= organization.name %></td>
-			<td><%= venue.name %></td>
+			<td><%= eventusers.location %></td>
 
 			<td><%= link_to "RSVP for #{event.name}", event_path(event) %></td>
 			<% end %>
 		</tr>
-		<% end %>
+		
 	</tbody>
 </table>
 <br>
 
-<% if @user %>
-<br>
-	<%= link_to "Back to profile", user_path(@user), { :class => "btn btn-primary" } %>
-	<br>
-	<% else %>
 	<br><%= link_to "New Event", new_event_path %> <br>
-<% end %>
 
-			<td><strong>Date & Time</strong></td>
-			<td><strong>Location</strong></td>
-			<td><strong>Organization</strong></td>
-		</tr>
-		<% @events.each do |event| %>
-		<tr>
-			<td><%= event.name %></td>
-			<td><%= event.cause %></td>
-			<td><%= event.datetime %></td>
-			<td><%= link_to venue.name %></td>
-			<td><%= link_to organization.name %></td>
 
-			<%= f.submit "Sign up for this event" %>
-
-			<% end %>
 

@@ -10,19 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_23_211338) do
+ActiveRecord::Schema.define(version: 2018_06_25_164256) do
+
+  create_table "event_users", force: :cascade do |t|
+    t.integer "events_id"
+    t.integer "users_id"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["events_id"], name: "index_event_users_on_events_id"
+    t.index ["users_id"], name: "index_event_users_on_users_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "cause"
     t.datetime "datetime"
-    t.integer "user_id"
     t.integer "organization_id"
     t.integer "venue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_events_on_organization_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
@@ -45,15 +53,6 @@ ActiveRecord::Schema.define(version: 2018_06_23_211338) do
     t.string "uid"
     t.string "image"
     t.boolean "admin", default: false
-  end
-
-  create_table "venues", force: :cascade do |t|
-    t.string "name"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

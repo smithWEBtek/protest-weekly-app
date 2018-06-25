@@ -1,18 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-<<<<<<< HEAD
-  
-    
-	private
-    
-	def current_user
-      @current_user ||= session[:current_user_id] &&
-      User.find_by(id: session[:current_user_id])
-  end
-
-    helper_method :current_user
-    
-=======
+ 
   # before_action :require_logged_in, only: [:new, :create]
     
     
@@ -32,5 +20,4 @@ class ApplicationController < ActionController::Base
 
    helper_method :current_user
 
->>>>>>> views-branch
 end
