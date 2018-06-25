@@ -19,7 +19,7 @@
 			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
 			<td><%= organization.name %></td>
-			<td><%= eventusers.location %></td>
+			<td><%= event_users.location %></td>
 
 			<td><%= link_to "RSVP for #{event.name}", event_path(event) %></td>
 			<% end %>
@@ -28,7 +28,7 @@
 	</tbody>
 </table>
 <br>
-
+	<br><%= link_to "Edit Event", edit_event_path(event) %><br>
 	<br><%= link_to "New Event", new_event_path %> <br>
 
 

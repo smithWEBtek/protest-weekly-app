@@ -12,17 +12,16 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/session', to: 'sessions#create'
-  
-  # get 'sessions/create'
-  resources :organizations 
-
-  resources :events
-  
   delete '/signout', to: 'sessions#destroy', as: '/signout'
+  # get 'sessions/create'
 
-  resources :users
+  resources :organizations do
+    resources :events
+  end
 
-  resources :venues
+  resources :users, :events do
+    resources :eventusers
+  end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
