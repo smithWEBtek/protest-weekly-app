@@ -1,6 +1,7 @@
 <h1>Event</h1>
 
-<!--this view should list event info and opportunity to sign up,indicate if ride is needed and can drive in car pool-->
+<!--this view should list event info and opportunity to sign up,indicate if ride is needed and can drive in car pool
+RSVP in the show page???-->
 
 <p id="notice"><%= notice %></p>
 
@@ -11,6 +12,7 @@
 		<p><strong>Cause:</strong> <%= @event.cause %></p>
 		<p><strong>Date and time:</strong> <%= @event.datetime %> </p>
 		<p><strong>Organization:</strong> <%= @event.organization.name %></p>
+		
 		<%yield%>
 			
 			<%= form_for(:event, method: 'post') do |f| %>
@@ -18,7 +20,7 @@
 			<%= f.hidden_field :event_id, value: @event.id %>
 			
 
-			<%= f.submit "Check out this event" %>
+			<%= f.submit "RSVP for this event" %>
 			<% end %>
 			<% end %>
 			<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
