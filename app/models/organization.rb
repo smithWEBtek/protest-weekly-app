@@ -1,7 +1,7 @@
 class Organization < ApplicationRecord
 	
 	has_many :events
-	has_many :users, through: :eventusers
+	
 
 # example from has-many-through-forms-rails-lab-v-000
 	# class Post < ActiveRecord::Base

@@ -2,8 +2,10 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :name, presence: true
 	validates_uniqueness_of :email
-	has_many :events, through: :eventusers
-	has_many :organizations, through: :events
+
+  has_many :event_users
+	has_many :events, through: :event_users
+	# has_many :organizations, through: :events
 	
 
 
