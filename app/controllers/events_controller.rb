@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def create
   	@event = Event.create(event_params)
-    redirect_to event_path(@event), notice: "Event was successfully created."
+    redirect_to event_path(id: params[:id]), notice: "Event was successfully created."
   end
 
   def show
