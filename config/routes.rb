@@ -14,17 +14,15 @@ Rails.application.routes.draw do
   post '/session', to: 'sessions#create' 
   delete '/signout', to: 'sessions#destroy', as: '/signout'
   # get 'sessions/create'
-  
-  get '/organizations/:organization_id/events', to: 'events#index', as: '/events'
-  post '/organizations/:organization_id/events', to: 'events#create', as: '/event'
 
-  resources :organizations do
-    resources :events, only: [:show, :new]
-  end
-
-  resources :users
+  resources :organizations 
+  resources :events
   
+#index: organization_events_path; new_organization_event_path; 
+#edit_organization_event_path; show organization_event_path
+  resources :users  
   resources :event_users
+  
 
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

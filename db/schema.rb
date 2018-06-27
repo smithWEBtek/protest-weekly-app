@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_164256) do
+ActiveRecord::Schema.define(version: 2018_06_27_013847) do
 
   create_table "event_users", force: :cascade do |t|
     t.integer "events_id"
@@ -27,11 +27,9 @@ ActiveRecord::Schema.define(version: 2018_06_25_164256) do
     t.string "cause"
     t.datetime "datetime"
     t.integer "organization_id"
-    t.integer "venue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_events_on_organization_id"
-    t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
   create_table "organizations", force: :cascade do |t|
