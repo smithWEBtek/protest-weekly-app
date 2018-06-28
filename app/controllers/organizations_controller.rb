@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
   
   def new
 	  @organization = Organization.new
+    @organization.events.build
   end
 
   def create
@@ -11,6 +12,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find_by(id: params[:id])
+    render :show
   end
 
   def index

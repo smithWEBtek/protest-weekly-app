@@ -1,17 +1,22 @@
+<%= error_messages_for :project %>
+
 <%= form_for @organization do |f| %>
 
-<div class="form-group">
-	<%= f.label :name %><br>
-	<%= f.text_field :name, class: "form-control" %> </div>
+<p>
+	Name: <%= f.text_field :name %>
+</p>
 
-<div class="form-group">
-	<%= f.label :contact_info %><br>
-	<%= f.text_field :contact_info, class: "form-control" %> </div>
-
-	<div class="actions">
-	<%= f.submit class: "btn btn-primary" %>
+<div id="events">
+		<%= render :partial => 'event', :collection => organization.events %>
 	</div>
+		<!--%= f.collection_select(:id, @organizations, :id, :name, {include_blank: "Please select the organization's name"})% -->
 	
+<p>
+	<%= add_event_link "Add an event" %>
+</p>
+<p>
+	<%= f.submit "Submit" %>
+	</p>
 <% end %>
 			
 	
