@@ -2,5 +2,11 @@
 
 <%= render 'form', url: 'new_event_path' %>
 
-<p><%= link_to 'Add sponsoring organization', 'organizations' %></p>
+<% yield %>
+
+<%= render 'organization/form', 
+
+<p><%= link_to 'Add sponsoring organization', url: 'show_organization_path' %></p>
+
+<% end %>
 
