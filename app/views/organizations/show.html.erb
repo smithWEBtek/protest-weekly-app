@@ -1,7 +1,6 @@
 <h1>Organizations</h1>
 
-	<%  @organizations.each do |f| %><br>
-		<%= organization.name %> <br>
-		<%= organization.contact_info %> 
+	<% @organizations.each do |f| %><br>
+		<%= link_to 'organization.name', link_to 'organization.contact_info' %> 
 	
 	<% end %>
