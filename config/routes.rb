@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   resources :events
 #index: organization_events_path; new_organization_event_path; 
 #edit_organization_event_path; show organization_event_path
-  resources :users, :events do
-    resources :event_users
-  end
+  resources :users, :events 
+  resources :event_users
+  
 
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

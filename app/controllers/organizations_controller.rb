@@ -7,6 +7,7 @@ class OrganizationsController < ApplicationController
 
   def create
   	@organization = Organization.create(id: params[:id])
+    @organization.save
      render :show
   end
 
