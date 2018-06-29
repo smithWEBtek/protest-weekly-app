@@ -1,18 +1,14 @@
-<%= error_messages_for :organization %>
+<%= form_for(@organizations, url: organizations_path) do |f| %>
+<div class="field">
+		<%= f.label :name, "Select organization name" %><br>
+		<%= f.collection_select(:id, @organization, :id, :name, {include_blank: "Please select or type in organization name"})%><br>
 
-<%= form_for(@organization, url: organizations_path) do |f| %>
-
-<%= label :name, "Select organization name" %><br>
-<%= collection_select(:id, @organization, :id, :name, {include_blank: "Please select or type in organization name"})%>
-	
-
-<%= label :contact_info, "Contact Info" %><br>
-<%= field :contact_info, "Enter contact info (URL, email) here" %>
-
-
-<p>
+<div class="field">
+	<%= f.label :contact_info, "Contact Info" %><br>
+	<%= f.text_field :contact_info, "Enter contact info (URL, email) here" %>
+<p></p>
 	<%= f.submit "Submit" %>
-	</p>
+	
 <% end %>
 			
 	

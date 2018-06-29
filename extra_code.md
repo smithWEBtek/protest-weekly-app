@@ -1,1 +1,1 @@
-test 
+<%= datetime_select :datetime, @event_users, :datetime %>test 

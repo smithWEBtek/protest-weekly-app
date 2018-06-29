@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   
   def new
   	@event = Event.new
+    render '/organizations/_form'
   end
 
 
