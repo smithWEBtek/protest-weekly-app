@@ -1,13 +1,13 @@
-<%= error_messages_for :project %>
+<%= error_messages_for :organization %>
 
-<%= form_for @organization do |f| %>
+<%= form_for(@organization, url: organizations_path) do |f| %>
 
 <p>
 	Name: <%= f.text_field :name %>
 </p>
 
 <div id="events">
-		<%= render :partial => 'event', :collection => organization.events %>
+		<%= render :partial => 'event', :collection => @organization.events %>
 	</div>
 		<!--%= f.collection_select(:id, @organizations, :id, :name, {include_blank: "Please select the organization's name"})% -->
 	

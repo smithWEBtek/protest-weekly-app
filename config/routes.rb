@@ -15,14 +15,16 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy', as: '/signout'
   # get 'sessions/create'
 
-  resources :organizations 
-  resources :events
+  resources :organizations do
+    resources :events, only: [:new, :create, :show, :index]
+  end
   
+  resources :events
 #index: organization_events_path; new_organization_event_path; 
 #edit_organization_event_path; show organization_event_path
-  resources :users  
-  resources :event_users
-  
+  resources :users, :events do
+    resources :event_users
+  end
 
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

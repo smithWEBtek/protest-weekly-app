@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_27_013847) do
+ActiveRecord::Schema.define(version: 2018_06_28_175748) do
 
   create_table "event_users", force: :cascade do |t|
     t.integer "events_id"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2018_06_27_013847) do
     t.datetime "updated_at", null: false
     t.string "uid"
     t.string "image"
-    t.boolean "admin", default: false
   end
 
 end
