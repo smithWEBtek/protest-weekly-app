@@ -7,6 +7,8 @@ class EventsController < ApplicationController
 
   def create
   	@event = Event.create(event_params)
+    @event.save
+    binding.pry
     redirect_to event_path(id: params[:id]), notice: "Event was successfully created."
   end
 
@@ -37,6 +39,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:name, :cause, :datetime, users_attributes: [:name, :email, :cell_phone, :ride], organizations_attributes: [:name, :contact_info])
+      params.require(:event).permit(:name, :cause, :location, :organization_id)
     end
 end
