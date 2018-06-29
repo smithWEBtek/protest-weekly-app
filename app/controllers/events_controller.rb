@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   def create
   	@event = Event.create(event_params)
     @event.save
-    binding.pry
     redirect_to event_path(id: params[:id]), notice: "Event was successfully created."
   end
 
