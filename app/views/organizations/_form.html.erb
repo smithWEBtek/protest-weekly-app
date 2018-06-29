@@ -2,18 +2,14 @@
 
 <%= form_for(@organization, url: organizations_path) do |f| %>
 
-<p>
-	Name: <%= f.text_field :name %>
-</p>
-
-<div id="events">
-		<%= render :partial => 'event', :collection => @organization.events %>
-	</div>
-		<!--%= f.collection_select(:id, @organizations, :id, :name, {include_blank: "Please select the organization's name"})% -->
+<%= label :name, "Select organization name" %><br>
+<%= collection_select(:id, @organization, :id, :name, {include_blank: "Please select or type in organization name"})%>
 	
-<p>
-	<%= add_event_link "Add an event" %>
-</p>
+
+<%= label :contact_info, "Contact Info" %><br>
+<%= field :contact_info, "Enter contact info (URL, email) here" %>
+
+
 <p>
 	<%= f.submit "Submit" %>
 	</p>

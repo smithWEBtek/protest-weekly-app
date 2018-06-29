@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :events
 #index: organization_events_path; new_organization_event_path; 
 #edit_organization_event_path; show organization_event_path
-  resources :users, :events 
+  resources :users
   resources :event_users
   
 

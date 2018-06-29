@@ -5,10 +5,14 @@ class EventsController < ApplicationController
   	@event = Event.new
   end
 
+
   def create
-  	@event = Event.create(event_params)
-    @event.save
-    redirect_to event_path(id: params[:id]), notice: "Event was successfully created."
+    @event = current_user.events.build(params[:event])
+    if @event.save
+      redirect_to root_path, notice: "Event was successfully created."
+    else
+      render '/'
+    end
   end
 
   def show

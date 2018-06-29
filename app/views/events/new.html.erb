@@ -4,6 +4,7 @@
 
 <% yield %>
 
-<%= render partial: 'show_organization_path' %> 
+<%= render 'form', url: 'organizations' %>
 
+<%= datetime_select :datetime, @event_users, :datetime %>
 
