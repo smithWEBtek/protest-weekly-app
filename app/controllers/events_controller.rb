@@ -3,17 +3,15 @@ class EventsController < ApplicationController
   
   def new
   	@event = Event.new
-    
-    render '/organizations/_form'
   end
 
 
   def create
-    @event = current_user.events.build(params[:event])
+    @event = Event.create(id: params[:id])
     if @event.save
       redirect_to root_path, notice: "Event was successfully created."
     else
-      render '/'
+      render :new
     end
   end
 
