@@ -11,15 +11,17 @@
 		<tr>
 			<td><strong>Name</strong></td>
 			<td><strong>Cause</strong></td>
-			<td><strong>Organization</strong></td>
+			<td><strong>Date & Time</strong></td>
 			<td><strong>Location</strong></td>
+			<td><strong>Organization</strong></td>
 		</tr>
 		<% @events.each do |event| %>
 		<tr>
 			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
+			<td><%= event_users.datetime %></td>
+			<td><%= event_users.location %></td>
 			<td><%= organization.name %></td>
-			<td><%= eventusers.location %></td>
 
 			<td><%= link_to "RSVP for #{event.name}", event_path(event) %></td>
 			<% end %>
