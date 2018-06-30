@@ -4,12 +4,12 @@ class Event_UsersController < ApplicationController
 		@car_pool == @ride || @drive
 	end
 
-	def ride
-		!drive
+	def need_ride
+		!can_drive
 	end
 
-	def drive
-		!ride
+	def can_drive
+		!need_ride
 	end
 
 
