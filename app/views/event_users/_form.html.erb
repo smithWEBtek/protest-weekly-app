@@ -1,1 +1,15 @@
-_form.html.erb
+<%= render 'events/form' %>
+
+	<% yield %>
+
+<%= form_for @event_users do |f| %>
+
+<div class="form-group">
+	<%= f.label :datetime %><br>
+	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br>
+</div>
+
+<div class="form-group">
+	<%= f.label :carpool %><br>
+	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br>
+</div>

@@ -1,7 +1,7 @@
 <h1>Event</h1>
 
-<!--this view should list event info and opportunity to sign up,indicate if ride is needed and can drive in car pool
-RSVP in the show page???-->
+<!--this view should list event info. opportunity to sign up,indicate if ride is needed and can drive in car pool is on events index page. or event_users page. still sorting that out.
+-->
 
 <p id="notice"><%= notice %></p>
 
@@ -20,7 +20,6 @@ RSVP in the show page???-->
 			<%= f.hidden_field :event_id, value: @event.id %>
 			
 
-			<%= f.submit "RSVP for this event" %>
-			<% end %>
-			<% end %>
-			<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
+		<% end %>
+		<% end %>
+	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	

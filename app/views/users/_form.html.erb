@@ -6,7 +6,7 @@
 
 <div class="form-group">
 	<%= f.label :email %><br>
-	<%= f.text_field :email, class: "form-control" %></div>
+	<%= f.email_field :email, class: "form-control" %></div>
 
 <div class="form-group">
 	<%= f.label :password %><br>
@@ -14,14 +14,8 @@
 
 <div class="form-group">
 	<%= f.label :cell_phone %><br>
-	<%= f.number_field :cell_phone, class: "form-control" %></div>
+	<%= f.telephone_field :cell_phone, class: "form-control" %></div>
 
-<!--need to make ride/drive either/or. Can be one or the other but not both-->
-<div class="form-group">
-	<%= radio_button_tag(:ride, "ride") %>
-	<%= label_tag(:user_ride, "I will need a ride to events") %>
-	<%= radio_button_tag(:ride, "drive") %>
-	<%= label_tag(:user_drive, "I can drive others to events") %></div>
 
 <div class="actions">
 	<%= f.submit class: "btn btn-primary" %>
