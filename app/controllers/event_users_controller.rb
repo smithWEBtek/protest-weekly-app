@@ -1,16 +1,13 @@
 class Event_UsersController < ApplicationController
 
-	def car_pool
-		@car_pool == @ride || @drive
+	def new
+		@event_user = Event_User.new
 	end
 
-	def need_ride
-		!can_drive
+	def show
+		@event_user = Event_User.find(id: params[:id])
 	end
 
-	def can_drive
-		!need_ride
-	end
-
+	
 
 end

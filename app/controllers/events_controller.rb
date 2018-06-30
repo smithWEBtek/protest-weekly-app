@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
+  # before_action :set_organization
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+
   
   def new
-  	@event = Event.new
+    @event = Event.new
+  	# @organization = @event.organization
   end
-
 
   def create
     @event = Event.create(id: params[:id])
@@ -20,7 +22,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @event = Event.all
+    @events = Event.all
   end
 
   def update
@@ -36,6 +38,9 @@ class EventsController < ApplicationController
   end
 
   private
+    # def set_organization
+    #   @organization = Organization.find(params[:id])
+    # end
 
     def set_event
       @event = Event.find(params[:id])
