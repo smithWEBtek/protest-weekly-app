@@ -1,7 +1,16 @@
 class Event_UsersController < ApplicationController
 
-	def datetime
-		self.datetime
+	def car_pool
+		@car_pool == @ride || @drive
 	end
+
+	def ride
+		!drive
+	end
+
+	def drive
+		!ride
+	end
+
 
 end
