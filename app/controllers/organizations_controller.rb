@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
 
   def create
   	@organization = Organization.create(id: params[:id])
+    
     if @organization.save
      render :index, notice: "Organization was successfully created."
     else
