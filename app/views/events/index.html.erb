@@ -3,7 +3,7 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th colspan="3"></th>
+			<th colspan="5"></th>
 		</tr>
 	</thead>
 
@@ -11,21 +11,26 @@
 		<tr>
 			<td><strong>Name</strong></td>
 			<td><strong>Cause</strong></td>
-			
+			<td><strong>Location</strong></td>
+			<td><strong>Date & Time</strong></td>
+			<td><strong>Organization</strong></td>			
 		</tr>
 		<% @events.each do |event| %>
 		<tr>
 			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
-			
+			<td><%= event.location %></td>
+			<td><%= link_to event_event_users_path(:id) %></td>
+			<td><%= link_to organization_events_path(:id) %></td>
+
 		<% end %>
 		</tr>
 		
 	</tbody>
 </table>
 <br>
-	<br><%= link_to "Edit Event", edit_event_path(@events) %><br>
-	<br><%= link_to "New Event", new_event_path %> <br>
+	<br><%= link_to "Edit Event", edit_organization_event_path(:id, :organization_id), class: "btn btn-primary" %><br>
+	<br><%= link_to "New Event", new_event_path, class: "btn btn-primary" %> <br>
 
 
 

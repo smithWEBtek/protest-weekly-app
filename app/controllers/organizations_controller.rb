@@ -2,18 +2,21 @@ class OrganizationsController < ApplicationController
   
   def new
 	  @organization = Organization.new
-    @organization.events.build
   end
 
   def create
   	@organization = Organization.create(id: params[:id])
-    @organization.save
-     render :show
+    @events = @organization.events
+
+    if @organization.save
+     render :index, notice: "Organization was successfully created."
+    else
+      render :new, notice: "Your entry could not be saved. Please try again."
+    end
   end
 
   def show
     @organization = Organization.find_by(id: params[:id])
-    render :show
   end
 
   def index
@@ -23,7 +26,7 @@ class OrganizationsController < ApplicationController
   private
 
   def organization_params
-     params.require(:organization).permit(:name, :contact_info)
+     params.require(:organization).permit(:name, :contact_info, events_attributes: [:name, :cause, :location])
   end
-  
+  #doubtful about needing the events params
 end

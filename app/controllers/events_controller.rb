@@ -1,15 +1,12 @@
 class EventsController < ApplicationController
-  # before_action :set_organization
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-
-  
+    
   def new
     @event = Event.new
-  	# @organization = @event.organization
   end
 
   def create
     @event = Event.create(id: params[:id])
+    
     if @event.save
       redirect_to root_path, notice: "Event was successfully created."
     else
@@ -28,7 +25,7 @@ class EventsController < ApplicationController
   def update
   	@event = Event.find(params[:id])
     if @event.update(event_params)
-				redirect_to @event
+				redirect_to @event, notice: "Event was successfully updated."
     else
       render :edit
     end
@@ -38,15 +35,8 @@ class EventsController < ApplicationController
   end
 
   private
-    # def set_organization
-    #   @organization = Organization.find(params[:id])
-    # end
-
-    def set_event
-      @event = Event.find(params[:id])
-    end
-
+    
     def event_params
-      params.require(:event).permit(:name, :cause, :location, :organization_id)
+      params.require(:event).permit(:name, :cause, :location, :organization_id, organization_attributes: [:name, :contact_info], event_users_attributes: [:datetime, :need_ride, :can_drive, :user_id])
     end
 end
