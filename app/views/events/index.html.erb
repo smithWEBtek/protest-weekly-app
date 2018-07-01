@@ -20,8 +20,8 @@
 			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
-			<td><%= event_users.datetime %></td>
-			<td><%= organziation.name %></td>
+			<td><%= render 'event_users_datetime' %></td>
+			<td><%= render 'organization_name' %></td>
 
 		<% end %>
 		</tr>
