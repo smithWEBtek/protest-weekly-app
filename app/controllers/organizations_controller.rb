@@ -6,7 +6,8 @@ class OrganizationsController < ApplicationController
 
   def create
   	@organization = Organization.create(id: params[:id])
-    
+    @events = @organization.events
+
     if @organization.save
      render :index, notice: "Organization was successfully created."
     else
@@ -16,12 +17,10 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find_by(id: params[:id])
-    render :show
   end
 
   def index
   	@organizations = Organization.all
-      render :index
   end
 
   private

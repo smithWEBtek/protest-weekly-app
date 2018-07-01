@@ -16,16 +16,13 @@ Rails.application.routes.draw do
   # get 'sessions/create'
 
   resources :organizations do
-    resources :events, only: [:new, :create, :show, :index]
+    resources :events
   end
 
-  resources :organizations
+  # resources :organizations
   
-  resources :events
-#index: organization_events_path; new_organization_event_path; 
-#edit_organization_event_path; show organization_event_path
   resources :events, :users do
-    resources :event_users, only: [:new, :create, :show, :index]
+    resources :event_users, only: [:new, :create, :show, :index, :update]
   end
 
   resources :users
