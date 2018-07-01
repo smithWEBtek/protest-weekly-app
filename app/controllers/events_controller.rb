@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   # before_action :set_organization
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  # before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   
   def new
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   def update
   	@event = Event.find(params[:id])
     if @event.update(event_params)
-				redirect_to @event
+				redirect_to @event, notice: "Event was successfully updated."
     else
       render :edit
     end
@@ -42,9 +42,9 @@ class EventsController < ApplicationController
     #   @organization = Organization.find(params[:id])
     # end
 
-    def set_event
-      @event = Event.find(params[:id])
-    end
+    # def set_event
+    #   @event = Event.find(params[:id])
+    # end
 
     def event_params
       params.require(:event).permit(:name, :cause, :location, :organization_id)

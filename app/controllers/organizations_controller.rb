@@ -2,13 +2,15 @@ class OrganizationsController < ApplicationController
   
   def new
 	  @organization = Organization.new
-    @organization.events.build
   end
 
   def create
   	@organization = Organization.create(id: params[:id])
-    @organization.save
-     render :show
+    if @organization.save
+     render :show, notice: "Organization was successfully created."
+    else
+      render :new
+    end
   end
 
   def show
@@ -23,7 +25,7 @@ class OrganizationsController < ApplicationController
   private
 
   def organization_params
-     params.require(:organization).permit(:name, :contact_info)
+     params.require(:organization).permit(:name, :contact_info, events_attributes: [:name, :cause, :location])
   end
   
 end
