@@ -1,9 +1,14 @@
 <%= form_for :organizations, url: organizations_path do |f| %>
 
-Name: <%= f.text_field :name %><br>
-Contact info: <%= f.text_area :contact_info %><br>
-	<p>
-	</p>
+<div class="form-group">
+	<%= f.label :name %><br>
+	<%= f.text_field :name, class: "form-control" %> </div>
+
+<div class="form-group">
+	<%= f.label :contact_info %><br>
+	<%= f.text_area :contact_info, class: "form-control" %> </div>
+	<br>
+	
 	<%= f.submit "Submit" %>
 	
 <% end %>

@@ -1,8 +1,8 @@
 <h1>Organizations</h1>
 
-	<% @organizations.each do |f| %><br>
-		<%= @organization.name %>
-		<%= @organization.contact_info %> 
-	
+	<% @organizations.each do |organization| %><br>
+		<%= organization.name %>
+		<%= organization.contact_info %> 
+
 	<% end %>
-	
+

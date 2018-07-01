@@ -7,9 +7,9 @@ class OrganizationsController < ApplicationController
   def create
   	@organization = Organization.create(id: params[:id])
     if @organization.save
-     render :show, notice: "Organization was successfully created."
+     render :index, notice: "Organization was successfully created."
     else
-      render :new
+      render :new, notice: "Your entry could not be saved. Please try again."
     end
   end
 
@@ -20,6 +20,7 @@ class OrganizationsController < ApplicationController
 
   def index
   	@organizations = Organization.all
+      render :index
   end
 
   private
