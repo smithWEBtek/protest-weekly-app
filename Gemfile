@@ -17,6 +17,7 @@ gem 'thin'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~>3.3.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.1.12'
 # See https://github.com/rails/execjs#readme for more supported runtimes
