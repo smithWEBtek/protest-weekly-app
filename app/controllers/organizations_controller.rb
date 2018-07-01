@@ -27,5 +27,5 @@ class OrganizationsController < ApplicationController
   def organization_params
      params.require(:organization).permit(:name, :contact_info, events_attributes: [:name, :cause, :location])
   end
-  
+  #doubtful about needing the events params
 end
