@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @event = Event.create(id: params[:id])
     
     if @event.save
-      redirect_to root_path, notice: "Event was successfully created."
+      render :show, notice: "Event was successfully created."
     else
       render :new
     end
@@ -37,6 +37,6 @@ class EventsController < ApplicationController
   private
     
     def event_params
-      params.require(:event).permit(:name, :cause, :location, :organization_id, organization_attributes: [:name, :contact_info], event_users_attributes: [:datetime, :need_ride, :can_drive, :user_id])
+      params.require(:event).permit(:name, :cause, :location, organization_attributes: [:name, :contact_info, :organization_id], event_users_attributes: [:datetime, :need_ride, :can_drive, :user_id])
     end
 end

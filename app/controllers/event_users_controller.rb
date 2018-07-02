@@ -1,4 +1,4 @@
-class Event_UsersController < ApplicationController
+class EventUsersController < ApplicationController
 
 	def new
 		@event_user = Event_User.new
