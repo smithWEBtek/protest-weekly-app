@@ -1,16 +1,15 @@
 class EventsController < ApplicationController
 
-  before_action :set_organization
-
+  
   def new
-    @event = @organization.events.build
+    @event = Event.new
   end
 
   def create
-    @event = @organization.events.build(events_params)
+    @event = Event.create(id: params[:id])
     
     if @event.save
-      redirect_to [@organization, @event], notice: "Event was successfully created."
+      render :show, notice: "Event was successfully created."
     else
       render :new
     end
@@ -37,9 +36,7 @@ class EventsController < ApplicationController
   end
 
   private
-    def set_organization
-      @organization = Organization.find(params[:organization_id])
-    end
+    
 
     def event_params
       params.require(:event).permit(:name, :cause, :location, organization_attributes: [:name, :contact_info, :organization_id], event_users_attributes: [:datetime, :need_ride, :can_drive, :RSVP, :user_id])
