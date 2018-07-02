@@ -1,25 +1,31 @@
 <h1>Event</h1>
 
-<!--this view should list event info. opportunity to sign up,indicate if ride is needed and can drive in car pool is on events index page. or event_users page. still sorting that out.
--->
+<!--this view should list event info. for one event and opportunity to sign up,indicate if ride is needed and can drive in car pool. -->
 
 <p id="notice"><%= notice %></p>
 
 <div class="center">
-
-	<div class="info">
-		<p><strong>Name:</strong> <%= @event.name %></p>
-		<p><strong>Cause:</strong> <%= @event.cause %></p>
-		<p><strong>Date and time:</strong> <%= @event_user.datetime %> </p>
-		<p><strong>Organization:</strong> <%= @organization.name %></p>
+<tbody>
+		<tr>
+			<td><strong>Name</strong></td>
+			<td><strong>Cause</strong></td>
+			<td><strong>Location</strong></td>
+			<td><strong>Date & Time</strong></td>
+			<td><strong>Organization</strong></td>	
+			<td><strong>Count Me In</strong></td> <!-- Y/N checkbox -->
+			<td><strong>Car Pool?</strong><td>		
+		</tr>
+		<tr>
+		<td><strong>Name:</strong> <%= @event.name %></td>
+		<td><strong>Cause:</strong> <%= @event.cause %></td>
+		<td><strong>Location:</strong><%= @event.location %></td>
+		<td><strong>Date and time:</strong> <%= @event_user.datetime %> </td>
+		<td><strong>Organization:</strong> <%= @organization.name %></td>
+		<td><!--insert checkbox for RSVP --></td>
+			<td><%= radio_button_tag(:need_ride, "ride") %>
+	<%= label_tag(:need_ride, "I need a ride") %> 
+	<%= radio_button_tag(:can_drive, "drive") %>
+	<%= label_tag(:can_drive, "I can drive") %></td>
 		
-		<%yield%>
-			
-			<%= form_for(:event, method: 'post') do |f| %>
-			<%= f.hidden_field :user_id, value: current_user.id %>
-			<%= f.hidden_field :event_id, value: @event.id %>
-			
-
-		<% end %>
-		<% end %>
+		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	

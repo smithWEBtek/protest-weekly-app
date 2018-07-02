@@ -12,7 +12,17 @@
 	<%= f.label :location %><br>
 	<%= f.text_field :location, class: "form-control" %></div>
 
-	<!--yield to add datetime and organization -->
+<div class="form-group">
+	<%= f.label :datetime %><br>
+	<%= f.datetime_field :datetime, class: "form-control" %></div>
+
+<div class="form-group">
+	<%= f.label :organization %><br>
+	<%= f.text_field :organization_name, class: "form-control" %></div>
+
+<div class="form-group">
+	<%= f.label :organization_contact_info %><br>
+	<%= f.text_field :organization_contact_info, class: "form-control" %></div>
 
 <div class="actions">
 	<%= f.submit class: "btn btn-primary" %>

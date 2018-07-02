@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @event = Event.create(id: params[:id])
     
     if @event.save
-      redirect_to root_path, notice: "Event was successfully created."
+      render :show, notice: "Event was successfully created."
     else
       render :new
     end

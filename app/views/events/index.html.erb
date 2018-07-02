@@ -20,9 +20,7 @@
 			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
-			<td><%= link_to event_event_users_path(:id) %></td>
-			<td><%= link_to organization_events_path(:id) %></td>
-
+<!-- I want to click on an event in this list and go to the show page where I can tell them whether I'll be there and if I need a ride or can drive. -->			
 		<% end %>
 		</tr>
 		
@@ -30,7 +28,7 @@
 </table>
 <br>
 	<br><%= link_to "Edit Event", edit_organization_event_path(:id, :organization_id), class: "btn btn-primary" %><br>
-	<br><%= link_to "New Event", new_event_path, class: "btn btn-primary" %> <br>
+	<br><%= link_to "Create Event", new_event_path, class: "btn btn-primary" %> <br>
 
 
 
