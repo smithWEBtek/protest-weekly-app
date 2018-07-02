@@ -1,7 +1,10 @@
-<h1>Organization</h1>
-<!--excellent candidate for search by -->
-	<% @organizations.each do |f| %><br>
-		<%= organization.name %>
-		<%= organization.contact_info %> 
+<h1>Event</h1>
+<ul id="events>"
+	<% @organization.events.each do |event| %>
+	<li>
+		<%= link_to event.name, [@organization, event] %>
+		</li>
+		<% end %>
+	</ul>
 	
-	<% end %>
+	

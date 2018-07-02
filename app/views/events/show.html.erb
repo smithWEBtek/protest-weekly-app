@@ -15,17 +15,18 @@
 			<td><strong>Count Me In</strong></td> <!-- Y/N checkbox -->
 			<td><strong>Car Pool?</strong><td>		
 		</tr>
+		<% @event.event_users.each do |event, event_user| %>
 		<tr>
-		<td><strong>Name:</strong> <%= @event.name %></td>
-		<td><strong>Cause:</strong> <%= @event.cause %></td>
-		<td><strong>Location:</strong><%= @event.location %></td>
-		<td><strong>Date and time:</strong> <%= @event_user.datetime %> </td>
-		<td><strong>Organization:</strong> <%= @organization.name %></td>
+		<td><strong>Name:</strong> <%= event.name %></td>
+		<td><strong>Cause:</strong> <%= event.cause %></td>
+		<td><strong>Location:</strong><%= event.location %></td>
+		<td><strong>Date and time:</strong> <%= event_user.datetime %> </td>
+		<td><strong>Organization:</strong> <%= organization.name %></td>
 		<td><!--insert checkbox for RSVP --></td>
 			<td><%= radio_button_tag(:need_ride, "ride") %>
 	<%= label_tag(:need_ride, "I need a ride") %> 
 	<%= radio_button_tag(:can_drive, "drive") %>
 	<%= label_tag(:can_drive, "I can drive") %></td>
-		
+		<% end %>
 		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	

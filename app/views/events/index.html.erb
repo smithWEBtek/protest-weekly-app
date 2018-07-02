@@ -1,5 +1,5 @@
 <h1>Events</h1>
-
+<!--we got problems here -->
 <table class="table">
 	<thead>
 		<tr>
@@ -18,11 +18,11 @@
 		<% @events.each do |event| %>
 		<tr>
 			<td><%= link_to event.name %></td>
-			<td><%= link_to event.cause %></td>
-			<td><%= link_to event.location %></td>
-			<td><%= event_event_users_path :datetime %></td>
-			<td><%= organization_events_path :name %></td>
-			binding.pry
+			<td><%= event.cause %></td>
+			<td><%= event.location %></td>
+			<td><%= event_user.datetime %></td>
+			<td><%= organization.name %></td>
+			
 			
 <!-- I want to click on an event in this list and go to the show page where I can tell them whether I'll be there and if I need a ride or can drive. -->			
 		<% end %>
