@@ -1,6 +1,6 @@
 <h1>Event</h1>
 
-<!--this view should list event info. for one event and opportunity to sign up,indicate if ride is needed and can drive in car pool. -->
+<!--this view should list event info. for one event and opportunity to sign up,indicate if ride is needed or can drive in car pool. -->
 
 <p id="notice"><%= notice %></p>
 
@@ -10,22 +10,23 @@
 			<td><strong>Name</strong></td>
 			<td><strong>Cause</strong></td>
 			<td><strong>Location</strong></td>
-			<td><strong>Date & Time</strong></td>
 			<td><strong>Organization</strong></td>	
+			<td><strong>Date & Time</strong></td>
 			<td><strong>Count Me In</strong></td> <!-- Y/N checkbox -->
 			<td><strong>Car Pool?</strong><td>		
 		</tr>
-		<% @event.event_users.each do |event, event_user| %>
+		<% @events.each do |event| %>
 		<tr>
 		<td><strong>Name:</strong> <%= event.name %></td>
 		<td><strong>Cause:</strong> <%= event.cause %></td>
 		<td><strong>Location:</strong><%= event.location %></td>
-		<td><strong>Date and time:</strong> <%= event_user.datetime %> </td>
 		<td><strong>Organization:</strong> <%= organization.name %></td>
-		<td><!--insert checkbox for RSVP --></td>
+		<td><strong>Date and time:</strong> <%= event_user.datetime %> </td>
+		<td><%= check_box_tag(:RSVP) %>
+<%= label_tag(:RSVP, "I'll be there!") %></td>
 			<td><%= radio_button_tag(:need_ride, "ride") %>
-	<%= label_tag(:need_ride, "I need a ride") %> 
-	<%= radio_button_tag(:can_drive, "drive") %>
+	<%= label_tag(:need_ride, "I need a ride") %></td> 
+	<td><%= radio_button_tag(:can_drive, "drive") %>
 	<%= label_tag(:can_drive, "I can drive") %></td>
 		<% end %>
 		
