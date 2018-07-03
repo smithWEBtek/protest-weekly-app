@@ -7,6 +7,8 @@ Because this group is on Facebook, adding "login with Facebook" was a logical wa
 Things you may want to cover:
 
 * Ruby version - 2.4.2
+* Gem version - 2.7.6
+* Rails 5.2.0
 
 * System dependencies
 
