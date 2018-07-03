@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :events, :users do
-    resources :event_users, only: [:new, :create, :show, :index, :update]
+    resources :event_users
   end
 
   resources :users
