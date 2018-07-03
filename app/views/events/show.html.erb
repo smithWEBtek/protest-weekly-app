@@ -6,14 +6,7 @@
 
 <div class="center">
 <tbody>
-		<tr>
-			<td><strong>Name</strong></td>
-			<td><strong>Cause</strong></td>
-			<td><strong>Location</strong></td>
-			<td><strong>Organization</strong></td>	
-			<td><strong>Date & Time</strong></td>
-				
-		</tr>
+		
 		<% @events.each do |event| %>
 		<tr>
 		<td><%= event.name %></td>
@@ -23,7 +16,9 @@
 		<td><%= event_users.datetime %></td>
 	</tr>
 	<% end %> 
-		
-		<%= link_to "Car Pool" %>
+		<% yield %>
+		<%= render 'event_users/_car_pool' %>
 		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
+</tbody>
+</div>

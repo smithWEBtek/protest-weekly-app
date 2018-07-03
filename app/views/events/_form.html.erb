@@ -1,32 +1,28 @@
 <%= form_for :event, url: events_path do |f| %>
 
-<div class="form-group">
 	<%= f.label :name %><br>
-	<%= f.text_field :name, class: "form-control" %> </div>
-
-<div class="form-group">
+	<%= f.text_field :name %> 
+	<p>
 	<%= f.label :cause %><br>
-	<%= f.text_field :cause, class: "form-control" %> </div>
-
-<div class="form-group">
+	<%= f.text_field :cause %> 
+	</p>
+	<p>
 	<%= f.label :location %><br>
-	<%= f.text_field :location, class: "form-control" %></div>
-
-<div class="form-group">
+	<%= f.text_field :location %>
+	</p>
+	<p>
 	<%= f.label :datetime %><br>
-	<%= f.datetime_field :datetime, class: "form-control" %></div>
-
-<div class="form-group">
+	<%= f.datetime_field :datetime %>
+	</p>
+	<p>
 	<%= f.label :organization %><br>
-	<%= f.text_field :organization_name, class: "form-control" %></div>
-
-<div class="form-group">
+	<%= f.text_field :organization_name %>
+	</p>
+		<p>
 	<%= f.label :organization_contact_info %><br>
-	<%= f.text_field :organization_contact_info, class: "form-control" %></div>
+	<%= f.text_field :organization_contact_info %>
 
-<div class="actions">
-	<%= f.submit class: "btn btn-primary" %>
-</div>
+	<%= f.submit %>
 
 <% end %>
 			
