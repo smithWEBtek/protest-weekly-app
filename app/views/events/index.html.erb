@@ -16,7 +16,7 @@
 		</tr>
 		<% @events.each do |event| %>
 		<tr>
-			<td><%= link_to event.name %></td>
+			<td><%= link_to event.name, event_path(event) %></td>
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
 			
