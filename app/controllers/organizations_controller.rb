@@ -5,11 +5,11 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-  	@organization = Organization.create(id: params[:id])
-    @events = @organization.events
+  	@organization = Organization.create(organization_params)
+    # @events = @organization.events
 
     if @organization.save
-     render :index, notice: "Organization was successfully created."
+     redirect_to :index, notice: "Organization was successfully created."
     else
       render :new, notice: "Your entry could not be saved. Please try again."
     end
@@ -19,12 +19,6 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find_by(id: params[:id])
   end
   
-  def edit
-  end
-
-  def update
-  end
-
   def index
   	@organizations = Organization.all
   end
