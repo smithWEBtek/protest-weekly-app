@@ -9,7 +9,7 @@ class OrganizationsController < ApplicationController
     # @events = @organization.events
 
     if @organization.save
-     redirect_to :index, notice: "Organization was successfully created."
+     redirect_to :index, notice: "Organization has been created."
     else
       render :new, notice: "Your entry could not be saved. Please try again."
     end

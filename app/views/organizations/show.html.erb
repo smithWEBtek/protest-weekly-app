@@ -1,10 +1,5 @@
-<h1>Event</h1>
-<ul id="events>"
-	<% @organization.events.each do |event| %>
-	<li>
-		<%= link_to event.name, [@organization, event] %>
-		</li>
-		<% end %>
-	</ul>
+<h1><%= @organization.name %></h1>
+<p><%= @organization.contact_info %></p>
+		
 	
 	                                                                                                                                                                                                                                                                                                                     
