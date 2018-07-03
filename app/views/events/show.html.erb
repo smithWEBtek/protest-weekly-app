@@ -12,22 +12,18 @@
 			<td><strong>Location</strong></td>
 			<td><strong>Organization</strong></td>	
 			<td><strong>Date & Time</strong></td>
-			<td><strong>Count Me In</strong></td> <!-- Y/N checkbox -->
-			<td><strong>Car Pool?</strong><td>		
+				
 		</tr>
 		<% @events.each do |event| %>
 		<tr>
-		<td><strong>Name:</strong> <%= event.name %></td>
-		<td><strong>Cause:</strong> <%= event.cause %></td>
-		<td><strong>Location:</strong><%= event.location %></td>
-		<td><strong>Organization:</strong> <%= organization.name %></td>
-		<td><strong>Date and time:</strong> <%= event_user.datetime %> </td>
-		<td><%= check_box_tag(:RSVP) %>
-<%= label_tag(:RSVP, "I'll be there!") %></td>
-			<td><%= radio_button_tag(:need_ride, "ride") %>
-	<%= label_tag(:need_ride, "I need a ride") %></td> 
-	<td><%= radio_button_tag(:can_drive, "drive") %>
-	<%= label_tag(:can_drive, "I can drive") %></td>
-		<% end %>
+		<td><%= event.name %></td>
+		<td><%= event.cause %></td>
+		<td><%= event.location %></td>
+		<td><%= organization.name %></td>
+		<td><%= event_users.datetime %></td>
+	</tr>
+	<% end %> 
+		
+		<%= link_to "Car Pool" %>
 		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
