@@ -16,14 +16,14 @@ Rails.application.routes.draw do
   # get 'sessions/create'
 
   resources :organizations do
-    resources :events
+    resources :events, only: [:index, :create, :new, :edit, :show, :update]
   end
 
   resources :events, :users do
-    resources :event_users
+    resources :event_users, only: [:index, :create, :new, :edit, :show, :update]
   end
 
-  resources :users
+  resources :users, only: [:create, :new, :edit, :show, :update]
   
       # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
