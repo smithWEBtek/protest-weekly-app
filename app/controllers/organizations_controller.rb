@@ -19,8 +19,14 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find_by(id: params[:id])
   end
   
+  def edit
+  end
+
   def index
   	@organizations = Organization.all
+  end
+
+  def update
   end
 
   private
