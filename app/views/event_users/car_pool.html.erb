@@ -1,5 +1,10 @@
 <%= form_for @event_users do |f| %>
 
+<div class="form-group">
+  <%= f.label :datetime %><br>
+  <%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br>
+</div>
+
 <div class="field">
   	<%= f.label :RSVP %><br />
   	<%= f.label :RSVP, "Yes", :value => "true"  %>
