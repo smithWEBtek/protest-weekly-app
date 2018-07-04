@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
-  # before_action :set_event, only: [:show, :edit, :update, :destroy]
-  
+    
   def new
     @event = Event.new
   end
@@ -39,10 +38,7 @@ class EventsController < ApplicationController
   end
 
   private
-    # def set_event
-    #   @event = Event.find(event_params)
-    # end
-
+   
     def event_params
       params.require(:event).permit(:name, :cause, :location, organization_attributes: [:name, :contact_info, :organization_id], event_users_attributes: [:datetime, :RSVP, :need_ride, :can_drive, :user_id])
     end

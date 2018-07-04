@@ -5,7 +5,7 @@ class EventUsersController < ApplicationController
 	end
 
 	def create
-
+		@event_user = Event_User.create(event_user_params)
 	end
 
 	def index
