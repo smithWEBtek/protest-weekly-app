@@ -1,24 +1,12 @@
 <h1>Event</h1>
 
-<!--this view should list event info. for one event and opportunity to sign up,indicate if ride is needed or can drive in car pool. -->
-
-<p id="notice"><%= notice %></p>
-
-<div class="center">
-<tbody>
-		
-		<% @events.each do |event| %>
-		<tr>
-		<td><%= event.name %></td>
-		<td><%= event.cause %></td>
-		<td><%= event.location %></td>
-		<td><%= organization.name %></td>
-		<td><%= event_users.datetime %></td>
-	</tr>
-	<% end %> 
+		<p><%= @event.name %></p>
+		<p><%= @event.cause %></p>
+		<p><%= @event.location %></p>
+		<p><%= @organization.name %></p>
+		<p><%= @event_users.datetime %></p>
+	
 		<% yield %>
 		<%= render 'event_users/_car_pool' %>
 		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
-</tbody>
-</div>

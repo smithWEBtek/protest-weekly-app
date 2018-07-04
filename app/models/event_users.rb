@@ -1,7 +1,7 @@
 class EventUser < ApplicationRecord
 
-	belongs_to :event
-	belongs_to :user
+	belongs_to :event, optional: true
+	belongs_to :user, optional: true
 	#good candidate for scope to limit show returns of events for that week (sort by datetime)
 
 	
