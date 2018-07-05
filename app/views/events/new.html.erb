@@ -1,9 +1,30 @@
 <h1>Create a New Event</h1>
 
-	<%= render 'form' %> 
-	<% yield %>
-	<%= render 'organizations/form' %>
-	<%= submit_tag "Create Event" %><br />
+	<%= form_for(@event) do |f| %>
+
+	<%= f.label :name %><br>
+	<%= f.text_field :name %> 
+	<p>
+
+	<%= f.label :cause %><br>
+	<%= f.text_field :cause %> 
+	</p>
+	<p>
+	<%= f.label :location %><br>
+	<%= f.text_field :location %>
+	</p>
+	<p>
+	<%= f.label :datetime %><br>
+	<%= f.datetime_field :datetime %>
+	</p>
+	
+	<%= f.label :organization_name, "Organization Name" %><br>
+
+	<%= f.collection_select(:organization_id, Organization.all, :id, :name, {include_blank: "Please select name"})%>
+	<br>
+		
+	<%= f.submit "Create Event" %><br />
+ <% end %>
 
 <%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
 <%= link_to "View Events", events_path %>

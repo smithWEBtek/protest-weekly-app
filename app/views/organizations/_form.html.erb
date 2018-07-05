@@ -3,7 +3,7 @@
 	
 	<%= f.label :organization_name, "Organization Name" %><br>
 
-	<%= f.collection_select(:name, Organization.all, :name, :name, {include_blank: "Please select or type in name"})%>
+	<%= f.collection_select(:name, Organization.all, :name, :name, {include_blank: "Please select name"})%>
 	<br>
 	<br>
 	<%= f.label :contact_info %><br>
