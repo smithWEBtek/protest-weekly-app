@@ -3,10 +3,10 @@
 		<p><%= @event.name %></p>
 		<p><%= @event.cause %></p>
 		<p><%= @event.location %></p>
-		<p><%= @organization.name %></p>
 		<p><%= @event_users.datetime %></p>
-	
+		<p><%= @organization.name %></p>
+		
 		<% yield %>
-		<%= render 'event_users/_car_pool' %>
+		<%= render 'event_users/form' %>
 		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	

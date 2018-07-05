@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 	has_many :users, through: :event_users
 	belongs_to :organization, optional: true
 
-
+	
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|
 			self.users.build(user_attributes)

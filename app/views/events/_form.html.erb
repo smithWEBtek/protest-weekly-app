@@ -1,8 +1,9 @@
-<%= form_with(model: @event, url: (@event.new_record? ? [@event, @organization]: @event)) do |f| %>
+<%= form_for @event do |f| %>
 
 	<%= f.label :name %><br>
 	<%= f.text_field :name %> 
 	<p>
+
 	<%= f.label :cause %><br>
 	<%= f.text_field :cause %> 
 	</p>
@@ -11,14 +12,14 @@
 	<%= f.text_field :location %>
 	</p>
 	<p>
+	<%= f.label :organization %><br>
+	<%= f.text_field :organization_name %>
+	</p>
+	<p>
 	<%= f.label :datetime %><br>
 	<%= f.datetime_field :datetime %>
 	</p>
 	<p>
-	<%= f.label :organization %><br>
-	<%= f.text_field :organization_name %>
-	</p>
-		<p>
 	<%= f.label :organization_contact_info %><br>
 	<%= f.text_field :organization_contact_info %>
 
