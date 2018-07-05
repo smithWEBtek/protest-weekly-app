@@ -4,6 +4,7 @@
 		<p><%= @event.cause %></p>
 		<p><%= @event.location %></p>
 		<p><%= @event.datetime %></p>
-		<p><%= @organization.name %></p>
+		<p><%= @event.organization.name %></p>
+		<p><%= @event.organization.contact_info %></p>
 		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
