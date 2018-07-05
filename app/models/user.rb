@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
 	validates :name, presence: true
-	validates_uniqueness_of :email, :if [:new, :create]
+	validates_uniqueness_of :email, unless @current_user
   	validates :password, length: { in: 6..20 }
 
   	has_many :event_users
@@ -15,7 +15,7 @@ class User < ApplicationRecord
 	end
 
 	def events_attributes=(events_attributes)
-		events_attributes.each do |events_attributes|
+		events_attributes.each do |event_attributes|
 			self.events.build(event_attributes)
 		end
 	end
@@ -33,5 +33,5 @@ end
   # has_many :comments
   # has_many :posts, through: :comments
 
-
+end
 
