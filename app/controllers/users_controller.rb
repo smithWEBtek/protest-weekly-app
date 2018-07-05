@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:name, :password, :cell_phone, :email, event_users_attributes: [:event_id, :RSVP, :need_ride, :can_drive])
+		params.require(:user).permit(:name, :password, :cell_phone, :email, events_attributes: [:name, :cause, :location, :datetime], event_users_attributes: [:event_id, :RSVP, :need_ride, :can_drive])
 	end
 
 end
