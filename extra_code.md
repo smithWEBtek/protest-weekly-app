@@ -8,3 +8,7 @@
 			<td><%= organization.name %></td>
 
 			<td><%= link_to "RSVP for #{event.name}", event_path(@events) %></td>
+
+
+			<%= f.label :datetime %><br>
+	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br>

@@ -1,7 +1,9 @@
 <h1>Create a New Event</h1>
 
-<%= render 'form' %> 
-
+	<%= render 'form' %> 
+	<% yield %>
+	<%= render 'organizations/form' %>
+	<%= submit_tag "Create Event" %><br />
 
 <%= link_to "Back", events_path, class: "btn btn-primary btn-light" %></p>	
 <%= link_to "View Events", events_path %>
