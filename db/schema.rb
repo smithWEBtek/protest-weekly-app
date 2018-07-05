@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_144719) do
+ActiveRecord::Schema.define(version: 2018_07_05_213059) do
 
   create_table "event_users", force: :cascade do |t|
-    t.integer "events_id"
-    t.integer "users_id"
+    t.integer "event_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "can_drive"
     t.boolean "RSVP"
     t.boolean "need_ride"
-    t.index ["events_id"], name: "index_event_users_on_events_id"
-    t.index ["users_id"], name: "index_event_users_on_users_id"
+    t.index ["event_id"], name: "index_event_users_on_event_id"
+    t.index ["user_id"], name: "index_event_users_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
