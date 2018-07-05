@@ -1,9 +1,9 @@
 <%= form_for @user, url: "/users/login" do |f| %>
 
-	<div class="field">
+	
 		<%= f.label :name, "Select your name" %><br>
 		<%= f.collection_select(:id, @users, :id, :name, {include_blank: "Please select your name"})%>
-	</div>
+	
 
 	<!--signin here or with FB -->
  	

@@ -16,7 +16,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization = Organization.find_by(id: params[:id])
+    @organization = Organization.find_or_create_by(name: params[:name])
   end
   
   def edit

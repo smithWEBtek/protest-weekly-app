@@ -1,4 +1,5 @@
 class MoveDatetimeBackToEvents < ActiveRecord::Migration[5.2]
+	
   def change
   	remove_column :event_users, :datetime
   end
@@ -6,5 +7,5 @@ class MoveDatetimeBackToEvents < ActiveRecord::Migration[5.2]
   def change
   	add_column :events, :datetime, :datetime
   end
-  
+
 end
