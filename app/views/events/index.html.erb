@@ -14,6 +14,7 @@
 			<td><strong>Location</strong></td>
 			<td><strong>Datetime</strong></td>		
 		</tr>
+		
 		<% @events.each do |event| %>
 		<tr>
 			<td><%= link_to event.name, event_path(event) %></td>
