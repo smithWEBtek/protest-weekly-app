@@ -12,14 +12,14 @@
 			<td><strong>Name</strong></td>
 			<td><strong>Cause</strong></td>
 			<td><strong>Location</strong></td>
-					
+			<td><strong>Datetime</strong></td>		
 		</tr>
 		<% @events.each do |event| %>
 		<tr>
 			<td><%= link_to event.name, event_path(event) %></td>
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
-			
+			<td><%= event.datetime %></td>
 			
 		</tr>
 	 <% end %>
