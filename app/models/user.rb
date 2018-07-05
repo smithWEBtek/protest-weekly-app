@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
 	validates :name, presence: true
-	validates_uniqueness_of :email
+	validates_uniqueness_of :email, :if [:new, :create]
   	validates :password, length: { in: 6..20 }
 
   	has_many :event_users
@@ -19,7 +19,7 @@ class User < ApplicationRecord
 			self.events.build(event_attributes)
 		end
 	end
-	
+end 	
 	# def self.from_omniauth(auth)
  #      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
  #      user.provider = auth.provider
@@ -34,4 +34,4 @@ class User < ApplicationRecord
   # has_many :posts, through: :comments
 
 
-  end
+

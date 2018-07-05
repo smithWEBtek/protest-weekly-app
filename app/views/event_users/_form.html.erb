@@ -1,9 +1,6 @@
 <%= form_with(model: @event_users, url: @event_users %>
 
-	<%= f.label :datetime %><br>
-	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br>
-
- 	<%= f.label :RSVP %><br />
+	<%= f.label :RSVP %><br />
   <%= f.label :RSVP, "Yes", :value => "true"  %>
   <%= f.radio_button :RSVP, true, !!params[:RSVP] %>
   <%= f.label :RSVP, "No", :value => "false" %>
