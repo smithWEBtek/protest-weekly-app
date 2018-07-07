@@ -26,7 +26,7 @@ class EventUsersController < ApplicationController
 	private
 
 	def event_user_params
-		params.require(:event_user)permit(:event_id, :user_id, :need_ride, :can_drive, :RSVP)
+		params.require(:event_user)permit(:need_ride, :can_drive, :RSVP, :event_id, :user_id)
 	end
 
 end
