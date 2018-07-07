@@ -1,23 +1,23 @@
 class EventUsersController < ApplicationController
 
 	def new
-		@event_user = Event_User.new
+		@event_user = EventUser.new
 	end
 
 	def create
-		@event_user = Event_User.create(event_users_params)
+		@event_user = EventUser.create(event_users_params)
 		@event = @event_user.build_event
 		@user = @event_user.build_user
 	end
 
 	def index
-		@event_users = Event_User.all
-		@event_users = Event_User.includes(:event).all
-		@event_users = Event_User.includes(:user).all
+		# @event_users = Event_User.all
+		@event_users = EventUser.includes(:event, :user).all
+		# @event_users = Event_User.includes(:user).all
 	end
 
 	def show
-		@event_user = Event_User.find(id: params[:id])
+		@event_user = EventUser.find(id: params[:id])
 	end
 
 	def update

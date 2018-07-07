@@ -7,7 +7,7 @@
 		<p><%= @event.organization.name %></p>
 		<p><%= @event.organization.contact_info %></p>
 
-	<%= link_to "RSVP/Car Pool", user_event_users_path(:user_id), class: "btn btn-primary btn-light" %><p>
+	<%= link_to "RSVP/Car Pool", edit_user_event_user_path, class: "btn btn-primary btn-light" %><p>
 	</p>
 		
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %>	
