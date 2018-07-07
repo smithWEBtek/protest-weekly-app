@@ -11,13 +11,17 @@ class EventUsersController < ApplicationController
 	end
 
 	def index
-		@event_users = Event_User.all
+		@event_users = EventUser.all
 		@event_users = EventUser.includes(:event, :user).all
-		@event_users = Event_User.includes(:user).all
+		@event_users = EventUser.includes(:user).all
 	end
 
 	def show
 		@event_user = EventUser.find(id: params[:id])
+	end
+
+	def edit
+		@event_user = EventUser.find_by(id: params[:id])
 	end
 
 	def update

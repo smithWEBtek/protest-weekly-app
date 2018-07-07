@@ -11,4 +11,7 @@
 
 
 			<%= f.label :datetime %><br>
-	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br>
+	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br
+
+	<%= link_to "RSVP/Car Pool", edit_user_event_user_path, class: "btn btn-primary btn-light" %><p>
+	</p>
