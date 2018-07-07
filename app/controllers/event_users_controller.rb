@@ -2,6 +2,7 @@ class EventUsersController < ApplicationController
 
 	def new
 		@event_user = EventUser.new
+		@user = User.new
 	end
 
 	def create
@@ -12,12 +13,13 @@ class EventUsersController < ApplicationController
 
 	def index
 		@event_users = EventUser.all
-		@event_users = EventUser.includes(:event, :user).all
+		@event_users = EventUser.includes(:event).all
 		@event_users = EventUser.includes(:user).all
 	end
 
 	def show
 		@event_user = EventUser.find(id: params[:id])
+		@user = User.find(id: params[:id])
 	end
 
 	def edit

@@ -7,9 +7,8 @@
 		<p><%= @event.organization.name %></p>
 		<p><%= @event.organization.contact_info %></p>
 
-		<%= event_form.fields_for :event_users do |f| %>
-			<%= f.hidden_field :user_id, value: current_user.id %>
-			<%= f.hidden_field :event_id, value: @event_user.id %><br />
+		<%= fields_for :event_user do |f| %>
+			
 			<h2>RSVP</h2>
 		  	<%= f.label :RSVP %><br />
 		  	<%= f.label :RSVP, "Yes", :value => "true"  %>
@@ -35,5 +34,5 @@
 			<% submit_tag %>
 
 	
-		
+	<br><%= link_to "Edit Event", edit_event_path(:id), class: "btn btn-primary" %>	
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %>	
