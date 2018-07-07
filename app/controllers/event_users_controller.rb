@@ -13,7 +13,7 @@ class EventUsersController < ApplicationController
 	def index
 		@event_users = Event_User.all
 		@event_users = Event_User.includes(:event).all
-		@event_users = Event_User.includes(:user, :event).all
+		@event_users = Event_User.includes(:user).all
 	end
 
 	def show
@@ -26,7 +26,7 @@ class EventUsersController < ApplicationController
 	private
 
 	def event_user_params
-		params.require(:event_user)permit(:event_id, :user_id, :need_ride, :can_drive, :RSVP)
+		# params.require(:event_user)permit(:event_id, :user_id, :need_ride, :can_drive, :RSVP)
 	end
 
 end
