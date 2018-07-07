@@ -11,9 +11,9 @@ class EventUsersController < ApplicationController
 	end
 
 	def index
-		# @event_users = Event_User.all
+		@event_users = Event_User.all
 		@event_users = EventUser.includes(:event, :user).all
-		# @event_users = Event_User.includes(:user).all
+		@event_users = Event_User.includes(:user).all
 	end
 
 	def show
