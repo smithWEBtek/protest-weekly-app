@@ -3,9 +3,7 @@
 <p>If you need a ride, or can provide one,</p>
 <p>let us know that, too.</p>
 
-
 <%= form_for(@event_users) do |f| %>
-
     <h2>RSVP</h2>
   	<%= f.label :RSVP %><br />
   	<%= f.label :RSVP, "Yes", :value => "true"  %>
@@ -26,8 +24,6 @@
   	<%= f.label :can_drive, "No", :value => "false" %>
   	<%= f.radio_button :can_drive, false, !!params[:can_drive] %>
 	
-
 	<% end %>
 
 	<% submit_tag %>
-

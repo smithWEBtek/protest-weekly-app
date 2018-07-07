@@ -32,7 +32,7 @@ class OrganizationsController < ApplicationController
   private
 
   def organization_params
-     params.require(:organization).permit(:name, :contact_info, events_attributes: [:name, :cause, :location, :event_id])
+     params.require(:organization).permit(:name, :contact_info, events_attributes: [:name, :cause, :location, :datetime, :event_id])
   end
 
 end

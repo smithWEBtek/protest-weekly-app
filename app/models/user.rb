@@ -1,7 +1,9 @@
 class User < ApplicationRecord
 	has_secure_password
 	validates :name, presence: true
+
 	# validates_uniqueness_of :email, unless :current_user
+
   	validates :password, length: { in: 6..20 }
 
   	has_many :event_users
