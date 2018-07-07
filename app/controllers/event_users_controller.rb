@@ -13,7 +13,7 @@ class EventUsersController < ApplicationController
 	def index
 		@event_users = Event_User.all
 		@event_users = Event_User.includes(:event).all
-		@event_users = Event_User.includes(:user).all
+		@event_users = Event_User.includes(:user, :event).all
 	end
 
 	def show

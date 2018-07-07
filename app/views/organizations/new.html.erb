@@ -1,3 +1,12 @@
-<%= render 'form' %>
-
-<%= f.submit "Submit" %>
+	<h1>New Organization</h1>
+	<%= form_for(@organization) do |f| %>
+	<br>
+	<%= f.label :organization_name %><br>
+	<%= f.text_field :name %> 
+	<br>
+	<br>
+	<%= f.label :contact_info %><br>
+	<%= f.text_area :contact_info %> 
+	<br>
+<%= submit_tag "Submit" %>
+ <% end %>
