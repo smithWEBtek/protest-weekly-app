@@ -5,7 +5,7 @@ class EventUsersController < ApplicationController
 	end
 
 	def create
-		@event_user = Event_User.create
+		@event_user = Event_User.create(event_users_params)
 		@event = @event_user.build_event
 		@user = @event_user.build_user
 	end
@@ -26,7 +26,7 @@ class EventUsersController < ApplicationController
 	private
 
 	def event_user_params
-		params.require(:event_user)permit(:need_ride, :can_drive, :RSVP, :event_id, :user_id)
+		params.require(:event_user).permit(:need_ride, :can_drive, :RSVP, :event_id, :user_id)
 	end
 
 end
