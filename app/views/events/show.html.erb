@@ -8,7 +8,9 @@
 		<p><%= @event.organization.contact_info %></p>
 
 		
-	
-	<br><%= link_to "Edit Event", edit_event_path(:id), class: "btn btn-primary" %>	<br />
+	<%= link_to "Car Pool", new_user_event_user_path(:id) %>
+	<br/>
+	<%= link_to "Edit Event", edit_event_path(:id), class: "btn btn-primary" %>	
+	<br />
 
 	<%= link_to "Back", events_path, class: "btn btn-primary btn-light" %>	
