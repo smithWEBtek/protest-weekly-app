@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
 	# validates_uniqueness_of :email, unless :current_user
 
-  	validates :password, length: { in: 6..20 }
+  	# validates :password, length: { in: 6..20 }
 
   	has_many :event_users
 	has_many :events, through: :event_users
