@@ -2,17 +2,17 @@
 
 	
 		<%= f.label :name, "Select your name" %><br>
-		<%= f.collection_select(:id, User.all, :id, :name, {include_blank: "Please select your name"})%>
+		<%= f.collection_select(:name, User.all, :name, :name, {include_blank: "Please select your name"})%>
 	
 <!--login with userid and password OR with FB?? -->
-	
+		<p>
 		<%= f.label :password, "Your password:" %><br>
 		<%= f.password_field :password, class: "form-control" %>
-	
+		</p>
 
-	<div class="actions">
+	
 		<%= f.submit 'Sign In' %>
-	</div>
+
 
 	<% end %>
 	<% if @user.errors.any? %>
