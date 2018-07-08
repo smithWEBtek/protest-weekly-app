@@ -29,11 +29,10 @@
 		  	<%= f.radio_button :can_drive, true %>
 		  	<%= f.label :can_drive, "No", :value => "false" %>
 		  	<%= f.radio_button :can_drive, false %>
-			
-			<% end %>
+						
 			<br />
-			<%= button_tag %><br />
-
+			<%= f.submit %><br />
+<% end %>
 	
 	<br><%= link_to "Edit Event", edit_event_path(:id), class: "btn btn-primary" %>	
 
