@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post '/session', to: 'sessions#create' 
   delete '/signout', to: 'sessions#destroy', as: '/signout'
   # get 'sessions/create'
+  
 
   resources :organizations do
     resources :events, only: [:index, :create, :new, :edit, :show, :update]
@@ -22,6 +23,9 @@ Rails.application.routes.draw do
   resources :users, :events do
     resources :event_users, only: [:index, :create, :new, :edit, :show, :update]
   end
+
+  post '/users/event_users/create', to: 'users#event_users#create'
+  get '/users/event_users/new', to: 'event_users#create'
 
   # get '/new/users/event_users', to: 'event_users#new', as: '/users/event_users/new'
   # post '/user/event_users', to: 'event_users#create'
