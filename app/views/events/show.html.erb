@@ -3,12 +3,12 @@
 		<p><%= @event.name %></p>
 		<p><%= @event.cause %></p>
 		<p><%= @event.location %></p>
-		<p><%= @event.datetime %></p>
+		<p><%= @event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></p>
 		<p><%= @event.organization.name %></p>
 		<p><%= @event.organization.contact_info %></p>
 
 		
-	<%= link_to "Car Pool", edit_user_event_user_path(:id) %>
+	<%= link_to "Car Pool", user_event_user_path(:id) %>
 	<br/>
 	<%= link_to "Edit Event", edit_event_path(:id), class: "btn btn-primary" %>	
 	<br />
