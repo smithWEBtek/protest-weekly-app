@@ -3,6 +3,7 @@ class EventUsersController < ApplicationController
 	def new
 		@event_user = EventUser.new
 		@user = User.new
+		@event = Event.new
 	end
 
 	def create
@@ -20,13 +21,25 @@ class EventUsersController < ApplicationController
 	def show
 		@event_user = EventUser.find(id: params[:id])
 		@user = User.find(id: params[:id])
+		@event = Event.find(id: params[:id])
 	end
 
 	def edit
 		@event_user = EventUser.find_by(id: params[:id])
+		@user = User.find_by(id: params[:id])
+		@event = Event.find_by(id: params[:id])
 	end
 
 	def update
+		@event_user = EventUser.find(params[:id])
+
+		@event_user.update(event_user_params)
+
+		if @event_user.save
+			redirect_to @event_user
+		else
+			render :edit
+		end
 	end
 
 	private

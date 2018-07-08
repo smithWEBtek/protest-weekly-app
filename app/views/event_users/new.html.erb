@@ -1,33 +1,29 @@
 <h1>RSVP - Car Pool</h1>
 <p>Please let us know if you plan to attend.</p>
-<p>If you need a ride, or can provide one,</p>
-<p>let us know that, too.</p>
+<p>If you need a ride or can provide one, let us know that, too.</p>
 
 
-<%= form_for(@event_users) do |f| %>
+			<h2>RSVP</h2>
+	<strong><%= f.label "I'll be there!" %></strong><br />
+		  	<%= f.label :RSVP, "Yes", :value => "true"  %>
+		  	<%= f.radio_button :RSVP, true %>
+		  	<%= f.label :RSVP, "No", :value => "false" %>
+		  	<%= f.radio_button :RSVP, false %>
 
-    <h2>RSVP</h2>
-  	<%= f.label :RSVP %><br />
-  	<%= f.label :RSVP, "Yes", :value => "true"  %>
-  	<%= f.radio_button :RSVP, true, !!params[:RSVP] %>
-  	<%= f.label :RSVP, "No", :value => "false" %>
-  	<%= f.radio_button :RSVP, false, !!params[:RSVP] %>
+		    <h2>Car Pool</h2>
+	<strong><%= f.label :need_ride %></strong><br />
+		  	<%= f.label :need_ride, "Yes", :value => "true"  %>
+		  	<%= f.radio_button :need_ride, true %>
+		  	<%= f.label :need_ride, "No", :value => "false" %>
+		  	<%= f.radio_button :need_ride, false %><p>
+		  	</p>
 
-    <h2>Car Pool</h2>
-  	<%= f.label :need_ride %><br />
-  	<%= f.label :need_ride, "Yes", :value => "true"  %>
-  	<%= f.radio_button :need_ride, true, !!params[:need_ride] %>
-  	<%= f.label :need_ride, "No", :value => "false" %>
-  	<%= f.radio_button :need_ride, false, !!params[:need_ride] %>
-
-  	<%= f.label :can_drive %><br />
-  	<%= f.label :can_drive, "Yes", :value => "true"  %>
-  	<%= f.radio_button :can_drive, true, !!params[:can_drive] %>
-  	<%= f.label :can_drive, "No", :value => "false" %>
-  	<%= f.radio_button :can_drive, false, !!params[:can_drive] %>
-	
-
-	<% end %>
-
-	<% submit_tag %>
-
+	<strong><%= f.label :can_drive %></strong><br />
+		  	<%= f.label :can_drive, "Yes", :value => "true"  %>
+		  	<%= f.radio_button :can_drive, true %>
+		  	<%= f.label :can_drive, "No", :value => "false" %>
+		  	<%= f.radio_button :can_drive, false %>
+						
+			<br />
+			<%= f.submit %><br />
+<% end %>
