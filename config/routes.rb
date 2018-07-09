@@ -2,22 +2,15 @@ Rails.application.routes.draw do
   
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
-  # get 'signout', to: 'sessions#destroy', as: 'signout'
   # get '/auth/facebook/callback' => 'sessions#create'
   # get 'auth/failure', to: redirect('/')
   root 'welcome#welcome'
-  
-  # get '/auth/facebook/callback' => 'sessions#create'
   
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/session', to: 'sessions#create' 
   delete '/signout', to: 'sessions#destroy', as: '/signout'
-  post '/users/:id/event_users/new', to:"event_users#new"
-  get '/users/:id/event_users/:id', to: "event_users#show"
-  get '/users/:id/event_users/new', to: 'event_users#create'
-  post '/event_users/:id', to: "rides#create"
-  
+   
 
   resources :organizations do
     resources :events, only: [:index, :create, :new, :edit, :show, :update]
@@ -27,5 +20,9 @@ Rails.application.routes.draw do
     resources :event_users, only: [:index, :create, :new, :edit, :show, :update]
   end
 
+  # post '/users/:id/event_users/new', to:"event_users#new"
+  get '/users/:id/event_users/:id', to: "event_users#show"
+  post '/users/:id/event_users/new', to: 'event_users#create'
+  post '/events/:id/event_users/:id', to: "event_users#create"
           # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

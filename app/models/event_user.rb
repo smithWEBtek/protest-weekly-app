@@ -6,6 +6,7 @@ class EventUser < ApplicationRecord
 	
 	def self.attend
 		if !self.user && !self.event
+			true
 		elsif self.car_pool
 		end			
 	end
