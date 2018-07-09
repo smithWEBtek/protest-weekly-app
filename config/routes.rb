@@ -21,8 +21,7 @@ Rails.application.routes.draw do
   end
 
   # post '/users/:id/event_users/new', to:"event_users#new"
-  get '/users/:id/event_users/:id', to: "event_users#show"
-  post '/users/:id/event_users/new', to: 'event_users#create'
-  post '/events/:id/event_users/:id', to: "event_users#create"
+  get '/users/:id/event_users/new', to: 'event_users#create'
+  post '/users/:id/event_users/new', to: "event_users#create"
           # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

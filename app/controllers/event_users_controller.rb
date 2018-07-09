@@ -1,7 +1,6 @@
 class EventUsersController < ApplicationController
 
 	def new
-		@event_user = EventUser.new
 		@user = User.new
 		@event = Event.new
 	end
@@ -10,7 +9,7 @@ class EventUsersController < ApplicationController
 		@event_user = EventUser.create(event_user_params)
 		# @event = @event_user.build_event
 		# @user = @event_user.build_user
-		if @event_user.attend
+		if @event_user.attend || @event_user.car_pool
 			@event_user.save
 		else
 			redirect_to @event_user
