@@ -10,6 +10,11 @@ class EventUsersController < ApplicationController
 		@event_user = EventUser.create(event_user_params)
 		@event = @event_user.build_event
 		@user = @event_user.build_user
+		if @event_user.attend
+			@event_user.save
+		else
+			redirect_to @event_user
+		end		
 	end
 
 	def index
@@ -45,7 +50,7 @@ class EventUsersController < ApplicationController
 	private
 
 	def event_user_params
-		params.require(:event_user).permit(:need_ride, :can_drive, :RSVP, :event_id, :user_id)
+		params.require(:event_user).permit(:need_ride, :can_drive, :attend, :event_id, :user_id)
 	end
 
 end

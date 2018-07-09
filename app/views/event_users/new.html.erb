@@ -1,14 +1,14 @@
-<h1>RSVP - Car Pool</h1>
+<h1>Tell Us You'll Join Us!</h1>
 <p>Please let us know if you plan to attend.</p>
 <p>If you need a ride or can provide one, let us know that, too.</p>
 
 	<%= form_for :event_user do |f| %>
-			<h2>RSVP</h2>
+			<h2>I'll Attend</h2>
 	<strong><%= f.label "I'll be there!" %></strong><br />
-		  	<%= f.label :RSVP, "Yes", :value => "true"  %>
-		  	<%= f.radio_button :RSVP, true %>
-		  	<%= f.label :RSVP, "No", :value => "false" %>
-		  	<%= f.radio_button :RSVP, false %>
+		  	<%= f.label :attend, "Yes", :value => "true"  %>
+		  	<%= f.radio_button :attend, true %>
+		  	<%= f.label :attend, "No", :value => "false" %>
+		  	<%= f.radio_button :attend, false %>
 
 		    <h2>Car Pool</h2>
 	<strong><%= f.label :need_ride %></strong><br />

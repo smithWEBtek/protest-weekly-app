@@ -1,10 +1,10 @@
 <%= form_with(model: @event_users, url: @event_users %>
 
-	<%= f.label :RSVP %><br />
-  <%= f.label :RSVP, "Yes", :value => "true"  %>
-  <%= f.radio_button :RSVP, true, !!params[:RSVP] %>
-  <%= f.label :RSVP, "No", :value => "false" %>
-  <%= f.radio_button :RSVP, false, !!params[:RSVP] %>
+	<%= f.label :attend %><br />
+  <%= f.label :attend, "Yes", :value => "true"  %>
+  <%= f.radio_button :attend, true, !!params[:attend] %>
+  <%= f.label :attend, "No", :value => "false" %>
+  <%= f.radio_button :attend, false, !!params[:attend] %>
 
  	<%= f.label :need_ride %><br />
  	<%= f.label :need_ride, "Yes", :value => "true"  %>

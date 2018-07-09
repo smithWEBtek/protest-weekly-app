@@ -2,9 +2,13 @@ class EventUser < ApplicationRecord
 
 	belongs_to :event, optional: true
 	belongs_to :user, optional: true
-	#good candidate for scope to limit show returns of events for that week (sort by datetime)
-
 	
+	
+	def self.attend
+		if !self.user && !self.event
+		elsif self.car_pool
+		end			
+	end
 
 	def self.car_pool
 		self.car_pool == self.need_ride || self.can_drive

@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   post '/session', to: 'sessions#create' 
   delete '/signout', to: 'sessions#destroy', as: '/signout'
-  # get 'sessions/create'
+  post '/users/:id/event_users/new', to:"event_users#new"
+  get '/users/:id/event_users/:id', to: "event_users#show"
+  get '/users/:id/event_users/new', to: 'event_users#create'
+  post '/event_users/:id', to: "rides#create"
   
 
   resources :organizations do
@@ -24,11 +27,5 @@ Rails.application.routes.draw do
     resources :event_users, only: [:index, :create, :new, :edit, :show, :update]
   end
 
-  post '/users/event_users/create', to: 'users#event_users#create'
-  get '/users/event_users/new', to: 'event_users#create'
-
-  # get '/new/users/event_users', to: 'event_users#new', as: '/users/event_users/new'
-  # post '/user/event_users', to: 'event_users#create'
-
-        # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+          # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
