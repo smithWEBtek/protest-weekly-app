@@ -9,10 +9,11 @@ class EventUsersController < ApplicationController
 		@event_user = EventUser.create(event_user_params)
 		# @event = @event_user.build_event
 		# @user = @event_user.build_user
-		if @event_user.attend || @event_user.car_pool
+		if @event_user.attend || @car_pool
 			@event_user.save
+			redirect_to user_event_user_url(:id)
 		else
-			redirect_to @event_user
+			redirect_to new_user_event_user_url(:id)
 		end		
 	end
 
@@ -49,7 +50,7 @@ class EventUsersController < ApplicationController
 	private
 
 	def event_user_params
-		params.require(:event_user).permit(:need_ride, :can_drive, :attend, :event_id, :user_id)
+		params.require(:event_user).permit(:attend, :can_drive, :need_ride, :event_id, :user_id)
 	end
 
 end
