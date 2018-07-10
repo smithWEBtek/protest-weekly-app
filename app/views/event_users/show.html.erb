@@ -2,12 +2,8 @@
 <p>We'll be in contact if you signed up for the carpool.</p>
 <p>We look forward to seeing you at our event!</p>
 
-<%= @event_user(:event_id) each do %>
-<p><%= @event.name %></p>
-<p><%= @event.location %></p>
-<p><%= @event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></p>
-<% end %>
-<%= link_to "Back", events_path %>
+
+<%= link_to "Back", events_url %>
 
 <p>Finished? Click <%= link_to "here", signout_path, method: :delete %> to log out </p>
 
