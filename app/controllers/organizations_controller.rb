@@ -6,8 +6,7 @@ class OrganizationsController < ApplicationController
 
   def create
   	@organization = Organization.create(organization_params)
-    # @events = @organization.events
-
+    
     if @organization.save
      redirect_to organizations_path, notice: "Organization has been created."
     else

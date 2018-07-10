@@ -22,9 +22,9 @@ class SessionsController < ApplicationController
 
 	private
 	 
-	# def auth_hash
-	#   request.env['omniauth.auth']
-	# end
+	def auth_hash
+	  request.env['omniauth.auth']
+	end
 
   end
 

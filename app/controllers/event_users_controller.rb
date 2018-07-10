@@ -1,4 +1,7 @@
 class EventUsersController < ApplicationController
+	before_action :find_event_user, :only => [:show, :edit]
+	before_action :find_user, :only => [:show, :edit]
+	before_action :find_event, :only => [:show, :edit]
 
 	def new
 		@user = User.new
@@ -7,8 +10,7 @@ class EventUsersController < ApplicationController
 
 	def create
 		@event_user = EventUser.create(event_user_params)
-		# @event = @event_user.build_event
-		# @user = @event_user.build_user
+		
 		if @event_user.attend || @car_pool
 			@event_user.save
 			redirect_to user_event_user_url(:id)
@@ -24,15 +26,9 @@ class EventUsersController < ApplicationController
 	end
 
 	def show
-		@event_user = EventUser.find_by(id: params[:id])
-		@user = User.find_by(id: params[:id])
-		@event = Event.find_by(id: params[:id])
 	end
 
 	def edit
-		@event_user = EventUser.find_by(id: params[:id])
-		@user = User.find_by(id: params[:id])
-		@event = Event.find_by(id: params[:id])
 	end
 
 	def update
@@ -48,6 +44,18 @@ class EventUsersController < ApplicationController
 	end
 
 	private
+
+	def find_event_user
+		@event_user = EventUser.find_by(id: params[:id])
+	end
+
+	def find_user
+		@user = User.find_by(id: params[:id])
+	end
+
+	def find_event
+		@event = Event.find_by(id: params[:id])
+	end
 
 	def event_user_params
 		params.require(:event_user).permit(:attend, :can_drive, :need_ride, :event_id, :user_id)

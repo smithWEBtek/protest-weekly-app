@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
 	validates :name, presence: true
+	# scope: :cause -> {where(cause: 'equality')}
 	
 	has_many :event_users
 	has_many :users, through: :event_users
