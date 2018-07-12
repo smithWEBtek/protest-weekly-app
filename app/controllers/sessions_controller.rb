@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @user = User.find_by(name: params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
        # redirect_to user_path(@user), notice: "Are you ready to make a difference?"
