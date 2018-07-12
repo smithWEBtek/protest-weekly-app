@@ -4,10 +4,7 @@
 		<%= f.label :name, "Your name" %><br>
 		<%= f.collection_select(:id, @users, :id, :name, {include_blank: "Please select your name"})%>
 	
-
-	<!--signin here or with FB -->
- 	
-		<%= f.submit "Sign In" %>
+			<%= f.submit "Sign In" %>
 	
 	<% end %>
 
