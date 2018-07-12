@@ -1,7 +1,7 @@
 class EventUsersController < ApplicationController
-	before_action :find_event_user, :only => [:show, :edit]
-	before_action :find_user, :only => [:show, :edit]
-	before_action :find_event, :only => [:show, :edit]
+	before_action :find_event_user, only: [:show, :edit]
+	before_action :find_user, only: [:show, :edit]
+	before_action :find_event, only: [:show, :edit]
 
 	def new
 		@user = User.new

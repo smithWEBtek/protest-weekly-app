@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	before_action :find_user, only: [:show, :edit]
 
 	def new
 		@user = User.new
@@ -16,7 +17,6 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find_by(id: params[:id])
 	end
 
 	def update
@@ -29,7 +29,6 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by(id: params[:id])
 	end
 
 	def destroy
@@ -38,6 +37,10 @@ class UsersController < ApplicationController
 	private
 	def set_user
 		@user = User.find(params[:id])
+	end
+
+	def find_user
+		@user = User.find_by(id: params[:id])
 	end
 
 	def user_params
