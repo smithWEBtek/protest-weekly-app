@@ -1,7 +1,12 @@
 class EventUsersController < ApplicationController
-	before_action :find_event_user, :only => [:show, :edit]
+	before_action :set_user
+	before_action :set_event
+	before_action :set_event_user
+
 	before_action :find_user, :only => [:show, :edit]
 	before_action :find_event, :only => [:show, :edit]
+	before_action :find_event_user, :only => [:show, :edit]
+
 
 	def new
 		@user = User.new
@@ -45,6 +50,17 @@ class EventUsersController < ApplicationController
 	end
 
 	private
+	def set_user
+		@user = User.find(params[:user_id])
+	end
+
+	def set_event
+		@event = Event.find(params[:event_id])
+	end
+
+	def set_event_user
+		@event_user = EventUser.find(params[:event_user_id])
+	end
 
 	def find_event_user
 		@event_user = EventUser.find_by(id: params[:id])
