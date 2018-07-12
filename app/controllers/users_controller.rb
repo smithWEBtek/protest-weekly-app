@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user = User.find_by(id: params[:id])
 		if @user.update(user_params)
 			redirect_to @user, notice: "User was successfully updated." 
 		else

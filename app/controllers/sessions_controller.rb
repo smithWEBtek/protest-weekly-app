@@ -9,11 +9,13 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
        redirect_to user_path(@user), notice: "Are you ready to make a difference?"
+
        session[:user_id] = @user.id
     else
         @user = User.from_omniauth(request.env["omniauth.auth"])
         session[:user_id] = @user.id
         redirect_to user_path(@user), notice: "Are you ready to make a difference?"
+
     end
   end
      
@@ -30,5 +32,5 @@ class SessionsController < ApplicationController
 	  request.env['omniauth.auth']
 	end
 
-  end
+ end 
 

@@ -1,21 +1,26 @@
-<%= form_with(model: @event_users, url: @event_users %>
+<%= form_for :event_user do |f| %>
 
-	<%= f.label :attend %><br />
-  <%= f.label :attend, "Yes", :value => "true"  %>
-  <%= f.radio_button :attend, true, !!params[:attend] %>
-  <%= f.label :attend, "No", :value => "false" %>
-  <%= f.radio_button :attend, false, !!params[:attend] %>
+      <h2>I'll Attend</h2>
+  <strong><%= f.label "I'll be there!" %></strong><br />
+        <%= f.label :attend, "Yes", :value => "true"  %>
+        <%= f.radio_button :attend, true %>
+        <%= f.label :attend, "No", :value => "false" %>
+        <%= f.radio_button :attend, false %>
 
- 	<%= f.label :need_ride %><br />
- 	<%= f.label :need_ride, "Yes", :value => "true"  %>
- 	<%= f.radio_button :need_ride, true, !!params[:need_ride] %>
- 	<%= f.label :need_ride, "No", :value => "false" %>
-  <%= f.radio_button :need_ride, false, !!params[:need_ride] %>
+        <h2>Car Pool</h2>
+  <strong><%= f.label :need_ride %></strong><br />
+        <%= f.label :need_ride, "Yes", :value => "true"  %>
+        <%= f.radio_button :need_ride, true %>
+        <%= f.label :need_ride, "No", :value => "false" %>
+        <%= f.radio_button :need_ride, false %><p>
+        </p>
 
- 	<%= f.label :can_drive %><br />
-  <%= f.label :can_drive, "Yes", :value => "true"  %>
-  <%= f.radio_button :can_drive, true, !!params[:can_drive] %>
-  <%= f.label :can_drive, "No", :value => "false" %>
-  <%= f.radio_button :can_drive, false, !!params[:can_drive] %>
-	
-	<% end %>
+  <strong><%= f.label :can_drive %></strong><br />
+        <%= f.label :can_drive, "Yes", :value => "true"  %>
+        <%= f.radio_button :can_drive, true %>
+        <%= f.label :can_drive, "No", :value => "false" %>
+        <%= f.radio_button :can_drive, false %>
+            
+      <br />
+      <%= f.submit %><br />
+<% end %>
