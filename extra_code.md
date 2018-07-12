@@ -14,4 +14,8 @@
 	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br
 
 	<%= link_to "RSVP/Car Pool", edit_user_event_user_path, class: "btn btn-primary btn-light" %><p>
-	</p>
+	</p
+
+	from Welcome view:
+	<%= link_to('Log in with Facebook!', ) %>
+		<% end %>

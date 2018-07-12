@@ -18,9 +18,9 @@ class User < ApplicationRecord
 			self.events.build(event_attributes)
 		end
 	end
-end 	
+	
 	# def self.from_omniauth(auth)
- #      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+ #      auth.slice(:provider, :uid).to_h
  #      user.provider = auth.provider
  #      user.uid = auth.uid
  #      user.name = auth.info.name
@@ -29,6 +29,13 @@ end
  #      user.save!
  #    end
  
+	def self.from_omniauth(auth)
+	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+	    user.email = auth.info.email
+	    user.password = Facebook.friendly_token
+	    user.name = auth.info.name   # assuming the user model has a name
+	    user.image = auth.info.image # assuming the user model has an image
+	  end
+	end
 
-
-
+end

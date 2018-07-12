@@ -11,12 +11,9 @@ class SessionsController < ApplicationController
        redirect_to user_path(@user), notice: "Are you ready to make a difference?"
        session[:user_id] = @user.id
     else
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        u.name = auth['info']['name']
-        u.email = auth['info']['email']
-        u.image = auth['info']['image']
-    end
-        redirect_to signin_path
+        @user = User.from_omniauth(request.env["omniauth.auth"])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user), notice: "Are you ready to make a difference?"
     end
   end
      

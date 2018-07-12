@@ -10,14 +10,12 @@
 		<p></p>
 		
 		
-		<% if session[:user_id] %>
-	  		<h1><%= @user.name %></h1>
-	  		<h2>Email: <%= @user.email %></h2>
-	  		<h2>Facebook UID: <%= @user.uid %></h2>
-	  		<img src="<%= @user.image %>">
+		<% unless current_user %>
+  		<%= link_to "Sign in with Facebook", '/auth/facebook' %>
 		<% else %>
-	  		<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+  		<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 		<% end %>
+	  		
 	
 	
 		
