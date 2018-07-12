@@ -5,23 +5,21 @@ class SessionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.find_by(name: params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
-      
-      redirect_to user_path(@user), notice: "Are you ready to make a difference?"
-    elsif
-      @user = User.find_or_create_by(uid: auth['uid']) do |u|
+       # redirect_to user_path(@user), notice: "Are you ready to make a difference?"
+      session[:user_id] = @user.id
+    else
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.name = auth['info']['name']
         u.email = auth['info']['email']
         u.image = auth['info']['image']
-      else
+    end
         redirect_to signin_path
-      end
     end
   end
-    session[:user_id] = @user.id 
-
-    redirect_to user_path(@user)
+     
 
   def destroy
     session.delete("user_id")
@@ -31,9 +29,9 @@ class SessionsController < ApplicationController
 
 	private
 	 
-	def auth_hash
-	  request.env['omniauth.auth']
-	end
+	# def auth_hash
+	#   request.env['omniauth.auth']
+	# end
 
   end
 

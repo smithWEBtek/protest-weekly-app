@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
-  get '/auth/facebook/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
+  
   root 'welcome#welcome'
   
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/session', to: 'sessions#create' 
+
+  get '/auth/facebook/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
   delete '/signout', to: 'sessions#destroy', as: '/signout'
    
 
