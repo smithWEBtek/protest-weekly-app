@@ -1,12 +1,7 @@
 class EventUsersController < ApplicationController
-	before_action :set_user
-	before_action :set_event
-	before_action :set_event_user
-
+	before_action :find_event_user, :only => [:show, :edit]
 	before_action :find_user, :only => [:show, :edit]
 	before_action :find_event, :only => [:show, :edit]
-	before_action :find_event_user, :only => [:show, :edit]
-
 
 	def new
 		@user = User.new
@@ -14,11 +9,12 @@ class EventUsersController < ApplicationController
 	end
 
 	def create
-		# @event_user = @user.event_users.build(event_user_params)
-		# @event_user = @event.event_users.build(event_user_params)
-		@event_user = current_user
 		@event = Event.create(params[:event_id])
-		if 	@event_user.save
+		@user = User.create(params[:user_id])
+		@event_user = EventUser.create(event_user_params)
+		
+		if @event_user.attend || @event_user.car_pool
+			@event_user.save
 			redirect_to user_event_user_url(:id)
 		else
 			redirect_to new_user_event_user_url(:id)
@@ -50,17 +46,6 @@ class EventUsersController < ApplicationController
 	end
 
 	private
-	def set_user
-		@user = User.find(params[:user_id])
-	end
-
-	def set_event
-		@event = Event.find(params[:event_id])
-	end
-
-	def set_event_user
-		@event_user = EventUser.find(params[:event_user_id])
-	end
 
 	def find_event_user
 		@event_user = EventUser.find_by(id: params[:id])
