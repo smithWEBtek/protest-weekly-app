@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    @organization = Organization.create(params[:organization_id])
     @event = Event.create(event_params)
         
     if @event.save
