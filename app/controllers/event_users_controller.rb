@@ -13,7 +13,7 @@ class EventUsersController < ApplicationController
 		@user = User.create(params[:user_id])
 		@event_user = EventUser.create(event_user_params)
 		
-		if @event_user.attend || @car_pool
+		if @event_user.attend || @event_user.car_pool
 			@event_user.save
 			redirect_to user_event_user_url(:id)
 		else
