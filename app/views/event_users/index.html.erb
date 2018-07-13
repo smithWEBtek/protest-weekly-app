@@ -1,4 +1,4 @@
 <h1>Attendance</h1>
 
-
- 
+<%= link_to @event_user.user.name, user_path(@event_user.user_id) %> 
+ <%= link_to @event_user.event.name, event_path(@event_user.event_id) %> 
