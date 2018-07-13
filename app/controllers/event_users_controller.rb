@@ -12,8 +12,8 @@ class EventUsersController < ApplicationController
 
 		# @event_user = @user.event_users.build(event_user_params)
 
-		@event = Event.create(params[:event_id])
-		@user = User.create(params[:user_id])
+		@event = Event.create(event_params)
+		@user = User.create(user_params)
 		@event_user = EventUser.create(event_user_params)
 		# byebug
 		if @event_user.attend || EventUser.car_pool
@@ -38,7 +38,6 @@ class EventUsersController < ApplicationController
 
 	def update
 		@event_user = EventUser.find(params[:id])
-
 		@event_user.update(event_user_params)
 
 		if @event_user.save

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    # before_action :set_event, only: [:show, :edit, :update, :destroy]
+    before_action :find_event, only: [:show, :edit]
 
 
   def new
@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @organization = Organization.create(params[:organization_id])
+    @organization = Organization.create(organization_params)
     @event = Event.create(event_params)
         
     if @event.save
@@ -18,7 +18,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(id: params[:id])
   end
 
   def index
@@ -26,7 +25,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find_by(id: params[:id])
   end
 
   def update
@@ -42,9 +40,9 @@ class EventsController < ApplicationController
   end
 
   private
-    # def set_event
-    #   @event = Event.find(params[:id])
-    # end
+    def find_event
+      @event = Event.find_by(id: params[:id])
+    end
 
     def event_params
       params.require(:event).permit(:name, :cause, :location, :datetime, :organization_id, event_users_attributes: [:attend, :need_ride, :can_drive, :user_id])
