@@ -19,3 +19,17 @@
 	from Welcome view:
 	<%= link_to('Log in with Facebook!', ) %>
 		<% end %>
+original FB login from Welcome
+		<% if session[:user_id] %>
+ 	  		<h1><%= @user.name %></h1>	 	  		<h1><%= @user.name %></h1>
+ 	  		<h2>Email: <%= @user.email %></h2>	 	  		<h2>Email: <%= @user.email %></h2>
+ 	  		<h2>Facebook UID: <%= @user.uid %></h2>	 	  		<h2>Facebook UID: <%= @user.uid %></h2>
+ 	  		<img src="<%= @user.image %>">	 	  		<img src="<%= @user.image %>">
+ 		<% else %>	 		<% else %>
+ 	  		<%= link_to('Log in with Facebook!', '/auth/facebook') %>	 	  		<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+ 		<% end %>	 		<% end %>
+ 		 	
+ 		welcome code that's part of problem area 7/13:
+ 		<%= link_to "Sign in with Facebook", '/auth/facebook' %>
+ 			<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+ 			 		
