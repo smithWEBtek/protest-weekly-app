@@ -12,8 +12,8 @@ class EventUsersController < ApplicationController
 
 		# @event_user = @user.event_users.build(event_user_params)
 
-		@event = Event.create(params[:event_id])
-		@user = User.create(params[:user_id])
+		@event = Event.all
+		@user = User.all
 		@event_user = EventUser.create(event_user_params)
 		# byebug
 		if @event_user.attend || EventUser.car_pool
