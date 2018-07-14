@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.event_users.build
   end
 
   def create

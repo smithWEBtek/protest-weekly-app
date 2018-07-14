@@ -5,12 +5,12 @@ class EventUsersController < ApplicationController
 
 	def new
 		@event_user = EventUser.new
-		@users = User.all
-		@events = Event.all
+		# @users = User.all
+		# @events = Event.all
 	end
 
 	def create
-
+		# raise params.inspect
 		# @event_user = @user.event_users.build(event_user_params)
 
 		@event = Event.all

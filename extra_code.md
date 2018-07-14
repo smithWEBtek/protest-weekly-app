@@ -32,4 +32,14 @@ original FB login from Welcome
  		welcome code that's part of problem area 7/13:
  		<%= link_to "Sign in with Facebook", '/auth/facebook' %>
  			<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+User show
+ 	<h3>Hello, <%= @user.name %>! Do we have your correct information? </h3>
+	<p>If not, please make changes here:</p>
+	
+	<%= render 'form' %>
+	
+	<p> If everything is correct, please proceed to the events: </p>
+	<p><%= link_to 'Events', '/events' %></p>
+	<p><%= link_to 'Create an Event', '/events/new' %></p>
  			 		

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+		@user.event_users.build
 	end
 
 	def create
