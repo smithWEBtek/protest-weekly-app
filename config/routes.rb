@@ -15,14 +15,17 @@ Rails.application.routes.draw do
    
 
   resources :organizations do
-    resources :events, only: [:index, :create, :new, :edit, :show, :update]
+    resources :events
   end
 
-  resources :users, :events do
-    resources :event_users, only: [:index, :create, :new, :edit, :show, :update]
+  resources :users do
+    resources :event_users
   end
 
-  get '/users/:id/event_users/new', to: 'event_users#create'
-  post '/users/:id/event_users/new', to: "event_users#create"
+  resources :events do
+    resources :event_users
+  end
+  resources :users
+
           # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
