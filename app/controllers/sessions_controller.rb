@@ -6,15 +6,14 @@ class SessionsController < ApplicationController
 
   def create
     # binding.pry
-    @user = User.find_by(name: params[:user][:name])
+    # @user = User.find_by(name: params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
-       redirect_to user_path(@user), notice: "Are you ready to make a difference?"
-
        session[:user_id] = @user.id
+       redirect_to user_path(@user)
     else
         @user = User.from_omniauth(request.env["omniauth.auth"])
         session[:user_id] = @user.id
-        redirect_to user_path(@user), notice: "Are you ready to make a difference?"
+        redirect_to users_path(@user)
 
     end
   end
