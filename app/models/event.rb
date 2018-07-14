@@ -3,7 +3,9 @@ class Event < ApplicationRecord
 
 	has_many :event_users
 	has_many :users, through: :event_users
-	belongs_to :organization, optional: true
+	belongs_to :organization
+
+	# scope :
 
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|

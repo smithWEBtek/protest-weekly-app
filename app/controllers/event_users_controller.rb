@@ -4,8 +4,9 @@ class EventUsersController < ApplicationController
 	before_action :find_event, only: [:show, :edit]
 
 	def new
-		@user = User.new
-		@event = Event.new
+		@event_user = EventUser.new
+		@users = User.all
+		@events = Event.all
 	end
 
 	def create
