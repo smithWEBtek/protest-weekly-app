@@ -4,9 +4,8 @@ class EventUsersController < ApplicationController
 	before_action :find_event, only: [:show, :edit]
 
 	def new
-		@event_user = EventUser.new
-		# @users = User.all
-		# @events = Event.all
+		@event_user = EventUser.new(user_id: params[:user_id])
+		@event_user = EventUser.new(event_id: params[:event_id])
 	end
 
 	def create
