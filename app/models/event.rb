@@ -2,8 +2,8 @@ class Event < ApplicationRecord
 	validates :name, presence: true
 	# scope: :cause -> {where(cause: 'equality')}
 	
-	has_many :event_users
-	has_many :users, through: :event_users
+	has_many :happenings
+	has_many :users, through: :happenings
 	belongs_to :organization
 
 	def users_attributes=(users_attributes)
@@ -12,9 +12,9 @@ class Event < ApplicationRecord
 		end
 	end
 
-	def event_users_attributes=(event_users_attributes)
-		event_users_attributes.each do |event_user_attributes|
-			self.event_users.build(event_user_attributes)
+	def happenings_attributes=(happenings_attributes)
+		happenings_attributes.each do |happening_attributes|
+			self.happenings.build(happening_attributes)
 		end
 	end
 	

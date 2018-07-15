@@ -10,19 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_184205) do
-
-  create_table "event_users", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "can_drive", default: false
-    t.boolean "attend", default: false
-    t.boolean "need_ride", default: false
-    t.index ["event_id"], name: "index_event_users_on_event_id"
-    t.index ["user_id"], name: "index_event_users_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2018_07_15_185010) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -33,6 +21,18 @@ ActiveRecord::Schema.define(version: 2018_07_09_184205) do
     t.string "location"
     t.datetime "datetime"
     t.index ["organization_id"], name: "index_events_on_organization_id"
+  end
+
+  create_table "happenings", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "can_drive", default: false
+    t.boolean "attend", default: false
+    t.boolean "need_ride", default: false
+    t.index ["event_id"], name: "index_happenings_on_event_id"
+    t.index ["user_id"], name: "index_happenings_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|

@@ -1,4 +1,4 @@
-class EventUser < ApplicationRecord
+class Happening < ApplicationRecord
 
 	belongs_to :event
 	belongs_to :user
