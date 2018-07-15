@@ -10,9 +10,9 @@ class EventUsersController < ApplicationController
 	def create
 		@event_user = EventUser.new(event_user_params)
 		
-		if @event_user.attend || @car_pool
+		if @event_user.attend || @event_user.car_pool
 			@event_user.save
-			redirect_to user_event_user_path(:user_id)
+			redirect_to user_event_users_path(:id)
 		else
 			redirect_to new_user_event_user_url(:id)
 		end		
