@@ -1,4 +1,7 @@
-<%= form_with(model: @event_users, url: @event_users %>
+<%= form_for :event_users, url: event_users_path do |f| %>
+
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :event_id %>
 
 	<%= f.label :attend %><br />
   <%= f.label :attend, "Yes", :value => "true"  %>
