@@ -11,16 +11,15 @@ class EventUsersController < ApplicationController
 	def create
 		# raise params.inspect
 		# @event_user = @user.event_users.build(event_user_params)
-
 		@event = Event.all
 		@user = User.all
 		@event_user = EventUser.create(event_user_params)
 		# byebug
 		if @event_user.attend || EventUser.car_pool
 			@event_user.save
-			redirect_to user_event_user_url(:id)
+			redirect_to user_event_user_path(:id)
 		else
-			redirect_to new_user_event_user_url(:id)
+			redirect_to new_user_event_user_path(:id)
 		end		
 	end
 

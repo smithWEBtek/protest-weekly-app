@@ -1,5 +1,8 @@
 <%= form_for :event_user, url: user_event_users_path do |f| %>
 
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :event_id %>
+
       <h2>I'll Attend</h2>
   <strong><%= f.label "I'll be there!" %></strong><br />
         <%= f.label :attend, "Yes", :value => "true"  %>
