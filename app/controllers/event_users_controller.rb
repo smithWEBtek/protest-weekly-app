@@ -8,7 +8,7 @@ class EventUsersController < ApplicationController
 	end
 
 	def create
-		@event_user = EventUser.new(event_user_params)
+		@event_user = EventUser.create(event_user_params)
 		
 		if @event_user.attend || @event_user.car_pool
 			@event_user.save
@@ -28,6 +28,18 @@ class EventUsersController < ApplicationController
 	end
 
 	def edit
+		if params[:user_id]
+	    user = User.find_by(id: params[:user_id])
+	    if user.nil?
+	      redirect_to users_path
+	    else
+	      @event_user = user.event_users.find_by(id: params[:id])
+	      redirect_to user_event_users_path(user), alert: "Event not found." if @event_user.nil?
+	    end
+	    else	
+	    @event_user = EventUser.find(params[:id])
+	  end
+
 	end
 
 	def update

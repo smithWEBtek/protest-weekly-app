@@ -2,11 +2,11 @@
 <p>Please let us know if you plan to attend.</p>
 <p>If you need a ride or can provide one, let us know that, too.</p>
 
-	<%= form_for :event_user do |f| %>
+	<%= form_for :event_user, url: event_event_users_path(:id) do |f| %>
 
 	<%= f.hidden_field :user_id %>
   	<%= f.hidden_field :event_id %>
-  	
+
 			<h2>I'll Attend</h2>
 	<strong><%= f.label "I'll be there!" %></strong><br />
 		  	<%= f.label :attend, "Yes", :value => "true"  %>
