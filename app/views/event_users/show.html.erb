@@ -1,6 +1,9 @@
 <h1>Thanks for signing up!</h1>
+
 <p>We'll be in contact if you signed up for the carpool.</p>
-<p>We look forward to seeing you at our event!</p>
+<p>We look forward to seeing you at </p>
+<p> <%= @event.name %>, <%= @event.location %> on <%= @event.datetime.strftime("%A, %B %d, %Y at %H:%M") %> to support <%= @event.cause %></p>
+		
 
 
 <%= link_to "Back", events_url %>

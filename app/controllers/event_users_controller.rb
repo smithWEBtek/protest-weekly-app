@@ -1,11 +1,12 @@
 class EventUsersController < ApplicationController
-	before_action :find_event_user, :only => [:show, :edit]
-	before_action :find_user, :only => [:show, :edit]
-	before_action :find_event, :only => [:show, :edit]
+	before_action :find_event_user, only: [:show, :edit]
+	before_action :find_user, only: [:show, :edit]
+	before_action :find_event, only: [:show, :edit]
 
 	def new
-		@user = User.new
-		@event = Event.new
+		@event_user = EventUser.new(user_id: params[:user_id])
+		@event_user = EventUser.new(event_id: params[:event_id])
+		
 	end
 
 	def create
@@ -13,7 +14,7 @@ class EventUsersController < ApplicationController
 		
 		if @event_user.attend || @car_pool
 			@event_user.save
-			redirect_to user_event_user_url(:id)
+			redirect_to user_event_user_path(:user_id)
 		else
 			redirect_to new_user_event_user_url(:id)
 		end		
