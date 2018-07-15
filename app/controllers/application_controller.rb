@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-  # before_action :require_logged_in, only: [:new]
-    
+  
+  helper_method :current_user 
     
   def logged_in?
     !!current_user
@@ -17,6 +17,16 @@ class ApplicationController < ActionController::Base
     User.find_by(id: session[:current_user_id])
    end
 
-   helper_method :current_user
+   def self.from_omniauth(auth)
+      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
+ end 
+   
 
 end
