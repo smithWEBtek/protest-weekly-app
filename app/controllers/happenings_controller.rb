@@ -17,9 +17,13 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
-		@happenings = Happening.all
-		@happenings = Happening.includes(:event).all
-		@happenings = Happening.includes(:user).all
+		if params[:user_id] && params[:event_id]
+			@happenings = User.find(params[:user_id]).happenings && @happenings = Event.find(params[:event_id]).happenings
+		else
+		 @happenings = Happening.all
+		# @happenings = Happening.includes(:event).all
+		# @happenings = Happening.includes(:user).all
+	end
 	end
 
 	def show

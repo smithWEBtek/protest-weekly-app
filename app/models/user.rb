@@ -22,7 +22,13 @@ class User < ApplicationRecord
 	
 	# def self.from_omniauth(auth)
  #      auth.slice(:provider, :uid).to_h
-
+	def self.from_omniauth(auth)
+		@user = User.find_or_create_by(uid: auth['uid']) do |u|
+	      u.name = auth['info']['name']
+	      u.email = auth['info']['email']
+	      u.image = auth['info']['image']
+	  end
+	end
 end 	
 	# def self.from_omniauth(auth)
  #      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -36,13 +42,7 @@ end
  #    end
 
  
-	# def self.from_omniauth(auth)
-	# 	@user = User.find_or_create_by(uid: auth['uid']) do |u|
-	#       u.name = auth['info']['name']
-	#       u.email = auth['info']['email']
-	#       u.image = auth['info']['image']
-	#   end
-	# end
+	
 
 
 	#   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
