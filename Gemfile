@@ -6,7 +6,9 @@ gem 'rails', '~> 5.2.0'
 
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
+
 gem 'omniauth-facebook', '~>4.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 # Use sqlite3 as the database for Active Record
