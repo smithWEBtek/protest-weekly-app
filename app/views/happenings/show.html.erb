@@ -1,9 +1,12 @@
-<h1>Thanks, <%= @user.name %>, for signing up!</h1>
+
+<h1>Thanks for signing up!</h1>
+
+
 <p>We'll be in contact if you signed up for the carpool.</p>
-<p>We look forward to seeing you at our event!</p>
+<p>We look forward to seeing you!</p>
 
 
-<%= link_to "Back", events_url %>
+<%= link_to "Back to Events", events_url %>
 
 <p>Finished? Click <%= link_to "here", signout_path, method: :delete %> to log out </p>
 

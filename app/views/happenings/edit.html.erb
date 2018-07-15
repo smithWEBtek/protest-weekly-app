@@ -1,9 +1,13 @@
-<%= form_for :event_user, url: user_event_users_path do |f| %>
+<h1>Need to Change Your Plans?</h1>
+<p>Please make those changes here.</p>
+<p>edit</p>
+
+  <%= form_for :happening do |f| %>
 
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :event_id %>
 
-      <h2>I'll Attend</h2>
+      <h2>Attend</h2>
   <strong><%= f.label "I'll be there!" %></strong><br />
         <%= f.label :attend, "Yes", :value => "true"  %>
         <%= f.radio_button :attend, true %>
@@ -23,8 +27,7 @@
         <%= f.radio_button :can_drive, true %>
         <%= f.label :can_drive, "No", :value => "false" %>
         <%= f.radio_button :can_drive, false %>
-
-        
+            
       <br />
       <%= f.submit %><br />
 <% end %>

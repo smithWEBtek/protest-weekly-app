@@ -1,0 +1,36 @@
+<h1>Tell Us You'll Join Us!</h1>
+<p>Please let us know if you plan to attend.</p>
+<p>If you need a ride or can provide one, let us know that, too.</p>
+
+	<%= form_for :happening, url: user_happenings_path(:id) do |f| %>
+
+	<%= f.hidden_field :user_id %>
+  	<%= f.hidden_field :event_id %>
+
+			<h2>I'll Attend</h2>
+	<strong><%= f.label "I'll be there!" %></strong><br />
+		  	<%= f.label :attend, "Yes", :value => "true"  %>
+		  	<%= f.radio_button :attend, true %>
+		  	<%= f.label :attend, "No", :value => "false" %>
+		  	<%= f.radio_button :attend, false %>
+
+		    <h2>Car Pool</h2>
+	<strong><%= f.label :need_ride %></strong><br />
+		  	<%= f.label :need_ride, "Yes", :value => "true"  %>
+		  	<%= f.radio_button :need_ride, true %>
+		  	<%= f.label :need_ride, "No", :value => "false" %>
+		  	<%= f.radio_button :need_ride, false %><p>
+		  	</p>
+
+	<strong><%= f.label :can_drive %></strong><br />
+		  	<%= f.label :can_drive, "Yes", :value => "true"  %>
+		  	<%= f.radio_button :can_drive, true %>
+		  	<%= f.label :can_drive, "No", :value => "false" %>
+		  	<%= f.radio_button :can_drive, false %>
+						
+			<br />
+			<%= f.submit %><br />
+<% end %>
+
+
+<%= link_to "Return to Events", events_path %>	

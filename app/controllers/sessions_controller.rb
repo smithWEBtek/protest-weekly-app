@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+
     # binding.pry
      @user = User.find_by(name: params[:user][:name])
      @user && @user.authenticate(params[:user][:password])
@@ -17,6 +18,18 @@ class SessionsController < ApplicationController
     # end
   end
      
+
+    # elsif
+    #   @user = User.find_or_create_by(uid: auth['uid']) do |u|
+    #     u.name = auth['info']['name']
+    #     u.email = auth['info']['email']
+  #   #     u.image = auth['info']['image']
+  #      else
+  #        redirect_to signin_path
+  #      end
+  #   # end
+  # end
+  
 
   def destroy
     session.delete("user_id")
