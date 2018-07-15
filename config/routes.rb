@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
   
+
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
 
   # get '/auth/facebook/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
+
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  # get 'auth/failure', to: redirect('/')
+  get '/auth/facebook/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
 
   root 'welcome#welcome'
   

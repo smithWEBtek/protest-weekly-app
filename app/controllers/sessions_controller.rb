@@ -5,13 +5,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-      # @user = User.find_by(name: params[:user][:name])
-     if @user && @user.authenticate(params[:user][:password])
-       session[:user_id] = @user.id
+
+     # @user = User.find_or_create_by(name: params[:user][:name])
+    if @user && @user.authenticate(params[:user][:password])
+       session[:user_id] = @user.id   
        redirect_to user_path(@user)
     else
         @user = User.from_omniauth(request.env["omniauth.auth"])
         session[:user_id] = @user.id
+
         redirect_to users_path(@user)
     end
   end
