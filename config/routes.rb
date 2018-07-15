@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   delete '/signout', to: 'sessions#destroy', as: '/signout'
    
+  resources :users
 
   resources :organizations do
     resources :events
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :event_users
   end
-  resources :users
+  
 
           # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

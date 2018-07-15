@@ -29,13 +29,13 @@ class User < ApplicationRecord
  #      user.save!
  #    end
  
-	def self.from_omniauth(auth)
-		@user = User.find_or_create_by(uid: auth['uid']) do |u|
-	      u.name = auth['info']['name']
-	      u.email = auth['info']['email']
-	      u.image = auth['info']['image']
-	  end
-	end
+	# def self.from_omniauth(auth)
+	# 	@user = User.find_or_create_by(uid: auth['uid']) do |u|
+	#       u.name = auth['info']['name']
+	#       u.email = auth['info']['email']
+	#       u.image = auth['info']['image']
+	#   end
+	# end
 
 	#   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
 	#     user.email = auth.info.email

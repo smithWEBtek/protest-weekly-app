@@ -17,7 +17,7 @@ class EventUsersController < ApplicationController
 		# byebug
 		if @event_user.attend || EventUser.car_pool
 			@event_user.save
-			redirect_to user_event_user_path(:id)
+			redirect_to user_event_user_path
 		else
 			redirect_to new_user_event_user_path(:id)
 		end		
