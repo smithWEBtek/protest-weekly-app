@@ -15,3 +15,7 @@
 
 	<%= link_to "RSVP/Car Pool", edit_user_event_user_path, class: "btn btn-primary btn-light" %><p>
 	</p>
+
+	from eventusers show:
+	<p> <%= @event_user.event.name %>, <%= @event_user.event.location %> on <%= @event_user.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %> to support <%= @event_user.event.cause %></p>
+		

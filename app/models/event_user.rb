@@ -1,8 +1,7 @@
 class EventUser < ApplicationRecord
 
-	belongs_to :event, optional: true
-	belongs_to :user, optional: true
-	
+	belongs_to :event
+	belongs_to :user
 	
 	def self.attend
 		if !self.user && !self.event

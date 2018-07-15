@@ -8,7 +8,7 @@ class EventUsersController < ApplicationController
 	end
 
 	def create
-		@event_user = EventUser.create(event_user_params)
+		@event_user = EventUser.new(event_user_params)
 		
 		if @event_user.attend || @car_pool
 			@event_user.save
