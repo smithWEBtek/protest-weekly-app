@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :create, :new, :edit, :show, :update]
   end
 
+  resources :users
+
+  resources :events
+
   resources :users do
     resources :happenings
   end

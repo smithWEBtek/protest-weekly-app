@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-    before_action :require_login
-    
+    before_action :require_logged_in
+
   def new
     @event = Event.new
   end
