@@ -22,7 +22,7 @@ After scope, FB authentication again
 	<%= f.date_field :datetime.strftime("%A, %B %d, %Y at %H:%M")%> <br
 
 	<%= link_to "RSVP/Car Pool", edit_user_event_user_path, class: "btn btn-primary btn-light" %><p>
-<<<<<<< HEAD
+
 	</p
 
 	from Welcome view:
@@ -52,7 +52,7 @@ User show
 	<p><%= link_to 'Events', '/events' %></p>
 	<p><%= link_to 'Create an Event', '/events/new' %></p>
  			 		
-=======
+
 	</p>
 
 	from eventusers show:
@@ -92,4 +92,18 @@ User show
 	<br>
 	<br><%= link_to "Create Event", new_event_path, class: "btn btn-primary" %> <br>
 
->>>>>>> views-branch
+
+
+from users#show
+, <%= @user.name %>
+
+from users#new PUT THIS BACK IN
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li> <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+

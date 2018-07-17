@@ -9,7 +9,7 @@ class HappeningsController < ApplicationController
 	def create
 		@happening = Happening.create(happening_params)
 		
-		if @happening.attend || @happening.car_pool
+		if @happening.attend 
 			@happening.save
 			redirect_to user_happenings_path(:user_id)
 		else
@@ -18,6 +18,7 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
+
 		# if params[:user_id]
 		# 	@happenings = User.find(params[:user_id]).happenings  
 		# # if params[:event_id]
@@ -25,7 +26,8 @@ class HappeningsController < ApplicationController
 		# else 
 		# 	@happenings = Happening.all 
 		# end
-					# @happenings = Happening.all
+
+		@happenings = Happening.all
 		@happenings = Happening.includes(:event).all
 		@happenings = Happening.includes(:user).all
 
