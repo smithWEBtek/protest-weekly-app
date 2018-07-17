@@ -1,3 +1,11 @@
+7/17/18
+Start w/moving happenings views to events
+@user = current_user
+require login
+After Happenings save, work on scope (sort by date, number of attendees)
+After scope, FB authentication again
+
+
 <%= datetime_select :datetime, @event_users, :datetime %>test 
 
 
