@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+
+  # get '/joinus', to: 'happenings#new'
+  # post '/joinus', to: 'happenings#create'
+  
   delete '/signout', to: 'sessions#destroy', as: '/signout'
    
   resources :organizations do
