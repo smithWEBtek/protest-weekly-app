@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @happening = Happening.new
   end
 
   def index
