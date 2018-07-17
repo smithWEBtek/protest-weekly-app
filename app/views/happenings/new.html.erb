@@ -10,9 +10,9 @@
 			<h2>I'll Attend</h2>
 	<strong><%= f.label "I'll be there!" %></strong><br />
 		  	<%= f.label :attend, "Yes", :value => "true"  %>
-		  	<%= f.radio_button :attend, true %>
+		  	<%= f.radio_button("user", "attend") %>
 		  	<%= f.label :attend, "No", :value => "false" %>
-		  	<%= f.radio_button :attend, false %>
+		  	<%= f.radio_button("user", "attend") %>
 
 		    <h2>Car Pool</h2>
 	<strong><%= f.label :need_ride %></strong><br />
