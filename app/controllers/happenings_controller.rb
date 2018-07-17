@@ -9,23 +9,16 @@ class HappeningsController < ApplicationController
 	def create
 		@happening = Happening.create(happening_params)
 		
-		if current_user.attend || current_user.car_pool
+		if @attend || @car_pool
 			@happening.save
-			redirect_to user_happenings_path(:user_id)
+			redirect_to event_happenings_path(:event_id)
 		else
-			redirect_to new_user_happening_url(:user_id)
+			redirect_to new_event_happening_url(:event_id)
 		end		
 	end
 
 	def index
-		# if params[:user_id]
-		# 	@happenings = User.find(params[:user_id]).happenings  
-		# # if params[:event_id]
-		# 	# @happenings = Event.find(params[:event_id]).happenings
-		# else 
-		# 	@happenings = Happening.all 
-		# end
-					# @happenings = Happening.all
+		@happenings = Happening.all
 		@happenings = Happening.includes(:event).all
 		@happenings = Happening.includes(:user).all
 
@@ -38,19 +31,16 @@ class HappeningsController < ApplicationController
 	end
 
 	def edit
+		@happening = Happening.find(params[:id])
 		if params[:user_id]
 	    user = User.find_by(id: params[:user_id])
-	    if user.nil?
-	      redirect_to users_path
+	    elsif params[:event_id]
+	    	event = Event.find_by(id: params[:event_id])
 	    else
-	      @happening = user.happenings.find_by(id: params[:id])
-	      redirect_to user_happenings_path(user), alert: "Event not found." if @happening.nil?
+	      @happening = event.happenings.find_by(id: params[:id])
+	      redirect_to event_happenings_path(event), alert: "Event not found." if @happening.nil?
 	    end
-	    else	
-	    @happening = Happening.find(params[:id])
-	  end
-
-	end
+	   end
 
 	def update
 		@happening = Happening.find(params[:id])
