@@ -2,7 +2,7 @@
 <p>Please let us know if you plan to attend.</p>
 <p>If you need a ride or can provide one, let us know that, too.</p>
 
-	<%= form_for @happening, url: user_happening_path(:id, :user_id) do |f| %>
+	<%= form_for @happening, url: event_happening_path(:event_id) do |f| %>
 
 	<%= f.hidden_field :user_id %>
   	<%= f.hidden_field :event_id %>

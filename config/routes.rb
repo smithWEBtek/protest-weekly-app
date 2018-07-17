@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   # get '/joinus', to: 'happenings#new'
   # post '/joinus', to: 'happenings#create'
-  
+
   delete '/signout', to: 'sessions#destroy', as: '/signout'
    
   resources :organizations do
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :events
 
   resources :events do
-    resources :happenings
+    resources :happenings, only: [:new, :index, :show, :edit]
   end
   
 
