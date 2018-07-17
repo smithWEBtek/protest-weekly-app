@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   # get 'auth/failure', to: redirect('/')
 
 
-  get 'auth/:provider/callback', to: 'sessions#create'
+  # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
-  get '/auth/facebook/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-
+ 
   root 'welcome#welcome'
   
   get '/signin', to: 'sessions#new'
@@ -23,15 +21,13 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   delete '/signout', to: 'sessions#destroy', as: '/signout'
    
-  resources :users
-
   resources :organizations do
     resources :events
   end
 
-  resources :users do
-    resources :happenings
-  end
+  resources :users
+
+  resources :events
 
   resources :events do
     resources :happenings

@@ -3,6 +3,7 @@ class HappeningsController < ApplicationController
 
 	def new
 		@happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
+		@user = @happening.user
 	end
 
 	def create
@@ -17,19 +18,23 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
-		if params[:user_id] && params[:event_id]
-			@happenings = User.find(params[:user_id]).happenings && @happenings = Event.find(params[:event_id]).happenings
-		else
-		 @happenings = Happening.all
-		# @happenings = Happening.includes(:event).all
-		# @happenings = Happening.includes(:user).all
-	end
+		# if params[:user_id]
+		# 	@happenings = User.find(params[:user_id]).happenings  
+		# # if params[:event_id]
+		# 	# @happenings = Event.find(params[:event_id]).happenings
+		# else 
+		# 	@happenings = Happening.all 
+		# end
+					# @happenings = Happening.all
+		@happenings = Happening.includes(:event).all
+		@happenings = Happening.includes(:user).all
+
 	end
 
 	def show
 		@happening = Happening.find_by(id: params[:id])
-		@user = User.find_by(id: params[:id])
-		@event = Event.find_by(id: params[:id])
+		@user = User.find_by(id: params[:user_id])
+		@event = Event.find_by(id: params[:event_id])
 	end
 
 	def edit

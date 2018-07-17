@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		@user.event_users.build
+		@user.happenings.build
 	end
 
 	def create
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 	def show
 	end
 
+	
 	def destroy
 	end
 

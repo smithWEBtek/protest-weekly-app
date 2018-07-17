@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit]
+    # before_action :require_logged_in
 
 
   def new
@@ -19,6 +20,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @user = current_user
   end
 
   def index
