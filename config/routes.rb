@@ -25,11 +25,11 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  resources :users
+  # resources :users
 
-  resources :events
+  # resources :events
 
-  resources :events do
+  resources :users, :events do
     resources :happenings
   end
   
