@@ -53,3 +53,15 @@
 	<br>
 	<br><%= link_to "Create Event", new_event_path, class: "btn btn-primary" %> <br>
 
+from users#show
+, <%= @user.name %>
+
+from users#new PUT THIS BACK IN
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li> <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
