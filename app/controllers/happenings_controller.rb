@@ -34,7 +34,7 @@ class HappeningsController < ApplicationController
 
 	def edit
 		if params[:user_id]
-	    user = User.find_by(id: params[:user_id])
+	    @user = User.find_by(id: params[:user_id])
 	    if user.nil?
 	      redirect_to users_path
 	    else

@@ -19,16 +19,14 @@ class User < ApplicationRecord
 		end
 	end
  	
-	# def self.from_omniauth(auth)
- #      where(auth.slice(:user, :uid)).first_or_initialize.tap do |user|
- #      # user.provider = auth.provider
- #      user.uid = auth.uid
- #      user.name = auth.info.name
- #      # user.oauth_token = auth.credentials.token
- #      # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
- #      user.save
- #    end
- # end 
+	def self.from_omniauth(auth)
+      @user = User.find_or_create_by(uid: auth['uid'] do |u|
+      # user.provider = auth.provider
+      u.name = auth['info']['name']
+      u.email = auth['info']['email']
+      u.image = auth['info']['image']
+     end
+ end 
 
 end
 
