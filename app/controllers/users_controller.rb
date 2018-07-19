@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	# before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 	def new
 		@user = User.new
@@ -30,8 +30,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		# @user = User.find(params[:id])
-		@user = User.find(user_params)
+		@user = User.find_by(id: params[:id])
+		# @user = User.find(user_params)
 	end
 
 	
@@ -39,9 +39,9 @@ class UsersController < ApplicationController
 	end
 
 	private
-	def set_user
-		@user = User.find(id: params[:id])
-	end
+	# def set_user
+	# 	@user = User.find(id: params[:id])
+	# end
 
 	def user_params
 		params.require(:user).permit(:name, :password, :cell_phone, :email, :UID, :image, events_attributes: [:name, :cause, :location, :datetime], happenings_attributes: [:event_id, :attend, :need_ride, :can_drive])

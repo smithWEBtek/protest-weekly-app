@@ -10,7 +10,7 @@ class HappeningsController < ApplicationController
 		
 		if @happening.attend || @happening.need_ride || @happening.can_drive
 			@happening.save
-			raise @happening.errors.inspect
+			# raise @happening.errors.inspect
 			redirect_to user_happenings_path(:user_id)
 		else
 			redirect_to new_user_happening_url(:user_id)
