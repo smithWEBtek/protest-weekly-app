@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	# before_action :set_user, only: [:show, :edit, :update, :destroy]
 	before_action :find_user, only: [:show, :edit]
 
 	def new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(user_params)
+		@user = User.create(user_params)
 		if @user.save
 			session[:user_id] = @user.id 
 			redirect_to @user
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@user = User.find(params[:id])
 	end
 
 	def update
@@ -30,6 +31,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@user = User.find_by(id: params[:id])
+		# @user = User.find(user_params)
 	end
 
 	
@@ -37,9 +40,9 @@ class UsersController < ApplicationController
 	end
 
 	private
-	def set_user
-		@user = User.find(params[:id])
-	end
+	# def set_user
+	# 	@user = User.find(params[:id])
+	# end
 
 	def find_user
 		@user = User.find_by(id: params[:id])

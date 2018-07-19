@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   
   # get 'auth/:provider/callback', to: 'sessions#create'
-  # get 'auth/failure', to: redirect('/')
-
-  # get '/auth/facebook/callback', to: 'sessions#create'
-  # get 'auth/failure', to: redirect('/')
-
+  # # get 'auth/failure', to: redirect('/')
+  
 
   root 'welcome#welcome'
   
@@ -21,15 +18,17 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  resources :events
+  # resources :events do
+  #   resources :happenings
+  # end
 
   resources :users do
     resources :happenings
   end
 
-  # resources :events do
-  #   resources :happenings
-  # end
+  resources :events do
+    resources :happenings
+  end
  
 
           # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

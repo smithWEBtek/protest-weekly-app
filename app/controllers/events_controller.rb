@@ -2,7 +2,6 @@ class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit]
     # before_action :require_logged_in
 
-
   def new
     @event = Event.new
     @event.happenings.build
@@ -20,7 +19,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = current_user
   end
 
   def index
@@ -43,9 +41,11 @@ class EventsController < ApplicationController
   end
 
   private
+
     def find_event
       @event = Event.find_by(id: params[:id])
     end
+
 
     def event_params
       params.require(:event).permit(:name, :cause, :location, :datetime, :organization_id, happenings_attributes: [:attend, :need_ride, :can_drive, :user_id])

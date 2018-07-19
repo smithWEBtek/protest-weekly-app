@@ -9,8 +9,9 @@ class HappeningsController < ApplicationController
 	def create
 		@happening = Happening.create(happening_params)
 		
-		if @happening.attend 
+		if @happening.attend || @happening.need_ride || @happening.can_drive
 			@happening.save
+			# raise @happening.errors.inspect
 			redirect_to user_happenings_path(:user_id)
 		else
 			redirect_to new_user_happening_url(:user_id)
@@ -18,15 +19,6 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
-
-		# if params[:user_id]
-		# 	@happenings = User.find(params[:user_id]).happenings  
-		# # if params[:event_id]
-		# 	# @happenings = Event.find(params[:event_id]).happenings
-		# else 
-		# 	@happenings = Happening.all 
-		# end
-
 		@happenings = Happening.all
 		@happenings = Happening.includes(:event).all
 		@happenings = Happening.includes(:user).all
@@ -41,7 +33,7 @@ class HappeningsController < ApplicationController
 
 	def edit
 		if params[:user_id]
-	    user = User.find_by(id: params[:user_id])
+	    @user = User.find_by(id: params[:user_id])
 	    if user.nil?
 	      redirect_to users_path
 	    else
