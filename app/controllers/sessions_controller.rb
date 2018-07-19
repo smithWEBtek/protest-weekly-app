@@ -2,13 +2,14 @@ class SessionsController < ApplicationController
 	
   def new
   	@user = User.new
-    @user = current_user
+    # @user = current_user
   end
 
   def create
 
        @user = User.find_or_create_by(name: params[:user][:name])
-        @user && @user.authenticate(params[:user][:password])
+        # @user && @user.authenticate(params[:user][:password])
+
        session[:user_id] = @user.id   
        redirect_to user_path(@user)
 
