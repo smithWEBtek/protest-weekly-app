@@ -10,7 +10,7 @@ class HappeningsController < ApplicationController
 		
 		if @happening.attend || @happening.need_ride || @happening.can_drive
 			@happening.save
-			binding.pry
+			raise @happening.errors.inspect
 			redirect_to user_happenings_path(:user_id)
 		else
 			redirect_to new_user_happening_url(:user_id)
@@ -18,10 +18,7 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
-		# @happenings = Happening.all 
-		# # if params[:user_id]
-		# 	@happenings = User.find(params[:user_id]).happenings  
-		# # if params[:event_id]
+		
 		@happenings = Happening.all
 		@happenings = Happening.includes(:event).all
 		@happenings = Happening.includes(:user).all
