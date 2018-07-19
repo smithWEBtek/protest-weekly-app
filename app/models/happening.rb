@@ -8,10 +8,6 @@ class Happening < ApplicationRecord
 		!self.user && !self.event		
 	end
 
-	def self.car_pool
-		!self.need_ride || !self.can_drive
-	end
-
 	def self.need_ride
 		!self.can_drive
 	end

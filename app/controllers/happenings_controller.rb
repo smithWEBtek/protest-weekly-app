@@ -8,8 +8,9 @@ class HappeningsController < ApplicationController
 	def create
 		@happening = Happening.create(happening_params)
 		
-		if @happening.attend || @happening.car_pool
+		if @happening.attend || @happening.need_ride || @happening.can_drive
 			@happening.save
+			binding.pry
 			redirect_to user_happenings_path(:user_id)
 		else
 			redirect_to new_user_happening_url(:user_id)
