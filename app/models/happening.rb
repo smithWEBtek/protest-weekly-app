@@ -3,6 +3,7 @@ class Happening < ApplicationRecord
 	belongs_to :event
 	belongs_to :user
 	
+
 	def self.attend
 		!self.user && !self.event		
 	end

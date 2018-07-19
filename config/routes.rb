@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   
   # get 'auth/:provider/callback', to: 'sessions#create'
   # # get 'auth/failure', to: redirect('/')
-  # get '/auth/facebook/callback', to: 'sessions#create'
-  # get 'auth/failure', to: redirect('/')
+  get '/auth/facebook/callback', to: 'sessions#facebook'
+  get 'auth/failure', to: redirect('/')
   root 'welcome#welcome'
   
   get '/signin', to: 'sessions#new'
@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :create, :new, :edit, :show, :update]
   end
 
-  resources :events
+  resources :events do
+    resources :happenings
+  end
 
   resources :users do
     resources :happenings

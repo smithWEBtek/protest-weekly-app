@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :require_logged_in
+    # before_action :require_logged_in
 
   def new
     @event = Event.new
@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   end
 
   def show
-  	@event = Event.find_by(id: params[:id])
+    @event = Event.find_by(id: params[:id])
   end
 
   def index
@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   private
-   
+
     def event_params
       params.require(:event).permit(:name, :cause, :location, :datetime, :organization_id, happenings_attributes: [:attend, :need_ride, :can_drive, :user_id])
     end
