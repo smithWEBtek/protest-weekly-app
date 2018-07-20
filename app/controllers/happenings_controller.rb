@@ -3,15 +3,17 @@ class HappeningsController < ApplicationController
 
 	def new
 		@happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
-		@user = @happening.user
+				
 	end
 
 	def create
 		@happening = Happening.create(happening_params)
-		
+		@happening.user = current_user
+		@happening.event = current_event
+		# binding.pry
 		if @happening.attend || @happening.need_ride || @happening.can_drive
-			binding.pry
-			@happening.save!
+			 binding.pry
+			@happening.save
 			# raise @happening.errors.inspect
 			redirect_to user_happenings_path(:user_id)
 		else

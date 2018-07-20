@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		# @user.happenings.build
+		
 		# @user = current_user
 	end
 
