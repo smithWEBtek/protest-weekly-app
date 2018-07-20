@@ -1,6 +1,5 @@
 <%= form_for @user, url: "/session" do |f| %>
-binding.pry
-	
+			
 		<%= f.label :name, "Select your name" %><br>
 		<%= f.collection_select(:name, User.all, :name, :name, {include_blank: "Please select your name"})%>
 	

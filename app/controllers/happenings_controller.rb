@@ -11,7 +11,7 @@ class HappeningsController < ApplicationController
 		
 		if @happening.attend || @happening.need_ride || @happening.can_drive
 			binding.pry
-			@happening.save
+			@happening.save!
 			# raise @happening.errors.inspect
 			redirect_to user_happenings_path(:user_id)
 		else
