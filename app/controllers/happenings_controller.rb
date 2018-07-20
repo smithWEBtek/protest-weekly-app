@@ -10,6 +10,7 @@ class HappeningsController < ApplicationController
 		@happening = Happening.create(happening_params)
 		
 		if @happening.attend || @happening.need_ride || @happening.can_drive
+			binding.pry
 			@happening.save
 			# raise @happening.errors.inspect
 			redirect_to user_happenings_path(:user_id)
