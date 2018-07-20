@@ -12,18 +12,16 @@
 			<td><strong>Cause</strong></td>
 			<td><strong>Location</strong></td>
 			<td><strong>Datetime</strong></td>
-			<td><strong>Organization</strong></td>
 			<td><strong>Expected Attendees</strong></td>		
 		</tr>
 
-		<% @events.each do |event| %>
+		<% @happenings.each do |happening| %>
 		<tr>
-			<td><%= event.name %></td>
-			<td><%= event.cause %></td>
-			<td><%= event.location %></td>
-			<td><%= event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
-			<td><%= event.organization.name %></td>
-			<td><%= event.happening.attendees %></td>
+			<td><%= happening.event.name %></td>
+			<td><%= happening.event.cause %></td>
+			<td><%= happening.event.location %></td>
+			<td><%= happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
+			
 		</tr>
 	 <% end %>
 	</tbody>
