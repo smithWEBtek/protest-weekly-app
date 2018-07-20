@@ -1,4 +1,26 @@
 <h1>Events update</h1>
 <p>Have something to add? Correct? This is the place</p>
-<%= render 'form' %>
-<%= button_tag %>
+
+<%= form_for(:event, url: events_path, method: 'POST') do |f| %>
+
+	<%= f.label :name %><br>
+	<%= f.text_field :name %> 
+	<p>
+
+	<%= f.label :cause %><br>
+	<%= f.text_field :cause %> 
+	</p>
+	<p>
+	<%= f.label :location %><br>
+	<%= f.text_field :location %>
+	</p>
+	<p>
+	<%= f.label :datetime %><br>
+	<%= f.datetime_field :datetime %>
+	</p>
+
+
+
+
+<%= button_tag 'submit' %>
+<% end %>

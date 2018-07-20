@@ -29,11 +29,11 @@ class EventsController < ApplicationController
   end
 
   def update
-  	
-    if @event.update(event_params)
+    @event = Event.find(params[:id])
+  	if @event.update(event_params)
 				redirect_to @event, notice: "Event was successfully updated."
     else
-      render :edit
+      redirect_to events_path
     end
   end
 

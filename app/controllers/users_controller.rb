@@ -19,10 +19,10 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
 	end
 
 	def update
+		@user = User.find_by(id: params[:id])
 		if @user.update(user_params)
 			redirect_to @user, notice: "User was successfully updated." 
 		else
@@ -31,8 +31,6 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by(id: params[:id])
-		# @user = User.find(user_params)
 	end
 
 	

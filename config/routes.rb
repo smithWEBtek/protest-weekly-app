@@ -18,10 +18,6 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  # resources :events do
-  #   resources :happenings
-  # end
-
   resources :users do
     resources :happenings
   end

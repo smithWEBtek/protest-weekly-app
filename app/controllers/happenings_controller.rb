@@ -3,7 +3,7 @@ class HappeningsController < ApplicationController
 
 	def new
 		@happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
-		@user = @happening.user
+		# @user = @happening.user
 	end
 
 	def create
@@ -33,7 +33,7 @@ class HappeningsController < ApplicationController
 
 	def edit
 		if params[:user_id]
-	    @user = User.find_by(id: params[:user_id])
+	    user = User.find_by(id: params[:user_id])
 	    if user.nil?
 	      redirect_to users_path
 	    else
