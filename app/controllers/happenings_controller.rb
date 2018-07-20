@@ -12,10 +12,10 @@ class HappeningsController < ApplicationController
 		@happening.event = current_event
 		# binding.pry
 		if @happening.attend || @happening.need_ride || @happening.can_drive
-			 binding.pry
+			 # binding.pry
 			@happening.save
 			# raise @happening.errors.inspect
-			redirect_to user_happenings_path(:user_id)
+			redirect_to user_happening_url(:user_id, :happening_id)
 		else
 			redirect_to new_user_happening_url(:user_id)
 		end		
