@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		@user.happenings.build
+		
+		# @user = current_user
 	end
 
 	def create
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		@user = User.find_by(id: params[:id])
 		if @user.update(user_params)
 			redirect_to @user, notice: "User was successfully updated." 
 		else
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:name, :password, :cell_phone, :email, :UID, :image, events_attributes: [:name, :cause, :location, :datetime], happenings_attributes: [:event_id, :attend, :need_ride, :can_drive])
+		params.require(:user).permit(:name, :password, :cell_phone, :email, :UID, :image, events_attributes: [:name, :cause, :location, :datetime], happenings_attributes: [:event_id, :attend, :need_ride, :can_drive, :user_id])
 	end
 
 end

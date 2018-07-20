@@ -2,7 +2,6 @@ class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit]
     # before_action :require_logged_in
 
-
   def new
     @event = Event.new
     @event.happenings.build
@@ -20,7 +19,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @happening = Happening.new
   end
 
   def index
@@ -31,11 +29,11 @@ class EventsController < ApplicationController
   end
 
   def update
-  	
-    if @event.update(event_params)
+    @event = Event.find(params[:id])
+  	if @event.update(event_params)
 				redirect_to @event, notice: "Event was successfully updated."
     else
-      render :edit
+      redirect_to events_path
     end
   end
 
@@ -43,11 +41,13 @@ class EventsController < ApplicationController
   end
 
   private
+
     def find_event
       @event = Event.find_by(id: params[:id])
     end
 
+
     def event_params
-      params.require(:event).permit(:name, :cause, :location, :datetime, :organization_id, happenings_attributes: [:attend, :need_ride, :can_drive, :user_id])
+      params.require(:event).permit(:name, :cause, :location, :datetime, :organization_id, happenings_attributes: [:attend, :need_ride, :can_drive, :user_id, :event_id])
     end
 end

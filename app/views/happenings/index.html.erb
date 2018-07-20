@@ -1,5 +1,33 @@
 <h1>Events Responses</h1>
-<p> if only I could get the records to save and return </p>
+<table class="table">
+	<thead>
+		<tr>
+			<th colspan="5"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td><strong>Name</strong></td>
+			<td><strong>Cause</strong></td>
+			<td><strong>Location</strong></td>
+			<td><strong>Datetime</strong></td>
+			<td><strong>Expected Attendees</strong></td>		
+		</tr>
+
+		<% @happenings.each do |happening| %>
+		<tr>
+			<td><%= happening.event.name %></td>
+			<td><%= happening.event.cause %></td>
+			<td><%= happening.event.location %></td>
+			<td><%= happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
+			
+		</tr>
+	 <% end %>
+	</tbody>
+</table>
+<br>
+	<br>
 
 <br><%= link_to "Create Event", new_event_path, class: "btn btn-primary" %> <br>
 

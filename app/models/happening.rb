@@ -3,12 +3,9 @@ class Happening < ApplicationRecord
 	belongs_to :event
 	belongs_to :user
 	
-	def self.attend
-		!self.user && !self.event || !self.car_pool
-	end
 
-	def self.car_pool
-		self.car_pool == self.need_ride || self.can_drive
+	def self.attend
+		!self.user && !self.event		
 	end
 
 	def self.need_ride

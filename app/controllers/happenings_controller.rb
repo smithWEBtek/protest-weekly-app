@@ -3,15 +3,18 @@ class HappeningsController < ApplicationController
 
 	def new
 		@happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
-		@user = current_user
 	end
 
 	def create
 		@happening = Happening.create(happening_params)
-		
-		if @attend || @car_pool
+		@happening.user = current_user
+		@happening.event = current_event
+		# binding.pry
+		if @happening.attend || @happening.need_ride || @happening.can_drive
+			 # binding.pry
 			@happening.save
-			redirect_to event_happenings_path(:event_id)
+			# raise @happening.errors.inspect
+			redirect_to user_happening_url(:user_id, :happening_id)
 		else
 			redirect_to new_event_happening_url(:event_id)
 		end		
@@ -58,7 +61,7 @@ class HappeningsController < ApplicationController
 
 	
 	def happening_params
-		params.require(:happening).permit(:attend, :can_drive, :need_ride, :event_id, :user_id)
+		params.require(:happening).permit(:event_id, :user_id, :attend, :can_drive, :need_ride)
 	end
 
 end

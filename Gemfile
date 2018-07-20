@@ -41,8 +41,6 @@ gem 'dotenv-rails', '~> 2.5.0'
 
 gem 'sprockets', '~> 3.7.2'
 
-
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
