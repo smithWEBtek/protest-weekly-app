@@ -3,7 +3,7 @@ class HappeningsController < ApplicationController
 
 	def new
 		@happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
-		# @user = @happening.user
+		@user = @happening.user
 	end
 
 	def create
@@ -63,7 +63,7 @@ class HappeningsController < ApplicationController
 
 	
 	def happening_params
-		params.require(:happening).permit(:attend, :can_drive, :need_ride, :event_id, :user_id)
+		params.require(:happening).permit(:event_id, :user_id, :attend, :can_drive, :need_ride)
 	end
 
 end
