@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 	has_many :users, through: :happenings
 	belongs_to :organization
 
-	# scope :most_happenings { where()}
+	scope :expected_attendees { where( 'event.happening.attend' >= 1).count}
 	scope :upcoming_event, -> { where('event.datetime >= ?', Time.now)}
 
 	def users_attributes=(users_attributes)

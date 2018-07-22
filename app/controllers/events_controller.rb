@@ -23,7 +23,10 @@ class EventsController < ApplicationController
 
   def upcoming_event
     @event = Event.upcoming_event
-    redirect_to events_upcoming_event_path 
+  end
+
+  def expected_attendees
+    @event = Event.expected_attendees
   end
 
   def index
