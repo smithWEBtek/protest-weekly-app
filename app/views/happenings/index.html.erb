@@ -21,7 +21,7 @@
 			<td><%= happening.event.cause %></td>
 			<td><%= happening.event.location %></td>
 			<td><%= happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
-			<%= happening.event.upcoming_event %>
+
 			
 		</tr>
 	 <% end %>
@@ -34,3 +34,4 @@
 
 <br><%= link_to "Events", events_path, class: "btn btn-primary" %> <br>
  
+ <!--#sort_by current: where('event.datetime >= ?',Time.now

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
   delete '/signout', to: 'sessions#destroy', as: '/signout'
 
-  get '/events/upcoming_event', to: 'events#upcoming_event'
+  get '/events/upcoming_event', to: 'happenings#index'
+  get '/events/most_happenings', to: 'happenings#index'
    
   resources :organizations do
     resources :events

@@ -22,7 +22,8 @@ class EventsController < ApplicationController
   end
 
   def upcoming_event
-    @event.datetime = Event.upcoming_event
+    @event = Event.upcoming_event
+    redirect_to events_upcoming_event_path 
   end
 
   def index

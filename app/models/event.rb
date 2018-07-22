@@ -5,7 +5,8 @@ class Event < ApplicationRecord
 	has_many :users, through: :happenings
 	belongs_to :organization
 
-	scope :upcoming_event, -> { where('start_time >= ?', Time.now.strftime("%A, %B %d, %Y at %H:%M"))}
+	# scope :most_happenings { where()}
+	scope :upcoming_event, -> { where('event.datetime >= ?', Time.now)}
 
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|
