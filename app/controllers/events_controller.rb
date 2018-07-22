@@ -21,9 +21,12 @@ class EventsController < ApplicationController
   def show
   end
 
+  def upcoming_event
+    @event.datetime = Event.upcoming_event
+  end
+
   def index
     @events = Event.includes(:organization).all
-    :upcoming_event, -> { where('start_time >= ?', Time.now)}
   end
 
   def edit
