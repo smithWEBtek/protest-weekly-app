@@ -1,12 +1,11 @@
 class Event < ApplicationRecord
 	validates :name, presence: true
 
-	# scope: :cause -> {where(cause: 'equality')}
-	
 	has_many :happenings
 	has_many :users, through: :happenings
 	belongs_to :organization
 
+	scope :upcoming_event, -> { where('start_time >= ?', Time.now)}
 
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|

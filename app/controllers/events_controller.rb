@@ -23,6 +23,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.includes(:organization).all
+    :upcoming_event, -> { where('start_time >= ?', Time.now)}
   end
 
   def edit
