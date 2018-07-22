@@ -21,14 +21,6 @@ class EventsController < ApplicationController
   def show
   end
 
-  def upcoming_event
-    @event = Event.upcoming_event
-  end
-
-  def expected_attendees
-    @event = Event.expected_attendees
-  end
-
   def index
     @events = Event.includes(:organization).all
   end

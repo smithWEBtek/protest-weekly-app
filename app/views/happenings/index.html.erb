@@ -12,7 +12,6 @@
 			<td><strong>Cause</strong></td>
 			<td><strong>Location</strong></td>
 			<td><strong>Datetime</strong></td>
-			<td><strong>Expected Attendees</strong></td>		
 		</tr>
 
 		<% @happenings.each do |happening| %>
@@ -20,9 +19,7 @@
 			<td><%= happening.event.name %></td>
 			<td><%= happening.event.cause %></td>
 			<td><%= happening.event.location %></td>
-			<td><%= happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
-
-			
+			<td><%= happening.event.upcoming_event.strftime("%A, %B %d, %Y at %H:%M") %></td>			
 		</tr>
 	 <% end %>
 	</tbody>

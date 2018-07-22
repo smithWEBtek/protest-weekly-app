@@ -3,6 +3,7 @@ class Happening < ApplicationRecord
 	belongs_to :event
 	belongs_to :user
 	
+	# scope :expected_attendees, -> { where( 'happening.attend' >= 1).count}
 
 	def self.attend
 		!self.user && !self.event		
@@ -14,6 +15,10 @@ class Happening < ApplicationRecord
 
 	def self.can_drive
 		!self.need_ride
+	end
+
+	def self.carpool
+		can_drive || need_ride
 	end
 
 end
