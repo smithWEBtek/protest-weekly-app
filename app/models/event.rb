@@ -5,6 +5,8 @@ class Event < ApplicationRecord
 	has_many :users, through: :happenings
 	belongs_to :organization
 
+	scope :last_added, -> { order(created_at: :desc).first }
+
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|
 			self.users.build(user_attributes)

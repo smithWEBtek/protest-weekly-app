@@ -28,6 +28,10 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def last_added
+    @event = Event.last_added
+  end
+
   def update
     @event = Event.find(params[:id])
   	if @event.update(event_params)
