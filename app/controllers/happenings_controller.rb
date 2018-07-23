@@ -30,10 +30,6 @@ class HappeningsController < ApplicationController
 		@event = Event.find_by(id: params[:event_id])
 	end
 
-	# def expected_attendees
- #    	@happening = Happening.expected_attendees
- #  	end
-
 	def edit
 		@happening = Happening.find(params[:id])
 		if params[:user_id]
