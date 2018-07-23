@@ -15,13 +15,13 @@ class SessionsController < ApplicationController
   end
 
   def facebook
-    if user = User.from_omniauth(env["omniauth.auth"])
+    if user = User.from_omniauth(request.env["omniauth.auth"])
       flash[:success] = 'Signed in by Facebook successfully'  
       session[:user_id] = user.id
       redirect_to user_path(@user)
     else
       flash[:error] = "Error while signing in by Facebook. Let's register."
-      redirect_to new_user_path
+      redirect_to '/'
     end
   end
 
@@ -30,11 +30,11 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-	# private
+	private
 	 
-	# def auth
-	#   request.env['omniauth.auth']
-	# end
+	def auth
+	  request.env['omniauth.auth']
+	end
 
  end 
 
