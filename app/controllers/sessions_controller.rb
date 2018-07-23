@@ -5,21 +5,26 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @user = User.find_by(name: params[:user][:name])
+    if @user && @user.authenticate(params[:user][:password])
+    session[:user_id] = @user.id   
+    redirect_to user_path(@user)
+    else
+    redirect_to '/', notice: "Signin failed. Please try again."
+    end
+  end
 
-       @user = User.find_by(name: params[:user][:name])
-       # binding.pry
-       if @user && @user.authenticate(params[:user][:password])
-       
-       session[:user_id] = @user.id   
-       redirect_to user_path(@user)
-       else
-       # @user = User.from_omniauth(auth)
-       # session[:user_id] = @user.id
-       redirect_to '/'
-       # end
-     end
-end
-      
+  def facebook
+    if user = User.from_omniauth(env["omniauth.auth"])
+      flash[:success] = 'Signed in by Facebook successfully'  
+      session[:user_id] = user.id
+      redirect_to user_path(@user)
+    else
+      flash[:error] = "Error while signing in by Facebook. Let's register."
+      redirect_to new_user_path
+    end
+  end
+
   def destroy
     session.delete("user_id")
     redirect_to root_path
