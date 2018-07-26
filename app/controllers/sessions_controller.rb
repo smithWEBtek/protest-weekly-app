@@ -20,10 +20,10 @@ class SessionsController < ApplicationController
       u.email = auth['info']['email']
       u.image = auth['info']['image']
     end
-
-    session[:user_id] = @user.id
-
+    session[:uid] = @user.id 
+    binding.pry
     redirect_to user_path(:id)
+  
   end
 
   def destroy
