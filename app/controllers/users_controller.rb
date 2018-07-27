@@ -8,23 +8,23 @@ class UsersController < ApplicationController
 		# @user = current_user
 	end
 
-	# def create
-		def create
-		 @user = User.new(name: params[:user][:name])
-		 @user.email = params[:user][:email]
-		 @user.password = params[:user][:password]
-		 @user.save
-		 session[:user_id] = @user.id
-		 redirect_to user_path(@user)
+	def create
+		# def create
+		#  @user = User.new(name: params[:user][:name])
+		#  @user.email = params[:user][:email]
+		#  @user.password = params[:user][:password]
+		#  @user.save
+		#  session[:user_id] = @user.id
+		#  redirect_to user_path(@user)
+		# end
+		@user = User.create(user_params)
+		if @user.save
+			session[:user_id] = @user.id 
+			redirect_to @user
+		else
+			render :new
 		end
-	# 	@user = User.create(user_params)
-	# 	if @user.save
-	# 		session[:user_id] = @user.id 
-	# 		redirect_to @user
-	# 	else
-	# 		render :new
-	# 	end
-	# end
+	end
 
 	def edit
 	end

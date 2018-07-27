@@ -34,20 +34,20 @@ class User < ApplicationRecord
 
    private
 
-  	def self.find_or_create_by_omniauth(auth_hash)
-  	  self.where(email: auth_hash[‘info’][‘email’]).first_or_create do |u|
-	  u.name = auth_hash[‘info’][‘name’]
-	  u.password = SecureRandom.hex
-	  end
-	end
-	# def self.from_omniauth(auth)
- #      @user = User.find_or_create_by(uid: auth[:uid]) do |u|
- #      u.name = auth[:info][:name]
- #      u.email = auth[:info][:email]
- #      u.image = auth[:info][:image]
- #      # @user.save
- #     end
- # 	end 
+ #  	def self.find_or_create_by_omniauth(auth_hash)
+ #  	  self.where(email: auth_hash[‘info’][‘email’]).first_or_create do |u|
+	#   u.name = auth_hash[‘info’][‘name’]
+	#   u.password = SecureRandom.hex
+	#   end
+	# end
+	def self.from_omniauth(auth)
+      @user = User.find_or_create_by(uid: auth[:uid]) do |u|
+      u.name = auth[:info][:name]
+      u.email = auth[:info][:email]
+      u.image = auth[:info][:image]
+      # @user.save
+     end
+ 	end 
 
  end
 
