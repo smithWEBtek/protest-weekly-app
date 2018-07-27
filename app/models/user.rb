@@ -19,13 +19,16 @@ class User < ApplicationRecord
 		end
 	end
  	
-	# def facebook_login
- #    	@user = User.find_or_create_by(uid: auth['uid']) 
- #      u.name = auth['info']['name']
- #      u.email = auth['info']['email']
- #      u.image = auth['info']['image']
- #    end
-        # user.provider = auth.provider
+	def self.from_omniauth(auth)
+		email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
+     	@user = where(email: email).first_or_initialize
+     	@user.save && user
+     end
+     	# @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      #   u.name = auth['info']['name']
+      #   u.email = auth['info']['email']
+      #   u.image = auth['info']['image']
+        
  end
 
 
