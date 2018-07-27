@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 		# @user = current_user
 	end
 
-	def create
+	# def create
 		def create
 		 @user = User.new(name: params[:user][:name])
 		 @user.email = params[:user][:email]
