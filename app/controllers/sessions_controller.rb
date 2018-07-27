@@ -7,10 +7,11 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(name: params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
-    session[:user_id] = @user.id   
+    signin @user   
     redirect_to user_path(@user)
     else
-    redirect_to '/', notice: "Signin failed. Please try again."
+      flash.now[:danger] = 'Invalid email/password combination'
+    redirect_to '/'
     end
   end
 

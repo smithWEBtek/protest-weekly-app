@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
 	validates :name, presence: true
-  	validates :password, length: { in: 6..20 }
+  	validates :password, presence: true, length: { in: 6..20 }
 
   	has_many :happenings
 	has_many :events, through: :happenings
@@ -19,14 +19,14 @@ class User < ApplicationRecord
 		end
 	end
  	
-	def self.from_omniauth(auth)
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.name = auth['info']['name']
-      u.email = auth['info']['email']
-      u.image = auth['info']['image']
-    end
+	# def facebook_login
+ #    	@user = User.find_or_create_by(uid: auth['uid']) 
+ #      u.name = auth['info']['name']
+ #      u.email = auth['info']['email']
+ #      u.image = auth['info']['image']
+ #    end
         # user.provider = auth.provider
  end
-end
+
 
 
