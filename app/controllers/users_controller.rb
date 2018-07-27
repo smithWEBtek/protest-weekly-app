@@ -9,14 +9,22 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.create(user_params)
-		if @user.save
-			session[:current_user] = @user.id 
-			redirect_to @user
-		else
-			render :new
+		def create
+		 @user = User.new(name: params[:user][:name])
+		 @user.email = params[:user][:email]
+		 @user.password = params[:user][:password]
+		 @user.save
+		 session[:user_id] = @user.id
+		 redirect_to user_path(@user)
 		end
-	end
+	# 	@user = User.create(user_params)
+	# 	if @user.save
+	# 		session[:user_id] = @user.id 
+	# 		redirect_to @user
+	# 	else
+	# 		render :new
+	# 	end
+	# end
 
 	def edit
 	end
@@ -38,10 +46,6 @@ class UsersController < ApplicationController
 	end
 
 	private
-	# def set_user
-	# 	@user = User.find(params[:id])
-	# end
-
 	def find_user
 		@user = User.find_by(id: params[:id])
 	end
