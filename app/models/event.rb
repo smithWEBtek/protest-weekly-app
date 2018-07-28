@@ -6,6 +6,7 @@ class Event < ApplicationRecord
 	belongs_to :organization
 
 	scope :last_added, -> { order(created_at: :desc).first }
+	
 
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|

@@ -9,25 +9,17 @@ class User < ApplicationRecord
 	
 
 	def happenings_attributes=(happenings_attributes)
-		happenings_attributes.each do |happening_attributes|
-			self.happenings.build(happening_attributes)
-		end
+	  happenings_attributes.each do |happening_attributes|
+		self.happenings.build(happening_attributes)
+	  end
 	end
 
 	def events_attributes=(events_attributes)
-		events_attributes.each do |event_attributes|
-			self.events.build(event_attributes)
-		end
+	  events_attributes.each do |event_attributes|
+		self.events.build(event_attributes)
+	  end
 	end
   
-# 	def generate_password
-#     	self.password = loop do
-#       	random_token = SecureRandom.urlsafe_base64
-#         break random_token unless User.exists?(password: random_token)
-#     end
-# end
-
-	# backup code
 	def self.from_omniauth(auth)
 	  email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
 	    @user = where(email: email).first_or_initialize
