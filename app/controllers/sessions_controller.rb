@@ -5,9 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-     @user = User.find_by(email: params[:@user][:email])
+    # binding.pry
+     @user = User.find_or_create_by(name: params[:user][:name])
+
       if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id  
+
       redirect_to user_path(@user)
     else
       flash.now[:danger] = 'Invalid email/password combination'
@@ -16,14 +19,14 @@ class SessionsController < ApplicationController
   end
 
   def facebook
-      if @user = User.from_omniauth(env["omniauth.auth"])
+      if @user = User.from_omniauth(request.env["omniauth.auth"])
         flash[:success] = 'Signed in by Facebook successfully'
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        binding.pry
+        # binding.pry
         flash[:error] = "Error while signing in by Facebook. Let's register."
-        redirect_to new_user_path
+        redirect_to new_user_path(@user)
     end
    end
 
@@ -34,9 +37,11 @@ class SessionsController < ApplicationController
 
 	private
 	 
-	def auth_hash
+	def auth
 	  request.env['omniauth.auth']
 	end
+
+ 
 
  end 
 
