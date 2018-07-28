@@ -16,10 +16,13 @@ module ProtestWeeklyApp
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore, config.session_options #source:https://github.com/omniauth/omniauth/blob/master/README.md
    end
-
-    # Settings in config/environments/* take precedence over those specified here.
+# Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+   config.force_ssl = true
+
+   config.active_record.raise_in_transactional_callbacks = true
+    
   end 
 
