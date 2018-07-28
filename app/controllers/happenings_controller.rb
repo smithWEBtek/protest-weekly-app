@@ -19,9 +19,9 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
-	  @happenings = Happening.all
-	  @happenings = Happening.includes(:event).all
-	  @happenings = Happening.includes(:user).all
+	  # @happenings = Happening.all
+	  @happenings = Happening.includes(:event, :user).all
+	  # @happenings = Happening.includes(:user).all
 	end
 
 	def show
