@@ -17,8 +17,8 @@ class SessionsController < ApplicationController
 
   def facebook
      if @user = User.from_omniauth(request.env["omniauth.auth"])
-       flash[:success] = 'Signed in by Facebook successfully'
        session[:user_id] = @user.id
+       flash[:success] = 'Signed in by Facebook successfully'
        redirect_to user_path(@user)
      else
        flash[:error] = "Error while signing in by Facebook. Let's register."
