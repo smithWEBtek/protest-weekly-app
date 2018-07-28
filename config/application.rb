@@ -20,9 +20,7 @@ module ProtestWeeklyApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-   config.force_ssl = true
-
-   config.active_record.raise_in_transactional_callbacks = true
+   
     
   end 
 

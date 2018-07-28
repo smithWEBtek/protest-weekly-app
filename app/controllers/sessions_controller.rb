@@ -16,15 +16,16 @@ class SessionsController < ApplicationController
   end
 
   def facebook
-      @user = User.find_from_omniauth(uid: auth['uid']) do |u|
-      u.name = auth['info']['name']
-      u.email = auth['info']['email']
-      u.image = auth['info']['image']
+      if @user = User.from_omniauth(env["omniauth.auth"])
+        flash[:success] = 'Signed in by Facebook successfully'
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        binding.pry
+        flash[:error] = "Error while signing in by Facebook. Let's register."
+        redirect_to new_user_path
     end
-      binding.pry
-      redirect_to user_path(:id)
-    end
-  # end
+   end
 
   def destroy
     session.delete("user_id")
