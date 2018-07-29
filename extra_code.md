@@ -128,4 +128,6 @@ from users#new PUT THIS BACK IN
       #   u.email = auth['info']['email']
       #   u.image = auth['info']['image']
 
+next scope to add in Events:
+scope :coming_soon, -> { order(datetime: :desc).count }
 
