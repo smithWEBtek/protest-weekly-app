@@ -1,7 +1,7 @@
 <h1>Events update</h1>
 <p>Have something to add? Correct? This is the place</p>
 
-<%= form_for(:event, url: events_path, method: 'POST') do |f| %>
+<%= form_for(:event, url: event_path, method: 'PUT') do |f| %>
 
 	<%= f.label :name %><br>
 	<%= f.text_field :name %> 

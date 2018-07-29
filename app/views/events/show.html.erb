@@ -1,11 +1,17 @@
 <h1>Event</h1>
 
-		<p><%= @event.name %></p>
-		<p><%= @event.cause %></p>
-		<p><%= @event.location %></p>
-		<p><%= @event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></p>
-		<p><%= @event.organization.name %></p>
-		<p><%= @event.organization.contact_info %></p>
+		<p><strong>Event name:</strong>
+			<%= @event.name %></p>
+		<p><strong>Cause: </strong>
+			<%= @event.cause %></p>
+		<p><strong>Location: </strong>
+			<%= @event.location %></p>
+		<p><strong>Day and time:</strong> 
+			<%= @event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></p>
+		<p><strong>Sponsoring organization: </strong>
+			<%= @event.organization.name %></p>
+		<p><strong>Contact info: </strong>
+			<%= link_to @event.organization.contact_info %></p>
 
 		
 
