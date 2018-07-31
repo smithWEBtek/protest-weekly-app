@@ -19,6 +19,7 @@ class HappeningsController < ApplicationController
 
 	def index
 	  @happenings = Happening.includes(:event, :user).all
+	  # @happenings = Happening.event.order(:datetime)
 	end
 
 	def show

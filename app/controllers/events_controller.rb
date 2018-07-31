@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit]
-    # before_action :require_logged_in
 
+    
   def new
     @event = Event.new
     @event.happenings.build
@@ -19,10 +19,12 @@ class EventsController < ApplicationController
   end
 
   def show
+
   end
 
   def index
     @events = Event.includes(:organization).all
+    @events = Event.order(:datetime)
   end
 
   def edit

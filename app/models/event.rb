@@ -6,8 +6,8 @@ class Event < ApplicationRecord
 	belongs_to :organization
 
 	scope :last_added, -> { order(created_at: :desc).first }
+	scope :coming_next, -> { sort_by(datetime: :asc)}
 	
-
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|
 			self.users.build(user_attributes)

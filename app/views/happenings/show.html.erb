@@ -4,6 +4,18 @@
 <p>We'll be in contact if you signed up for the carpool. Please make sure we have your cell phone on file.</p>
 <p>We look forward to seeing you!</p>
 
+<p><strong>Event name:</strong>
+			<%= happening.event.name %></p>
+		<p><strong>Cause: </strong>
+			<%= happening.event.cause %></p>
+		<p><strong>Location: </strong>
+			<%= happening.event.location %></p>
+		<p><strong>Day and time:</strong> 
+			<%= happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></p>
+		<p><strong>Sponsoring organization: </strong>
+			<%= event.organization.name %></p>
+		<p><strong>Contact info: </strong>
+			<%= link_to @event.organization.contact_info %></p>
 
 <%= link_to "Back to Events", events_url %>
 
