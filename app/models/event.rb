@@ -6,7 +6,7 @@ class Event < ApplicationRecord
 	belongs_to :organization
 
 	scope :last_added, -> { order(created_at: :desc).first }
-	scope :coming_next, -> { sort_by(datetime: :asc)}
+	scope :coming_next, -> { sort_by(current: where('event.datetime >= ?',Time.now))}
 	
 	def users_attributes=(users_attributes)
 		users_attributes.each do |user_attributes|

@@ -130,4 +130,17 @@ from users#new PUT THIS BACK IN
 
 next scope to add in Events:
 scope :coming_soon, -> { order(datetime: :desc).count }
+Happenings#show
+<p><strong>Event name:</strong>
+			<%= happening.event.name %></p>
+		<p><strong>Cause: </strong>
+			<%= happening.event.cause %></p>
+		<p><strong>Location: </strong>
+			<%= happening.event.location %></p>
+		<p><strong>Day and time:</strong> 
+			<%= happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></p>
+		<p><strong>Sponsoring organization: </strong>
+			<%= event.organization.name %></p>
+		<p><strong>Contact info: </strong>
+			<%= link_to @event.organization.contact_info %></p>
 
