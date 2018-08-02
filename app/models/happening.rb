@@ -15,8 +15,5 @@ class Happening < ApplicationRecord
 	  !self.need_ride
 	end
 
-	def self.carpool
-	  self.can_drive || self.need_ride
-	end
-
+	
 end
