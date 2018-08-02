@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    redirect_to :login unless user_signed_in?
+    redirect_to :signin unless user_signed_in?
   end
 
   def current_user
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
     
   def current_event
-    @current_event ||= session[:user_id] && Event.find_by(id: session[:user_id])
+    @current_event ||= session[:user_id] && Event.find_by(id: session[:event_id])
   end
 
   helper_method :current_user
