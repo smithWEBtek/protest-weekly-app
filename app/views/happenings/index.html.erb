@@ -19,7 +19,7 @@
 			<td><%= happening.event.name %></td>
 			<td><%= happening.event.cause %></td>
 			<td><%= happening.event.location %></td>
-			<td><%= happening.event.datetime.strftime(("%A, %B %d, %Y at %H:%M").sort_by current: where('event.datetime >= ?',Time.now) %></td>			
+			<td><%= happening.event.datetime.strftime(("%A, %B %d, %Y at %H:%M") %></td>			
 		</tr>
 	 <% end %>
 	</tbody>
