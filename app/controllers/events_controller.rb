@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit]
-    
+
     
   def new
     @event = Event.new
@@ -32,6 +32,10 @@ class EventsController < ApplicationController
 
   def last_added
     @event = Event.last_added
+  end
+
+  def past_events
+    @events = Event.past_events
   end
 
   def update

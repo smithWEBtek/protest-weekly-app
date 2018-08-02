@@ -1,5 +1,7 @@
-<h1><%= @organization.name %></h1>
-<p><%= @organization.contact_info %></p>
+	<% @organizations.each do |organization| %>
+	<p> <%= organization.name %></p>
+	<p> <%= organization.contact_info %></p>
+<% end %>
 		
 	
 	                                                                                                                                                                                                                                                                                                                     

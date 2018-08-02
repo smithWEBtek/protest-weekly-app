@@ -1,6 +1,8 @@
-<h1>Events</h1>
+<h1>Past Events</h1>
 
-<table class="table">
+Past events include:
+
+	<table class="table">
 	<thead>
 		<tr>
 			<th colspan="5"></th>
@@ -18,21 +20,18 @@
 
 		<% @events.each do |event| %>
 		<tr>
-			<td><%= link_to event.name, event_path(event) %></td>
-			
+			<td><%= event.name %></td>
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
 			<td><%= event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
-			<td><%= event.organization.name %></td>
+			<td><%= link_to event.organization.name, organization_path(:id) %></td>
 			
 		</tr>
-	 <% end %>
+	 
 	</tbody>
 </table>
 	
 <br>
 	<br>
-	<br><%= link_to "Create Event", new_event_path, class: "btn btn-primary" %> <br>
-	<p><%= link_to "Past Events", events_past_events_path %> </p>
 
-
+<% end %>
