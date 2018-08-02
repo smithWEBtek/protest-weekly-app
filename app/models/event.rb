@@ -6,7 +6,7 @@ class Event < ApplicationRecord
 	belongs_to :organization
 
 	scope :last_added, -> { order(created_at: :desc).first }
-	scope :coming_next, -> { sort_by(current: where('event.datetime >= ?',Time.now))}
+	scope :coming_next, -> { where('datetime >= ?',Time.now)}
 	scope :past_events, -> { where('datetime < ?',Time.now)} 
 
 
