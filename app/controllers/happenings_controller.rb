@@ -10,7 +10,7 @@ class HappeningsController < ApplicationController
 	  @happening.user = current_user
 	  @happening.event = current_event
 	  binding.pry
-	  	if @happening.attend || @happening.carpool
+	  	if @happening.attend || @happening.need_ride || @happening.can_drive
 		   @happening.save!
 		   redirect_to user_happening_url(:user_id, :happening_id)
 		else

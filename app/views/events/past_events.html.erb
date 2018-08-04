@@ -1,7 +1,5 @@
 <h1>Past Events</h1>
 
-Past events include:
-
 	<table class="table">
 	<thead>
 		<tr>
@@ -24,7 +22,7 @@ Past events include:
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
 			<td><%= event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
-			<td><%= link_to event.organization.name, organization_path(:id) %></td>
+			<td><%= event.organization.name %></td>
 			
 		</tr>
 	 
