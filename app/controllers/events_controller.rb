@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     
   def new
     @event = Event.new
-    @event.happenings.build
+    @event.happenings.build.users.build
   end
 
   def create
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.includes(:organization).all
-    @events = Event.order(:datetime)
+    @events = Event.order(:datetime).current_events
   end
 
   def edit

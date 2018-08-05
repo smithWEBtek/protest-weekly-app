@@ -6,8 +6,8 @@ class Event < ApplicationRecord
 	belongs_to :organization
 
 	scope :last_added, -> { order(created_at: :desc).first }
-	scope :coming_next, -> { where('datetime >= ?',Time.now)}
-	scope :past_events, -> { where('datetime < ?',Time.now)} 
+	scope :current_events, -> { where('datetime >= ?',DateTime.now) }
+	scope :past_events, -> { where('datetime < ?',DateTime.now)} 
 
 
 	def users_attributes=(users_attributes)
