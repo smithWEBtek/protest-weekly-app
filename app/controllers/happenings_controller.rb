@@ -21,6 +21,7 @@ class HappeningsController < ApplicationController
 	def index
 	  @happenings = Happening.all
 	  @happenings = Happening.includes(:event, :user).all
+	  render json: @happenings, status: 200
 	end
 
 	def show
