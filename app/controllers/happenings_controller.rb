@@ -7,6 +7,8 @@ class HappeningsController < ApplicationController
 
 	def create
 	  @happening = Happening.create(happening_params)
+	  binding.pry
+	  # @happening = @user.happenings.create
 	  @happening.user = current_user
 	  @happening.event = current_event
 	  

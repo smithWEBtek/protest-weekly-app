@@ -1,3 +1,13 @@
+10/21/18 - js project
+happenings#show
+<p>Please add this to your calendar:</p>
+
+			<td><%= @happening.event.name %></td>
+			<td><%= @happening.event.cause %></td>
+			<td><%= @happening.event.location %></td>
+			<td><%= @happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>	
+
+
 7/17/18
 Start w/moving happenings views to events
 @user = current_user
