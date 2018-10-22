@@ -12,15 +12,17 @@ class HappeningsController < ApplicationController
 	def create
 	  @happening = Happening.create(happening_params)
 	  # binding.pry
-	  @happening = current_user.happenings.create
+	  # @happening = current_user.happenings.create
 	  @happening.user = current_user
 	  @happening.event = current_event
+	  binding.pry
 	  
-	  	if @happening.attend || @happening.need_ride || @happening.can_drive
+	  	if @happening.attend || @happening.need_ride || @happening.can_drive 
 		   @happening.save!
 		   redirect_to user_happening_url(:user_id, :happening_id)
-		else
-		   redirect_to new_event_happening_url(:event_id)
+		else 
+			render json: { status: 'error', message: "User has already signed up for this event. Please choose a new event to attend." }
+			redirect_to new_event_happening_url(:event_id)
 		end		
 	end
 
