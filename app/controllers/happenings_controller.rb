@@ -1,5 +1,9 @@
 class HappeningsController < ApplicationController
-	
+	#user has one active happening per event
+	#user can edit happening
+	#user can cancel happening
+	#user receives confirmation of happening on show page
+	#user can see all of their happenings after login (user.show)
 
 	def new
 	  @happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
@@ -8,7 +12,7 @@ class HappeningsController < ApplicationController
 	def create
 	  @happening = Happening.create(happening_params)
 	  binding.pry
-	  # @happening = @user.happenings.create
+	  @happening = current_user.happenings.create
 	  @happening.user = current_user
 	  @happening.event = current_event
 	  
