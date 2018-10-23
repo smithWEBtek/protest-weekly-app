@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 	def new
 	  @user = User.new
-	  @user.happenings.build.events.build
+	  @user.happenings.build
 	end
 
 	def create

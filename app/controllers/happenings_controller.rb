@@ -15,10 +15,10 @@ class HappeningsController < ApplicationController
 	  # @happening = current_user.happenings.create
 	  @happening.user = current_user
 	  @happening.event = current_event
-	  # binding.pry
+	  binding.pry
 	  
 	  	if !@happening.save
-	  		redirect_to new_event_happening_url(:event_id)
+	  		redirect_to events_url, alert: "You have already signed up for this event. Please choose another." 
 	  	else
 	  		@happening.attend || @happening.need_ride || @happening.can_drive 
 		   @happening.save!

@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     
   def new
     @event = Event.new
-    # @event.happenings.build.users.build
+    @event.happenings.build
   end
 
   def create
@@ -19,7 +19,6 @@ class EventsController < ApplicationController
   end
 
   def show
-
   end
 
   def index
