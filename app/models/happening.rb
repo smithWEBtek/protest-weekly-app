@@ -1,6 +1,6 @@
 class Happening < ApplicationRecord
 	validates :user, :event, presence: true
-	validates_uniqueness_of :user, :event
+	# validates_uniqueness_of :user, :event
 	belongs_to :event
 	belongs_to :user
 	

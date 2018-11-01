@@ -1,4 +1,5 @@
 class HappeningsController < ApplicationController
+	before_action :current_event
 	#user has one active happening per event
 	#user can edit happening
 	#user can cancel happening
@@ -10,9 +11,10 @@ class HappeningsController < ApplicationController
 	end
 
 	def create
-	  @happening = Happening.create(happening_params)
-	  # binding.pry
-	  @happening = @event.happenings.create
+	  @event = Event.create(params[:event_id])
+      @happening = Happening.create(happening_params)
+	  binding.pry
+	  # @happenings = @event.happenings.create!([{happenings_attributes}])
 	  @happening.user = current_user
 	  @happening.event = current_event
 	  # binding.pry
@@ -21,7 +23,7 @@ class HappeningsController < ApplicationController
 		   @happening.save!
 		   redirect_to user_happenings_url(:user_id, :happening_id)
 		else  
-	  		# !@happening.save
+	  		!@happening.save
 	  		redirect_to events_url, alert: "There was a problem registering you for this event. Please contact the organizer." 
 	  	end		
 	end
@@ -66,4 +68,9 @@ class HappeningsController < ApplicationController
   	  params.require(:happening).permit(:event_id, :user_id, :attend, :can_drive, :need_ride)
 	end
 
+	def current_event
+    @current_event ||= Event.find_by(id: params[:event_id])
+  	end
+
+	
 end
