@@ -11,22 +11,19 @@ class HappeningsController < ApplicationController
 
 	def create
 	  @happening = Happening.create(happening_params)
-	  @user = User.create(id: params[:user_id])
-	  @event = Event.create(id: params[:event_id])
-	  
-	  @happening = current_user && current_event
-	  # was current_event.happenings.create
-	  @user = current_user
-	  @event = current_event
-	  binding.pry
+	  # binding.pry
+	  @happening = @event.happenings.create
+	  @happening.user = current_user
+	  @happening.event = current_event
+	  # binding.pry
 	  
 	  	if @happening.attend || @happening.need_ride || @happening.can_drive 
 		   @happening.save!
-		   redirect_to user_happening_url(:user_id, :happening_id)
-		else
-		   !@happening.save
-	  		redirect_to events_url, alert: "There was a problem signing you up for this event. Please contact the organizer." 
-		end		
+		   redirect_to user_happenings_url(:user_id, :happening_id)
+		else  
+	  		# !@happening.save
+	  		redirect_to events_url, alert: "There was a problem registering you for this event. Please contact the organizer." 
+	  	end		
 	end
 
 	def index

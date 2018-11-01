@@ -16,5 +16,10 @@ class Happening < ApplicationRecord
 	  !self.need_ride
 	end
 
+	def happenings_attributes=(happenings_attributes)
+	  happenings_attributes.each do |happening_attributes|
+		self.happenings.build(happening_attributes)
+	  end
+	end
 	
 end
