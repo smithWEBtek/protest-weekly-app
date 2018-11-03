@@ -9,21 +9,23 @@ class HappeningsController < ApplicationController
 	#user can see all of their happenings after login (user.show)
 
 	def new
-	  @happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
+	  @happening = Happening.new
+	  # @event.happenings.build(event_params)
 	end
 
 	def create
-	  # @event = Event.create(event_params)
+	  # @event = Event.create(params[:event_id])
       @happening = Happening.create(happening_params)
 	  @happening.user = current_user
-	  @happening.event = current_event
-	   binding.pry
+	  # @event.happening.create(:event_id) 
+	  # = current_event
+	   # binding.pry
 	  
 	  	if @happening.attend || @happening.need_ride || @happening.can_drive  #need to require event_id somewhere in here
 		   @happening.save!
 		   redirect_to user_happening_url(:user_id, :happening_id)
 		elsif !@happening.save
-	  		redirect_to events_url, alert: "There was a problem registering you for this event. Please contact the organizer." 
+	  		redirect_to events_url, alert: "There was a problem registering you for this event. Please try again." 
 	  	end		
 	end
 
