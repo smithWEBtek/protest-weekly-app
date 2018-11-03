@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   def create
     @organization = Organization.create(params[:organization_id])
-    @event = Event.create(event_params)
+    @event = event.happenings.create(event_params)
         
     if @event.save
       redirect_to events_path
