@@ -16,6 +16,10 @@ class Happening < ApplicationRecord
 	  !self.need_ride
 	end
 
+	def current_event
+		@current_event ||= Event.find_by(params[:event_id])
+    end
+
 	def happenings_attributes=(happenings_attributes)
 	  happenings_attributes.each do |happening_attributes|
 		self.happenings.build(happening_attributes)
