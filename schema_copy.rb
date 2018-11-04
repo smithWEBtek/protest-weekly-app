@@ -56,4 +56,47 @@ ActiveRecord::Schema.define(version: 2018_07_15_185010) do
 end
 
 
+ActiveRecord::Schema.define(version: 2018_11_04_155445) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "cause"
+    t.integer "organization_id"
+    
+    t.string "location"
+    t.datetime "datetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "happenings", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.boolean "attend", default: false
+    t.boolean "need_ride", default: false
+    t.boolean "can_drive", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.string "contact_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.string "cell_phone"
+    t.string "email"
+    t.string "uid"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+end
+
 

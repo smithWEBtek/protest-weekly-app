@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2018_11_04_155445) do
     t.string "name"
     t.string "cause"
     t.integer "organization_id"
-    t.datetime "date"
     t.string "location"
     t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_events_on_organization_id"
   end
 
   create_table "happenings", force: :cascade do |t|
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2018_11_04_155445) do
     t.boolean "can_drive", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_happenings_on_event_id"
+    t.index ["user_id"], name: "index_happenings_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|

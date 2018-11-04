@@ -6,7 +6,7 @@ class Users < ActiveRecord::Migration[5.2]
     	t.string :cell_phone
     	t.string :email
     	t.string :uid
-      	t.string :image
+      t.string :image
       
       t.timestamps
     end

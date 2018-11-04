@@ -10,20 +10,28 @@ class HappeningsController < ApplicationController
 
 	def new
 	  @happening = Happening.new
-	  # 		@event.happenings.build(event_params)
+	  binding.pry
+	  @event.happenings.build(event_params)
 	end
 
 	def create
-	  # @event = Event.create(params[:event_id])
-      @happening = Happening.create(happening_params)
+	  @happening = Happening.create(happening_params)
+	  # binding.pry
+	  # @happening = current_user && event.happenings.create
 	  @happening.user = current_user
-	  # @event.happening.create(:event_id) 
-	  # = current_event
-	   # binding.pry
-	  
+	  @happening.event = current_event
+	  # binding.pry
+
+	  # @event = Event.find(params[:event_id])
+	 #  @happening = @event.happenings.new(event_params) do |c|
+		#     @happening.user = current_user
+		#   end
+		# binding.pry		  
+  #     # @happening = Happening.create(happening_params)
+	   	  
 	  	if @happening.attend || @happening.need_ride || @happening.can_drive  #need to require event_id somewhere in here
 		   @happening.save!
-		   redirect_to user_happening_url(:user_id, :happening_id)
+		   redirect_to user_happenings_url(:user_id, :happening_id)
 		elsif !@happening.save
 	  		redirect_to events_url, alert: "There was a problem registering you for this event. Please try again." 
 	  	end		
