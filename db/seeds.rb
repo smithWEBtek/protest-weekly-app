@@ -24,14 +24,10 @@ DATA = {
    ["name", "contact_info", "created_at", "updated_at"],
    :organization => [
    	["League of Women Voters", "lwv.org", nil, nil],
-   	["Women's March Emporia Chapter", "wmec@wmglobal.org", nil, nil]
-   	["ACLU of KS", "acluks@aclu.org", nil, nil]
+   	["Women's March Emporia Chapter", "wmec@wmglobal.org", nil, nil],
+   	["ACLU of KS", "acluks@aclu.org", nil, nil],
    ], 
-  :happening_keys => 
-  	["event_id", "user_id", "created_at", "updated_at", "can_drive", "attend", "need_ride"],
-  [
-    
-  ]
+
 }
 
   

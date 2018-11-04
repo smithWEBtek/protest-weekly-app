@@ -10,7 +10,7 @@ class HappeningsController < ApplicationController
 
 	def new
 	  @happening = Happening.new
-	  # @event.happenings.build(event_params)
+	  # 		@event.happenings.build(event_params)
 	end
 
 	def create
