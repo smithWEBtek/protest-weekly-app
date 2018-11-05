@@ -14,18 +14,9 @@ class HappeningsController < ApplicationController
 
 	def create
 	  @happening = Happening.create(happening_params)
-	  # binding.pry
-	  # @happening = current_user && event.happenings.create
 	  @happening.user = current_user
 	  @happening.event = current_event
-	  # binding.pry
-
-	  # @event = Event.find(params[:event_id])
-	 #  @happening = @event.happenings.new(event_params) do |c|
-		#     @happening.user = current_user
-		#   end
-		# binding.pry		  
-  #     # @happening = Happening.create(happening_params)
+	  
 	   	  
 	  	if @happening.attend || @happening.need_ride || @happening.can_drive  #need to require event_id somewhere in here
 	  		# binding.pry
