@@ -10,8 +10,6 @@ class HappeningsController < ApplicationController
 
 	def new
 	  @happening = Happening.new
-
-	  # @event.happenings.build(event_params)
 	end
 
 	def create
@@ -29,8 +27,8 @@ class HappeningsController < ApplicationController
 		# binding.pry		  
   #     # @happening = Happening.create(happening_params)
 	   	  
-	  	if current_user && (@happening.attend || @happening.need_ride || @happening.can_drive)  #need to require event_id somewhere in here
-	  		binding.pry
+	  	if @happening.attend || @happening.need_ride || @happening.can_drive  #need to require event_id somewhere in here
+	  		# binding.pry
 		   @happening.save!
 		   redirect_to user_happenings_url(:user_id, :happening_id)
 		elsif !@happening.save
@@ -39,7 +37,7 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
-	  @happenings = Happening.all
+	  # @happenings = Happening.all
 	  @happenings = Happening.includes(:event, :user).all
 	  render json: @happenings, status: 200
 	end

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_11_04_155445) do
     t.string "location"
     t.datetime "datetime"
     t.datetime "created_at", null: false
-    t.datetimatte "updated_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_events_on_organization_id"
   end
 
