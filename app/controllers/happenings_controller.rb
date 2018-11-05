@@ -16,12 +16,13 @@ class HappeningsController < ApplicationController
 	  @happening = Happening.create(happening_params)
 	  @happening.user = current_user
 	  @happening.event = current_event
-	  
+	  # binding.pry
 	   	  
 	  	if @happening.attend || @happening.need_ride || @happening.can_drive  #need to require event_id somewhere in here
-	  		# binding.pry
+	  		
 		   @happening.save!
-		   redirect_to user_happenings_url(:user_id, :happening_id)
+		   redirect_to user_happenings_url(:user_id, :happening_id) 
+		    #???
 		elsif !@happening.save
 	  		redirect_to events_url, alert: "There was a problem registering you for this event. Please try again." 
 	  	end		
@@ -64,7 +65,7 @@ class HappeningsController < ApplicationController
 	private
 
 	def happening_params
-  	  params.require(:happening).permit(:event_id, :user_id, :attend, :can_drive, :need_ride)
+  	  params.require(:happening).permit(:event_id, :user_id, :attend, :can_drive, :need_ride, :id)
 	end
 
 	def current_event
