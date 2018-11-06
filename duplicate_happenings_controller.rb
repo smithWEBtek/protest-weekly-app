@@ -1,7 +1,4 @@
 class HappeningsController < ApplicationController
-	before_action :current_event, only: [:new, :create, :edit, :update]
-	#a happening is unique to the user
-	#a happening is unique to the event
 	#user has one active happening per event
 	#user can edit happening
 	#user can cancel happening
@@ -9,37 +6,30 @@ class HappeningsController < ApplicationController
 	#user can see all of their happenings after login (user.show)
 
 	def new
-		if !current_user
-			flash[:message] = 'Please sign up, or log in.'
-			redirect_to root_path
-		else
-			@user = current_user
-			@event = current_event
-			@happening = Happening.new
-		end
+	  @happening = Happening.new(user_id: params[:user_id]) && Happening.new(event_id: params[:event_id])
 	end
 
 	def create
-	  @happening = Happening.new(happening_params)
+	  @happening = Happening.create(happening_params)
+	  # binding.pry
+	  @happening = current_user && event.happenings.create
 	  @happening.user = current_user
 	  @happening.event = current_event
 	  # binding.pry
-	   	  
-	  	if @happening.attend 
-	  	   @happening.save!
-		   redirect_to user_happenings_url(:user_id, :happening_id) 
-		    #???
-		else 
-		flash[:message] ='There was a problem registering you for this event. Please try again.'
-		redirect_to events_url  
-	  	end		
+	  
+	  	if !@happening.save
+	  		redirect_to events_url, alert: "You have already signed up for this event. Please choose another." 
+	  	else
+	  		@happening.attend || @happening.need_ride || @happening.can_drive 
+		   @happening.save!
+		   redirect_to user_happening_url(:user_id, :happening_id)
+		end		
 	end
 
 	def index
-	  if current_user# @happenings = Happening.all
-	  @happenings = current_user.happenings
-	  # render json: @happenings, status: 200
-	  end
+	  @happenings = Happening.all
+	  @happenings = Happening.includes(:event, :user).all
+	  render json: @happenings, status: 200
 	end
 
 	def show
@@ -73,12 +63,7 @@ class HappeningsController < ApplicationController
 	private
 
 	def happening_params
-  	  params.require(:happening).permit(:event_id, :user_id, :attend, :can_drive, :need_ride, :id)
+  	  params.require(:happening).permit(:event_id, :user_id, :attend, :can_drive, :need_ride)
 	end
 
-	def current_event
-    @current_event ||= Event.find_by(id: params[:event_id])
-  	end
-
-	
 end

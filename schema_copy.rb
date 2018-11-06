@@ -10,17 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2018_07_15_185010) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "cause"
+    t.integer "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "location"
+    t.datetime "datetime"
+    t.index ["organization_id"], name: "index_events_on_organization_id"
+  end
+
+  create_table "happenings", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "can_drive", default: false
+    t.boolean "attend", default: false
+    t.boolean "need_ride", default: false
+    t.index ["event_id"], name: "index_happenings_on_event_id"
+    t.index ["user_id"], name: "index_happenings_on_user_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.string "contact_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.string "cell_phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "image"
+  end
+
+end
+
+
 ActiveRecord::Schema.define(version: 2018_11_04_155445) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "cause"
     t.integer "organization_id"
+    
     t.string "location"
     t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["organization_id"], name: "index_events_on_organization_id"
   end
 
   create_table "happenings", force: :cascade do |t|
@@ -31,8 +77,6 @@ ActiveRecord::Schema.define(version: 2018_11_04_155445) do
     t.boolean "can_drive", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_happenings_on_event_id"
-    t.index ["user_id"], name: "index_happenings_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -54,3 +98,5 @@ ActiveRecord::Schema.define(version: 2018_11_04_155445) do
   end
 
 end
+
+

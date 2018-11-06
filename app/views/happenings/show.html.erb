@@ -1,9 +1,10 @@
 
-<h1>Thanks for signing up!</h1>
+<h1> Thanks for signing up, <%= @current_user.name %>!</h1>
+		
 
 <p>We'll be in contact if you signed up for the carpool. Please make sure we have your cell phone on file.</p>
+<br/>
 <p>We look forward to seeing you!</p>
-
 
 
 <%= link_to "Back to Events", events_url %>

@@ -17,9 +17,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
   end
     
-  def current_event
-    @current_event ||= session[:user_id] && Event.find_by(session[:event_id])
-  end
+  # def current_event
+  #   @current_event ||= Event.find_by(params[:event_id])
+  # end
+  # # test to see if current_event is even needed
 
   helper_method :current_user
 
