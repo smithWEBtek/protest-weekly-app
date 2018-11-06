@@ -18,7 +18,7 @@
 
 		<% @events.each do |event| %>
 		<tr>
-			<td><%= event.name %></td>
+			<td><%= link_to event.name, event_path(event) %></td>
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
 			<td><%= event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
@@ -33,4 +33,6 @@
 	<br>
 
 <% end %>
+<br> <%= link_to "Edit Event", edit_event_path(:id), class: "btn btn-primary" %><br/>
+<br/>
 <%= link_to "Back to All Events", events_path %></p>
