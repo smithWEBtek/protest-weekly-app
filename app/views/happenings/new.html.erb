@@ -3,7 +3,7 @@
 <p>If you need a ride or can provide one, let us know that, too.</p>
 
 	<%= form_for(:happening, url: :event_happenings, method: 'POST') do |f| %>
-	
+
   <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.hidden_field :event_id, value: @event.id %>
 

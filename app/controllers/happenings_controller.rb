@@ -1,5 +1,5 @@
 class HappeningsController < ApplicationController
-	before_action :current_event
+	before_action :current_event, only: [:new, :create, :edit]
 	#a happening is unique to the user
 	#a happening is unique to the event
 	#user has one active happening per event
@@ -13,18 +13,18 @@ class HappeningsController < ApplicationController
 	end
 
 	def create
-	  @happening = Happening.create(happening_params)
+	  @happening = Happening.new(happening_params)
 	  @happening.user = current_user
 	  @happening.event = current_event
 	  # binding.pry
 	   	  
-	  	if @happening.attend || @happening.need_ride || @happening.can_drive  #need to require event_id somewhere in here
-	  		
-		   @happening.save!
+	  	if @happening.attend 
+	  	   @happening.save
 		   redirect_to user_happenings_url(:user_id, :happening_id) 
 		    #???
-		elsif !@happening.save
-	  		redirect_to events_url, alert: "There was a problem registering you for this event. Please try again." 
+		else 
+		flash[:notice] ='There was a problem registering you for this event. Please try again.'
+		redirect_to events_url  
 	  	end		
 	end
 
