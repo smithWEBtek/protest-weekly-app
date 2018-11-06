@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-  before_action :current_user, only: [:new, :create, :edit]
+  before_action :current_user
   before_action :user_signed_in?, except: [:new, :create, :home]
     
   def user_signed_in?

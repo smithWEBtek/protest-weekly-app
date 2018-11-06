@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     
   def new
     @event = Event.new
-    @event.happenings.build
+    @happening = @event.happenings.build
     # binding.pry
   end
 

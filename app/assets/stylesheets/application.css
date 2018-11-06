@@ -10,3 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
+
+ 
+.flash_style {
+	font-weight: bold;
+  color: #cc3300;
+  font-style: italic;
+}
