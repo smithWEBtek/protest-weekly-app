@@ -1,3 +1,4 @@
-The most recently added event was <%= @event.name %>.
+The most recently added event was <%= link_to @event.name, event_path(@event) %>.
 <p>
+	
 <%= link_to "All Events", events_path %></p>

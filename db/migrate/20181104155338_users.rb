@@ -1,13 +1,13 @@
-class CreateUsers < ActiveRecord::Migration[5.2]
+class Users < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
     	t.string :name
     	t.string :password_digest
     	t.string :cell_phone
     	t.string :email
-    	t.boolean :ride
-    	t.boolean :drive
-
+    	t.string :uid
+      t.string :image
+      
       t.timestamps
     end
   end

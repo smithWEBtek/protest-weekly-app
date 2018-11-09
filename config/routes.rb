@@ -23,13 +23,15 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  resources :events do
+    resources :happenings
+  end
+
   resources :users do
     resources :happenings
   end
 
-  resources :events do
-    resources :happenings 
-  end
+  
 
 
             # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

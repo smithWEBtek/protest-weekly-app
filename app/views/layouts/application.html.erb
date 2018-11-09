@@ -13,10 +13,39 @@
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
+
+          <% if current_user %>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"><%= link_to "Events", events_path %></span>
+          </button>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"><%= link_to "Organizations", organizations_path %></span>
+          </button>
+
+          <% if current_user.happenings.length > 0 %>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"><%= link_to "My Activities", user_happenings_path(current_user) %></span>
+            </button>
+            <% else %>
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar flash_style"><%= link_to "No Activities Yet", events_path %></span>
+            </button>
+            <% end %>
+            <% end %>
+            <button type="button" class="navbar-toggle" data-toggle="collapse">
             <span class="icon-bar"><%= link_to "Home", root_url %></span>
+          </button>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse">
             <span class="icon-bar"><%= link_to "Sign Up", new_user_path %></span>
+          </button>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse">
             <span class="icon-bar"><%= link_to "Sign In", signin_path %></span>
+          </button>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse">
             <span class="icon-bar"><%= link_to "Log Out", signout_path, method: :delete %></span>
           </button>
        
@@ -28,8 +57,13 @@
           </p>
            </div>
         </div>
+        <% if flash %>
+        <div id="flash_messages" class="flash_style">
+          <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}") %>
+          <% end %>
         </div>
-                      
+      <% end %>                
     <%= yield %>
   </body>
 </html>
