@@ -1,12 +1,9 @@
 class HappeningsController < ApplicationController
 	before_action :current_event, only: [:new, :create, :edit, :update]
-	#a happening is unique to the user
-	#a happening is unique to the event
-	#user has one active happening per event
+	
 	#user can edit happening
 	#user can cancel happening
-	#user receives confirmation of happening on show page
-	#user can see all of their happenings after login (user.show)
+	
 
 	def new
 		if !current_user
@@ -23,12 +20,11 @@ class HappeningsController < ApplicationController
 	  @happening = Happening.new(happening_params)
 	  @happening.user = current_user
 	  @happening.event = current_event
-	  # binding.pry
+	 
 	   	  
 	  	if @happening.attend 
 	  	   @happening.save!
 		   redirect_to user_happenings_url(:user_id, :happening_id) 
-		    #???
 		else 
 		flash[:message] ='There was a problem registering you for this event. Please try again.'
 		redirect_to events_url  
@@ -36,7 +32,7 @@ class HappeningsController < ApplicationController
 	end
 
 	def index
-	  if current_user# @happenings = Happening.all
+	  if current_user
 	  @happenings = current_user.happenings
 	  # render json: @happenings, status: 200
 	  end

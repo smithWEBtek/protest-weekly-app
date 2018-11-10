@@ -18,3 +18,14 @@
   font-style: italic;
 }
 
+p {
+	font-size: 1em;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+button {
+	padding: 1rem;
+	font-size: 1rem;
+	background-color: #0ABFBC;
+	border: 0;
+}
+
