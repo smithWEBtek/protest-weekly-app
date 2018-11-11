@@ -14,11 +14,11 @@
  
 .flash_style {
 	font-weight: bold;
-  color: #cc3300;
+  color: #33cccc;
   font-style: italic;
 }
 
-p {
+p, tbody {
 	font-size: 1em;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
@@ -29,3 +29,12 @@ button {
 	border: 0;
 }
 
+h1 {
+	font-size: 2em;
+	font-family: "Times Roman", serif;
+}
+
+h2 {
+	font-size: 1.5em;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
