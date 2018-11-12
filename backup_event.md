@@ -1,38 +1,27 @@
 <h1>Events</h1>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th colspan="5"></th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td><strong>Name</strong></td>
-			<td><strong>Cause</strong></td>
-			<td><strong>Location</strong></td>
-			<td><strong>Datetime</strong></td>
-			<td><strong>Organization</strong></td>		
-		</tr>
-
-		<% @events.each do |event| %>
-		<tr>
-			<td><%= link_to event.name, event_path(event) %></td>
-			
-			<td><%= event.cause %></td>
-			<td><%= event.location %></td>
-			<td><%= event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>
-			<td><%= event.organization.name %></td>
-			
-		</tr>
-	 <% end %>
-	</tbody>
-</table>
-	
-<br>
-	<br>
-	<br>
 	
 	<p><%= link_to "Create Event", new_event_path, class: "btn btn-primary" %> </p>
 	<p><%= link_to "Past Events", events_past_events_path %> </p>
+
+<h3><%= @event.name %></h3>
+		<div id="event-<%= event.id %>"></div>
+			
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-more").on("click", function() {
+    var id = $(this).data("id");
+    $.get("/events/" + id + "/cause", function(cause) {
+      $.get("/events/" + id + "/location", function(location) {
+      	$.get("/events/" + id + "/datetime", function(datetime) {
+      		$.get("/events/" + id + "/event.organization.name", function(event.organization.name) {
+        }
+        var causeText = "<p>" + cause + "</p><p>" + locationText + "<p>" + location +"</p><p>" + datetimeText +"<p>" + datetime + "</p><p>" + eventOrganizationText + "<p>" + eventOrganization;
+        $("#eventt-" + id).html(causeText);
+    		});
+    	});
+      });
+    });
+  });
+;
+</script>
