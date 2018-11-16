@@ -1,3 +1,7 @@
+
+10-11-18 
+Rails project w/JS Frontend
+
 10/21/18 - js project
 happenings#show
 <p>Please add this to your calendar:</p>
