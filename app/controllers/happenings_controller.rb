@@ -1,12 +1,7 @@
 class HappeningsController < ApplicationController
 	before_action :current_event, only: [:new, :create, :edit, :update]
-	#a happening is unique to the user
-	#a happening is unique to the event
-	#user has one active happening per event
-	#user can edit happening
-	#user can cancel happening
-	#user receives confirmation of happening on show page
-	#user can see all of their happenings after login (user.show)
+
+	#render/respond to for js
 
 	def new
 		if !current_user

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit]
 
+#render/respond for js
     
   def new
     @event = Event.new
