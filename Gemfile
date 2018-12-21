@@ -5,13 +5,16 @@ ruby '2.4.2'
 
 gem 'rails', '~> 5.2.0'
 
+gem 'active_model_serializers', '~> 0.10.0'
+gem "bulma-rails", "~> 0.7.2"
+
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
 
 gem 'omniauth-facebook', '~>4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "loofah", ">= 2.2.3"
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
