@@ -1,53 +1,50 @@
 //Find & replace & add as appropriate
 
 $(function () {
-	listenCommentsClick()
-	listenNewPostFormClick()
-	listenPostDetailsClick()
+	listenNewHappeningsClick()
 
 })
-
-function listenCommentsClick() {
-	$('a.load_comments').on('click', function (event) {
+//replace the following accordingly
+function listenHappeningsClick() {
+	$('a.load_Happenings').on('click', function (event) {
 		event.preventDefault();
 
-		getPostComments(this.href);
+		getHappenings(this.href);
 	})
 }	
 
-function getPostComments(url) {
+function getHappenings(url) {
 	$.ajax({
 		method: 'GET',
 		url: url,
 	}).done(function (data) {
 		console.log("the data: ", data);
 
-		debugger
-		document.getElementById('comments-html-area').innerHTML = data 
+		document.getElementById('happenings-html-area').innerHTML = data 
 	})
 }
 
-function listenNewPostFormClick() {
-	$('.ajax-new-post').on('click', function (e) {
+function listenNewHappeningFormClick() {
+	$('.ajax-new-happening').on('click', function (e) {
 		e.preventDefault();
-		$('button#new-post').hide()
-		newPostForm();
+		$('button#new-happening').hide()
+		newHappeningForm();
 	})
 }
 
-function newPostForm() {
+function newHappeningForm() {
 	$.ajax({
-		url: '/posts/new',
+		url: '/happenings/new',
 		method: 'get',
 		success: function (response) {
 			console.log("the response: ", response);
-			$('div#new_post_form').html('--- this form--brought to you by AJAX' + response)
+			$('div#new_happening_form').html('--- this form--brought to you by AJAX' + response)
 		}
 	})
 }
 
-function listenPostDetailsClick() {
-	$('div#posts-index a').on('click', function (event) {
+function listenHappeningDetailsClick() {
+	$('div#happenings-index a').on('click', function (event) {
 		event.preventDefault()
 		console.log("this is the url: ", this.href);
 		url = this.href
@@ -57,27 +54,28 @@ function listenPostDetailsClick() {
 			dataType: 'json'
 		}).done(function (data) {
 			
-			let post = new Post(data)
-			let html = post.createPostHTML()
+			let event = new Happening(data)
+			let html = event.createHappeningHTML()
 
-			document.getElementById('post-details').innerHTML = html
-			listenNewCommentClick()
+			document.getElementById('event-details').innerHTML = html
+			listenNewHappeningClick()
 		})
 	})
 }
 
-class Post {
+class Happening {
 	constructor(obj) {
-		this.title = obj.title,
-		this.content = obj.content,
-		this.comments = obj.comments
+		this.name = obj.name,
+		this.cause = obj.cause,
+		this.location = obj.location
+		this.happenings = obj.happenings
 	}
 }
 
-Post.prototype.createPostHTML = function () {
-	const comments = (
-		this.comments.map((comment, index) => {
-			return `<p id=${index}><em>${comment.content}</em></p>`
+Happening.prototype.createHappeningHTML = function () {
+	const happenings = (
+		this.happenings.map((happening, index) => {
+			return `<p id=${index}><em>${happening.user}</em></p>`
 		}).join(' ')
 		)
 
@@ -85,13 +83,13 @@ Post.prototype.createPostHTML = function () {
 		<div class="container">
 			<div class="columns">
 				<div class="column is-3">
-					<h3 class="title">${this.title}</h3>
-					<p class="body">${this.content}</p>
+					<h3 class="name">${this.event_name}</h3>
+					<p class="body">${this.cause}</p>
 					</div>
 					<div class="column is-6">
 					<fieldset>
-					<strong>comments: </strong>
-					<p>${comments}</p>
+					<strong>happenings: </strong>
+					<p>${happenings}</p>
 					<button id='add-comment'>add a comment</button>
 					</fieldset>
 				</div>
@@ -100,8 +98,9 @@ Post.prototype.createPostHTML = function () {
 	`)
 }
 
-function listenNewCommentClick() {
-	$('button#add-comment').on('click', function (e) {
+function listenNewHappeningsClick() {
+	$('button#add-happening').on('click', function (e) {
 		e.preventDefault();
 	})
 }
+	

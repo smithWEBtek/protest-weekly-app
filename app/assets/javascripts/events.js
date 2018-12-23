@@ -1,8 +1,6 @@
 $(function () {
 	listenEventsClick()
 	listenNewEventFormClick()
-	listenNewHappeningsClick()
-
 })
 //replace the following accordingly
 function listenEventsClick() {
@@ -13,15 +11,14 @@ function listenEventsClick() {
 	})
 }	
 
-function getHappenings(url) {
+function getEvents(url) {
 	$.ajax({
 		method: 'GET',
 		url: url,
 	}).done(function (data) {
 		console.log("the data: ", data);
 
-		debugger
-		document.getElementById('happenings-html-area').innerHTML = data 
+		document.getElementById('events-html-area').innerHTML = data 
 	})
 }
 
@@ -69,14 +66,14 @@ class Event {
 		this.name = obj.name,
 		this.cause = obj.cause,
 		this.location = obj.location
-		this.happenings = obj.happenings
+		this.datetime = obj.datetime
 	}
 }
 
 Event.prototype.createEventHTML = function () {
-	const happenings = (
-		this.happenings.map((happening, index) => {
-			return `<p id=${index}><em>${happening.user}</em></p>`
+	const events = (
+		this.events.map((event, index) => {
+			return `<p id=${index}><em>${event.user}</em></p>`
 		}).join(' ')
 		)
 
@@ -89,8 +86,8 @@ Event.prototype.createEventHTML = function () {
 					</div>
 					<div class="column is-6">
 					<fieldset>
-					<strong>happenings: </strong>
-					<p>${happenings}</p>
+					<strong>events: </strong>
+					<p>${events}</p>
 					<button id='add-comment'>add a comment</button>
 					</fieldset>
 				</div>
@@ -99,9 +96,5 @@ Event.prototype.createEventHTML = function () {
 	`)
 }
 
-function listenNewHappeningClick() {
-	$('button#add-happening').on('click', function (e) {
-		e.preventDefault();
-	})
-}
+
 	
