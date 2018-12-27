@@ -1,24 +1,26 @@
 $(function () {
+	console.log("events.js loaded .............");
 	listenEventsClick()
 	listenNewEventFormClick()
 })
 //replace the following accordingly
 function listenEventsClick() {
-	$('a.load_events').on('click', function (event) {
+	$('a#load-events').on('click', function (event) {
 		event.preventDefault();
 
 		getEvents(this.href);
 	})
-}	
+}
 
 function getEvents(url) {
 	$.ajax({
 		method: 'GET',
 		url: url,
+		dataType: 'json'
 	}).done(function (data) {
 		console.log("the data: ", data);
 
-		document.getElementById('events-html-area').innerHTML = data 
+		document.getElementById('events-html-area').innerHTML = JSON.stringify(data)
 	})
 }
 
@@ -51,7 +53,7 @@ function listenEventDetailsClick() {
 			type: 'get',
 			dataType: 'json'
 		}).done(function (data) {
-			
+
 			let event = new Event(data)
 			let html = event.createEventHTML()
 
@@ -64,8 +66,8 @@ function listenEventDetailsClick() {
 class Event {
 	constructor(obj) {
 		this.name = obj.name,
-		this.cause = obj.cause,
-		this.location = obj.location
+			this.cause = obj.cause,
+			this.location = obj.location
 		this.datetime = obj.datetime
 	}
 }
@@ -75,7 +77,7 @@ Event.prototype.createEventHTML = function () {
 		this.events.map((event, index) => {
 			return `<p id=${index}><em>${event.user}</em></p>`
 		}).join(' ')
-		)
+	)
 
 	return (`
 		<div class="container">
@@ -97,4 +99,3 @@ Event.prototype.createEventHTML = function () {
 }
 
 
-	

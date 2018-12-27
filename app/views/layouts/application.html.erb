@@ -21,7 +21,7 @@
 
           <% if current_user %>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"><%= link_to "Events", events_path %></span>
+            <span class="icon-bar"><%= link_to "Events", events_path, id: 'load-events' %></span>
           </button>
 
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

@@ -32,8 +32,11 @@ class HappeningsController < ApplicationController
 
 	def index
 	  if current_user# @happenings = Happening.all
-	  @happenings = current_user.happenings
-	  # render json: @happenings, status: 200
+	  	@happenings = current_user.happenings
+    	respond_to do |f|
+      	f.html {render :index}
+      	render json: @happenings
+    	end
 	  end
 	end
 

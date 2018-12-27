@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	validates :name, presence: true
   	validates :password, presence: true, length: { in: 6..64 }
 
-  	has_many :happenings
+  has_many :happenings
 	has_many :events, through: :happenings
 	
 
