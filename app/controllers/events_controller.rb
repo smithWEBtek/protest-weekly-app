@@ -26,6 +26,10 @@ class EventsController < ApplicationController
   def index
     @events = Event.includes(:organization).all
     @events = Event.order(:datetime).current_events
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @events}
+    end
   end
 
   def edit
