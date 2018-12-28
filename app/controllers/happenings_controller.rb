@@ -1,8 +1,7 @@
 class HappeningsController < ApplicationController
 	before_action :current_event, only: [:new, :create, :edit, :update]
 	
-	#user can edit happening
-	#user can cancel happening
+#render/respond to for js
 	
 
 	def new
@@ -73,7 +72,7 @@ class HappeningsController < ApplicationController
 	end
 
 	def current_event
-    @current_event ||= Event.find_by(id: params[:event_id])
+    	@current_event ||= Event.find_by(id: params[:event_id])
   	end
 
 	

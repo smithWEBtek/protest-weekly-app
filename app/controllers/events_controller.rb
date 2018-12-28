@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
     before_action :find_event, only: [:show, :edit]
 
+#render/respond for js
     
   def new
     @event = Event.new
     @happening = @event.happenings.build
+    # binding.pry
   end
 
   def create
@@ -24,6 +26,10 @@ class EventsController < ApplicationController
   def index
     @events = Event.includes(:organization).all
     @events = Event.order(:datetime).current_events
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @events}
+    end
   end
 
   def edit
@@ -39,8 +45,8 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-  	if @event.update(event_params)
-		  redirect_to events_path(:event_id), notice: "Event was successfully updated."
+    if @event.update(event_params)
+      redirect_to events_path(:event_id), notice: "Event was successfully updated."
     else
       redirect_to edit_event_path(:event_id)
     end
