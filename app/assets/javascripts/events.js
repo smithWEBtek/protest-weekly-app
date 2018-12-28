@@ -1,12 +1,12 @@
 $(function () {
 	listenEventsClick()
-	listenNewEventFormClick()
+	// listenNewEventFormClick()
 })
 //replace the following accordingly
 function listenEventsClick() {
-	$('a.load_events').on('click', function (event) {
+	$('a.events').on('click', function (event) {
 		event.preventDefault();
-
+		debugger
 		getEvents(this.href);
 	})
 }	
@@ -14,52 +14,52 @@ function listenEventsClick() {
 function getEvents(url) {
 	$.ajax({
 		method: 'GET',
-		url: url,
+		url: this.href
 	}).done(function (data) {
-		console.log("the data: ", data);
+		console.log(data);
 
-		document.getElementById('events-html-area').innerHTML = data 
+		// document.getElementById('events-html').innerHTML = data 
 	})
 }
 
-function listenNewEventFormClick() {
-	$('.ajax-new-event').on('click', function (e) {
-		e.preventDefault();
-		$('button#new-event').hide()
-		newEventForm();
-	})
-}
+// function listenNewEventFormClick() {
+// 	$('.ajax-new-event').on('click', function (e) {
+// 		e.preventDefault();
+// 		$('button#new-event').hide()
+// 		newEventForm();
+// 	})
+// }
 
-function newEventForm() {
-	$.ajax({
-		url: '/events/new',
-		method: 'get',
-		success: function (response) {
-			console.log("the response: ", response);
-			$('div#new_event_form').html('--- this form--brought to you by AJAX' + response)
-		}
-	})
-}
+// function newEventForm() {
+// 	$.ajax({
+// 		url: '/events/new',
+// 		method: 'get',
+// 		success: function (response) {
+// 			console.log("the response: ", response);
+// 			$('div#new_event_form').html('--- this form--brought to you by AJAX' + response)
+// 		}
+// 	})
+// }
 
-function listenEventDetailsClick() {
-	$('div#events-index a').on('click', function (event) {
-		event.preventDefault()
-		console.log("this is the url: ", this.href);
-		url = this.href
-		$.ajax({
-			url: url,
-			type: 'get',
-			dataType: 'json'
-		}).done(function (data) {
+// function listenEventDetailsClick() {
+// 	$('div#events-index a').on('click', function (event) {
+// 		event.preventDefault()
+// 		console.log("this is the url: ", this.href);
+// 		url = this.href
+// 		$.ajax({
+// 			url: url,
+// 			type: 'get',
+// 			dataType: 'json'
+// 		}).done(function (data) {
 			
-			let event = new Event(data)
-			let html = event.createEventHTML()
+// 			let event = new Event(data)
+// 			let html = event.createEventHTML()
 
-			document.getElementById('event-details').innerHTML = html
-			listenNewEventClick()
-		})
-	})
-}
+// 			document.getElementById('event-details').innerHTML = html
+// 			listenNewEventClick()
+// 		})
+// 	})
+// }
 
 class Event {
 	constructor(obj) {

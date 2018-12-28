@@ -6,7 +6,7 @@
 			<th colspan="5"></th>
 		</tr>
 	</thead>
-
+<!-- how to add labels here that get JS attention -->
 	<tbody>
 		<tr>
 			<td><strong>Name</strong></td>
@@ -18,7 +18,7 @@
 
 		<% @events.each do |event| %>
 		<tr>
-			<td><%= link_to event.name, event_path(event) %></td>
+			<td><%= link_to event.name, event_path(event), :class => "Events" %></td>
 			
 			<td><%= event.cause %></td>
 			<td><%= event.location %></td>
