@@ -18,7 +18,7 @@ function getEvents(url) {
 	}).done(function (data) {
 		console.log(data);
 
-		// document.getElementById('events-html').innerHTML = data 
+		document.getElementById('events-html').innerHTML = data 
 	})
 }
 
