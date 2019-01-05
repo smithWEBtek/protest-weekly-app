@@ -19,9 +19,12 @@ Rails.application.routes.draw do
   get '/events/last_added', to: 'events#last_added'
   get '/events/past_events', to: 'events#past_events'
    
+  
   resources :organizations do
     resources :events
   end
+
+  get '/events', to: 'events#index'
 
   resources :events do
     resources :happenings

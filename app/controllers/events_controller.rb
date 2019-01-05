@@ -6,7 +6,10 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @happening = @event.happenings.build
-    # binding.pry
+    respond_to do |f|
+      f.html { render :new }
+      f.json { render json: @event }
+    end
   end
 
   def create
