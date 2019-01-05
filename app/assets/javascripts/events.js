@@ -1,23 +1,25 @@
 $(function () {
-	listenEventsClick()
+	listenNewEventClick()
 	// listenNewEventFormClick()
 })
 //replace the following accordingly
-function listenEventsClick() {
-	$('a.events').on('click', function (event) {
+function listenNewEventClick() {
+	$('a.new_event').on('click', function (event) {
 		event.preventDefault();
 		debugger
 		getEvents(this.href);
 	})
 }	
 
-function getEvents(url) {
+function getNewEvent(url) {
 	$.ajax({
 		method: 'GET',
 		url: this.href
 	}).done(function (data) {
 		console.log(data);
-
+		// $('div#comments-html-area').html(data); // data in div is replaced // jquery way
+		// $('div#comments-html-area').append(data); // data piles up in DOM on each click!
+		// see div#comments - look for in views. This is how/what we hijack
 		document.getElementById('events-html').innerHTML = data 
 	})
 }

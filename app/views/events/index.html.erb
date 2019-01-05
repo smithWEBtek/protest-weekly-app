@@ -3,10 +3,11 @@
  <table class="table">
 	<thead>
 		<tr>
-			<th colspan="5"></th>
+			<th colspan="6"></th>
 		</tr>
 	</thead>
-<!-- how to add labels here that get JS attention -->
+<!-- how to add labels here that get JS attention
+	where do we want to inject JS? How should it be labeled? -->
 	<tbody>
 		<tr>
 			<td><strong>Name</strong></td>
@@ -34,8 +35,7 @@
 	<br>
 	<br>
 
-	 
-	<p><%= link_to "Create Event", new_event_path, class: "btn btn-primary" %> </p>
+	<button id='new-event'><%= link_to "Create Event", new_event_path %></button>
 	<p><%= link_to "Past Events", events_past_events_path %> </p>
 
 
