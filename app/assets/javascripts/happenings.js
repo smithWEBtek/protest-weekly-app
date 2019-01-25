@@ -9,7 +9,7 @@ $(function () {
 // //replace the following accordingly
 // make sure 'load_Happenings' appears somewhere in the bloody views to give JS direcction
 function listenHappeningsClick() {
-	$('a.load_Happenings').on('click', function (event) {
+	$('a.load_happenings').on('click', function (event) {
 		event.preventDefault();
 		debugger
 		getHappenings(this.href);
@@ -19,9 +19,9 @@ function listenHappeningsClick() {
 function getHappenings(url) {
 	$.ajax({
 		method: 'GET',
-		url: url,
+		url: this.href
 	}).done(function (data) {
-		console.log("the data: ", data);
+		console.log(data);
 
 		document.getElementById('happenings-html-area').innerHTML = data 
 	})

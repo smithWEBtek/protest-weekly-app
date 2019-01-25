@@ -33,7 +33,7 @@ class HappeningsController < ApplicationController
 	def index
 	  if current_user
 	  @happenings = current_user.happenings
-	  # render json: @happenings, status: 200
+	  render json: @happenings, status: 200
 	  end
 	end
 
