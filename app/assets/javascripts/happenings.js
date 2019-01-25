@@ -1,30 +1,32 @@
 //Find & replace & add as appropriate
+//we want to interrupt the listing of Happenings (index), 
+//a newly created Happening, and 
+//the process of creating a Happening (form)
+$(function () {
+	listenHappeningsClick()
 
-// $(function () {
-// 	listenNewHappeningsClick()
-
-// })
+})
 // //replace the following accordingly
 // make sure 'load_Happenings' appears somewhere in the bloody views to give JS direcction
-// function listenHappeningsClick() {
-// 	$('a.load_Happenings').on('click', function (event) {
-// 		event.preventDefault();
+function listenHappeningsClick() {
+	$('a.load_Happenings').on('click', function (event) {
+		event.preventDefault();
+		debugger
+		getHappenings(this.href);
+	})
+}	
 
-// 		getHappenings(this.href);
-// 	})
-// }	
+function getHappenings(url) {
+	$.ajax({
+		method: 'GET',
+		url: url,
+	}).done(function (data) {
+		console.log("the data: ", data);
 
-// function getHappenings(url) {
-// 	$.ajax({
-// 		method: 'GET',
-// 		url: url,
-// 	}).done(function (data) {
-// 		console.log("the data: ", data);
-
-// 		document.getElementById('happenings-html-area').innerHTML = data 
-// 	})
-// }
-
+		document.getElementById('happenings-html-area').innerHTML = data 
+	})
+	
+}
 // function listenNewHappeningFormClick() {
 // 	$('.ajax-new-happening').on('click', function (e) {
 // 		e.preventDefault();
