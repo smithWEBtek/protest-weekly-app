@@ -3,7 +3,7 @@
 
 })
 // //replace the following accordingly
-function listenEventssClick() {
+function listenEventsClick() {
 	$('a.load_events').on('click', function (event) {
 		event.preventDefault();
 		debugger
@@ -21,7 +21,20 @@ function getEvents(url) {
 		document.getElementById('events-html-area').innerHTML = data 
 	})
 	
-}// $(function () {
+}
+
+// // Object Model
+class Event {
+	constructor(obj) {
+		this.name = obj.name,
+		this.cause = obj.cause,
+		this.location = obj.location
+		this.datetime = obj.datetime
+	}
+}
+
+
+// $(function () {
 // 	// listenNewEventClick()
 // 	listenEventsClick()
 // })
@@ -44,35 +57,23 @@ function getEvents(url) {
 // 	})
 // }
 
-// // Object Model
-// class Event {
-// 	constructor(obj) {
-// 		this.name = obj.name,
-// 		this.cause = obj.cause,
-// 		this.location = obj.location
-// 		this.datetime = obj.datetime
-// 	}
-// }
+
 
 // //prototype of Event class
-// Event.prototype.createEventHTML = function () {
-// 	const events = (
-// 		this.events.map((event, index) => {
-// 			return `<p id=${index}><em>${event}</em></p>`
-// 		}).join(' ')
-// 		)
+Event.prototype.eventHTML = function () {
+		// (the follow should match events.index language)
 
-// 	return (`
-// 		<div class="container">
-// 			<div class="columns">
-// 				<div class="column is-5">
-// 					<p class="name">${this.name}</p>
-// 					<p class="cause">${this.cause}</p>
-// <p class="location">${this.location}</p>
-// <p class="datetime">${this.datetime}</p>
-// <p class="event_organization_name">${this.organization_name}</p>
-// 					</div>
-// 			</div>
-// 		</div>
-// 	`)
-// }
+	return (`
+		<div class="container">
+			<div class="columns">
+				<div class="column is-5">
+					<p class="name">${this.name}</p>
+					<p class="cause">${this.cause}</p>
+					<p class="location">${this.location}</p>
+					<p class="datetime">${this.datetime}</p>
+					<p class="event_organization_name">${this.organization_name}</p>
+					</div>
+			</div>
+		</div>
+	`)
+}
