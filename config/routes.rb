@@ -24,8 +24,6 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  get '/events', to: 'events#index'
-
   resources :events do
     resources :happenings
   end
@@ -34,7 +32,9 @@ Rails.application.routes.draw do
     resources :happenings
   end
 
-  
+  get '/events', to: 'events#index'
+  get '/happenings', to: 'happenings#index'
+
 
 
             # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
