@@ -32,7 +32,7 @@ class HappeningsController < ApplicationController
 
 	def index
 	  if current_user
-	  @happenings = current_user.happenings
+	  @happenings = current_user.happenings 
 	  render json: @happenings, status: 200
 	  end
 	end
@@ -40,7 +40,7 @@ class HappeningsController < ApplicationController
 	def show
 	  @happening = Happening.find_by(id: params[:id])
 	  @user = User.find_by(id: params[:user_id])
-	  @event = Event.find_by(id: params[:event_id])
+	  @event = Event.find_by(id: params[:event_id]).order(:datetime).current_events
 	end
 
 	def edit

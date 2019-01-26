@@ -1,4 +1,27 @@
-// $(function () {
+(function () {
+	listenEventsClick()
+
+})
+// //replace the following accordingly
+function listenEventssClick() {
+	$('a.load_events').on('click', function (event) {
+		event.preventDefault();
+		debugger
+		getEvents(this.href);
+	})
+}	
+
+function getEvents(url) {
+	$.ajax({
+		method: 'GET',
+		url: this.href
+	}).done(function (data) {
+		console.log(data);
+
+		document.getElementById('events-html-area').innerHTML = data 
+	})
+	
+}// $(function () {
 // 	// listenNewEventClick()
 // 	listenEventsClick()
 // })

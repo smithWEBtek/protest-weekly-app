@@ -2,6 +2,8 @@ class Happening < ApplicationRecord
 	validates :user, :event, presence: true
 	belongs_to :event
 	belongs_to :user
+
+	# scope :current_happenings, -> { where('event.datetime >= ?',DateTime.now) }
 	
 	def self.attend
 	  self.user && self.event		
