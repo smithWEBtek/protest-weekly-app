@@ -16,7 +16,7 @@
 
 		<% @happenings.each do |happening| %>
 		<tr>
-			<td><%= happening.event.name %></td>
+			<td><%= link_to happening.event.name, happenings_path(happening) %></td>
 			<td><%= happening.event.cause %></td>
 			<td><%= happening.event.location %></td>
 			<td><%= happening.event.datetime.strftime("%A, %B %d, %Y at %H:%M") %></td>			
@@ -31,4 +31,4 @@
 
 <p><%= link_to "Events", events_path, class: "btn btn-primary" %> </p>
  
- <!--#sort_by current: where('event.datetime >= ?',Time.now
+ <!--#sort_by current: where('event.datetime >= ?',Time.now -->

@@ -35,6 +35,7 @@ class HappeningsController < ApplicationController
 	  @happenings = current_user.happenings 
 	  render :layout => false
 	end
+	end
 
 	def show
 	  @happening = Happening.find_by(id: params[:id])
