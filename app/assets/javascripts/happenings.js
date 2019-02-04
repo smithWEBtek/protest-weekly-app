@@ -66,14 +66,14 @@ function getHappenings(url) {
 // 	})
 // }
 
-// class Happening {
-// 	constructor(obj) {
-// 		this.name = obj.name,
-// 		this.cause = obj.cause,
-// 		this.location = obj.location
-// 		this.happenings = obj.happenings
-// 	}
-// }
+class Happening {
+	constructor(obj) {
+		this.name = obj.name,
+		this.cause = obj.cause,
+		this.location = obj.location
+		this.happenings = obj.happenings
+	}
+}
 
 // Happening.prototype.createHappeningHTML = function () {
 // 	const happenings = (

@@ -1,24 +1,31 @@
 (function () {
-	listenEventsClick()
+// 	listenEventsClick()
 
-})
+// })
 // //replace the following accordingly
-function listenEventsClick() {
-	$('a.load_events').on('click', function (event) {
-		event.preventDefault();
-		debugger
-		getEvents(this.href);
-	})
-}	
+// function listenEventsClick() {
+	$('a.load_events').on('click', function (e) {
+		
+		// debugger
+		// getEvents(this.href);
+// 	})
+// }	
 
-function getEvents(url) {
-	$.ajax({
-		method: 'GET',
-		url: this.href
-	}).done(function (data) {
-		console.log(data);
+// function getEvents(url) {
+// 	$.ajax({
+// 		method: 'GET',
+// 		url: this.href
+// 	}).done(function (response) {
 
-		document.getElementById('events-html-area').innerHTML = data 
+// 		$("div.events").html(response)
+// 		// console.log(response);
+
+		// document.getElementById('events-html-area').innerHTML = response
+		$.get(this.href).success(function(response) {
+			$("div.events").html(response)
+		})
+
+		e.preventDefault();
 	})
 	
 }
