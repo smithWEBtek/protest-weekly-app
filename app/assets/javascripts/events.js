@@ -26,7 +26,6 @@ $(function getEventsClick() {
 	}).done(function (response) {
 		console.log(response);
 
-		document.getElementById("div.events").innerHTML = response 
 	})
 })
 
@@ -53,24 +52,24 @@ $(function getHappeningsClick() {
 	})
 })
 // // Object Model
-class Event {
-	constructor(protest) {
-		this._name = protest.name,
-		this._cause = protest.cause,
-		this._location = protest.location
-		this._datetime = protest.datetime
- 		this._organization = protest.organization
+// class Event {
+// 	constructor(protest) {
+// 		this._name = protest.name,
+// 		this._cause = protest.cause,
+// 		this._location = protest.location
+// 		this._datetime = protest.datetime
+//  		this._organization = protest.organization
     
-	}
-}
+// 	}
+// }
 
-class Happening extends Event {
-	constructor(protest, willAttend, canDrive) {
-		super(protest);
-		this._willAttend = false;
-		this._canDrive = false;
-	}
-}j
+// class Happening extends Event {
+// 	constructor(protest, willAttend, canDrive) {
+// 		super(protest);
+// 		this._willAttend = false;
+// 		this._canDrive = false;
+// 	}
+// }j
 
 
 
