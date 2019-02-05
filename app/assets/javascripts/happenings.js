@@ -1,34 +1,34 @@
-//Find & replace & add as appropriate
-//we want to interrupt the listing of Happenings (index), 
-//a newly created Happening, and 
-//the process of creating a Happening (form)
-$(function () {
-	listenHappeningsClick()
+// //Find & replace & add as appropriate
+// //we want to interrupt the listing of Happenings (index), 
+// //a newly created Happening, and 
+// //the process of creating a Happening (form)
+// $(function () {
+// 	listenHappeningsClick()
 
-})
-// //replace the following accordingly
-// make sure 'load_Happenings' appears somewhere in the bloody views to give JS direcction
-function listenHappeningsClick() {
-	$('a.load_happenings').on('click', function (event) {
-		event.preventDefault();
-		debugger
-		getHappenings(this.href);
-	})
-}	
+// })
+// // //replace the following accordingly
+// // make sure 'load_Happenings' appears somewhere in the bloody views to give JS direcction
+// function listenHappeningsClick() {
+// 	$('a.load_happenings').on('click', function (event) {
+// 		event.preventDefault();
+// 		debugger
+// 		getHappenings(this.href);
+// 	})
+// }	
 
-function getHappenings(url) {
-	$.ajax({
-		method: 'GET',
-		url: this.href
-	}).done(function (data) {
-		console.log(data);
+// function getHappenings(url) {
+// 	$.ajax({
+// 		method: 'GET',
+// 		url: this.href
+// 	}).done(function (data) {
+// 		console.log(data);
 
-		document.getElementById('happenings-html-area').innerHTML = data 
-	})
+// 		document.getElementById('happenings-html-area').innerHTML = data 
+// 	})
 	
-}
-// function listenNewHappeningFormClick() {
-// 	$('.ajax-new-happening').on('click', function (e) {
+// }
+// // function listenNewHappeningFormClick() {
+// // 	$('.ajax-new-happening').on('click', function (e) {
 // 		e.preventDefault();
 // 		$('button#new-happening').hide()
 // 		newHappeningForm();
@@ -66,14 +66,14 @@ function getHappenings(url) {
 // 	})
 // }
 
-class Happening {
-	constructor(obj) {
-		this.name = obj.name,
-		this.cause = obj.cause,
-		this.location = obj.location
-		this.happenings = obj.happenings
-	}
-}
+// class Happening {
+// 	constructor(obj) {
+// 		this.name = obj.name,
+// 		this.cause = obj.cause,
+// 		this.location = obj.location
+// 		this.happenings = obj.happenings
+// 	}
+// }
 
 // Happening.prototype.createHappeningHTML = function () {
 // 	const happenings = (

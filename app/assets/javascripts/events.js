@@ -54,7 +54,7 @@ class Happening extends Event {
 
 
 
-// //prototype of Event class
+// //prototype of Event class which I don't need since I have class objects
 // Event.prototype.eventHTML = function () {
 // 		// (the follow should match events.index language)
 
