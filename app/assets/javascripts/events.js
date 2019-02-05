@@ -11,16 +11,24 @@ $(function () {
 })
 
 // // Object Model
-// class Event {
-// 	constructor(obj) {
-// 		this.name = obj.name,
-// 		this.cause = obj.cause,
-// 		this.location = obj.location
-// 		this.datetime = obj.datetime
-// 	}
-// }
+class Event {
+	constructor(protest) {
+		this._name = protest.name,
+		this._cause = protest.cause,
+		this._location = protest.location
+		this._datetime = protest.datetime
+ 		this._organization = protest.organization
+    
+	}
+}
 
-
+class Happening extends Event {
+	constructor(protest, willAttend, canDrive) {
+		super(protest);
+		this._will_attend = false;
+		this._canDrive = false;
+	}
+}j
 // $(function () {
 // 	// listenNewEventClick()
 // 	listenEventsClick()
