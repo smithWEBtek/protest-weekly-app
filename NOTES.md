@@ -8,7 +8,7 @@ What	How
 () Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page.	Happenings index
 user has many happenings	
 () Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript.	Happening create	
-() At least one of the JS Model Objects must have a method on the prototype.	
+() At least one of the JS Model Objects must have a method on the prototype. Class?	
 
  
 Project Repo Specs:

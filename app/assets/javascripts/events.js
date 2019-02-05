@@ -1,4 +1,13 @@
-$(function () {
+$(function(){
+	listenEventsClick()
+	getEventsClick()
+	listenHappeningsClick()
+	getHappeningsClick() 
+})
+// events click - return index of events
+// happenings click - return index of happenings
+
+$(function listenEventsClick() {
 	$('a.load_events').on('click', function (e) {
 		
 		$.get(this.href).success(function(response) {
@@ -10,6 +19,39 @@ $(function () {
 	
 })
 
+$(function getEventsClick() {
+	$.ajax({
+		method: 'GET',
+		url: this.href
+	}).done(function (response) {
+		console.log(response);
+
+		document.getElementById("div.events").innerHTML = response 
+	})
+})
+
+$(function listenHappeningsClick() {
+	$('a.load_happenings').on('click', function (e) {
+		
+		$.get(this.href).success(function(response) {
+			$("div.happenings").html(response)
+		})
+
+		e.preventDefault();
+	})
+	
+})
+
+$(function getHappeningsClick() {
+	$.ajax({
+		method: 'GET',
+		url: this.href
+	}).done(function (response) {
+		console.log(response);
+
+		// document.getElementById("div.happenings").innerHTML = response 
+	})
+})
 // // Object Model
 class Event {
 	constructor(protest) {
@@ -25,11 +67,52 @@ class Event {
 class Happening extends Event {
 	constructor(protest, willAttend, canDrive) {
 		super(protest);
-		this._will_attend = false;
+		this._willAttend = false;
 		this._canDrive = false;
 	}
 }j
-// $(function () {
+
+
+
+// // //replace the following accordingly
+// // make sure 'load_Happenings' appears somewhere in the bloody views to give JS direcction
+// function listenHappeningsClick() {
+// 	$('a.load_happenings').on('click', function (event) {
+// 		event.preventDefault();
+// 		debugger
+// 		getHappenings(this.href);
+// 	})
+// }	
+
+// function getHappenings(url) {
+// 	$.ajax({
+// 		method: 'GET',
+// 		url: this.href
+// 	}).done(function (data) {
+// 		console.log(data);
+
+// 		document.getElementById('happenings-html-area').innerHTML = data 
+// 	})
+	
+// }
+// // function listenNewHappeningFormClick() {
+// // 	$('.ajax-new-happening').on('click', function (e) {
+// 		e.preventDefault();
+// 		$('button#new-happening').hide()
+// 		newHappeningForm();
+// 	})
+// }
+
+// function newHappeningForm() {
+// 	$.ajax({
+// 		url: '/happenings/new',
+// 		method: 'get',
+// 		success: function (response) {
+// 			console.log("the response: ", response);
+// 			$('div#new_happening_form').html('--- this form--brought to you by AJAX' + response)
+// 		}
+// 	})
+// }// $(function () {
 // 	// listenNewEventClick()
 // 	listenEventsClick()
 // })
