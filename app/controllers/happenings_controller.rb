@@ -34,7 +34,7 @@ class HappeningsController < ApplicationController
 	  if current_user
 	  @happenings = current_user.happenings 
 	  render :layout => false
-	end
+	  end
 	end
 
 	def show

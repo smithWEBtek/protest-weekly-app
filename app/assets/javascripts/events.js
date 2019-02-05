@@ -47,8 +47,8 @@ $(function getHappeningsClick() {
 		method: 'GET',
 		url: this.href
 	}).done(function (response) {
-		console.log(response);
-
+		// console.log(response);
+		$('div#happenings-users-list')
 		// document.getElementById("div.happenings").innerHTML = response 
 	})
 })
