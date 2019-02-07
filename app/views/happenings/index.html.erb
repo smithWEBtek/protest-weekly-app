@@ -1,5 +1,5 @@
 <h1><%= current_user.name %>'s Activities</h1>
-<div id="happenings-users-list">
+<div id="load_happenings">
 <table class="table">
 	<thead>
 		<tr>
@@ -31,7 +31,7 @@
 
 <p><button id="Create Event"><%= link_to "Create Event", new_event_path %></button> </p>
 
-<p><button id="Events"><%= link_to "Events", events_path, class: "btn btn-primary" %></button> </p>
+<p><button id="Load Events"><%= link_to "Events", events_path, class: "load_events" %></button> </p>
 
 <p><button id="Home"><%= link_to "Home", root_path, class: "btn brn-primary" %></button></p>
  
