@@ -1,8 +1,7 @@
 $(function(){
 	listenEventsClick()
 	getEventsClick()
-	listenHappeningsClick()
-	getHappeningsClick() 
+	
 })
 // events click - return index of events
 // happenings click - return index of happenings
@@ -29,28 +28,7 @@ $(function getEventsClick() {
 	})
 })
 
-$(function listenHappeningsClick() {
-	$('a.load_happenings').on('click', function (e) {
-		
-		$.get(this.href).success(function(response) {
-			$("div.happenings").html(response)
-		})
 
-		e.preventDefault();
-	})
-	
-})
-
-$(function getHappeningsClick() {
-	$.ajax({
-		method: 'GET',
-		url: this.href
-	}).done(function (response) {
-		// console.log(response);
-		$('div#happenings-users-list')
-		// document.getElementById("div.happenings").innerHTML = response 
-	})
-})
 // // Object Model
 // class Event {
 // 	constructor(protest) {

@@ -2,20 +2,33 @@
 // //we want to interrupt the listing of Happenings (index), 
 // //a newly created Happening, and 
 // //the process of creating a Happening (form)
-// $(function () {
-// 	listenHappeningsClick()
+$(function () {
+	listenHappeningsClick()
+	// getHappeningsClick() 
+})
 
-// })
-// // //replace the following accordingly
-// // make sure 'load_Happenings' appears somewhere in the bloody views to give JS direcction
-// function listenHappeningsClick() {
-// 	$('a.load_happenings').on('click', function (event) {
-// 		event.preventDefault();
-// 		debugger
-// 		getHappenings(this.href);
-// 	})
-// }	
+$(function listenHappeningsClick() {
+	$('a.load_happenings').on('click', function (e) {
+		
+		$.get(this.href).success(function(response) {
+			$("div.happenings").html(response)
+		})
 
+		e.preventDefault();
+	})
+	
+})
+
+$(function getHappeningsClick() {
+	$.ajax({
+		method: 'GET',
+		url: this.href
+	}).done(function (response) {
+		// console.log(response);
+		$('div#happenings')
+		// document.getElementById("div.happenings").innerHTML = response 
+	})
+})
 // function getHappenings(url) {
 // 	$.ajax({
 // 		method: 'GET',
@@ -29,8 +42,9 @@
 // }
 // // function listenNewHappeningFormClick() {
 // // 	$('.ajax-new-happening').on('click', function (e) {
+	// fairly certain that 'ajax-new-happening' aint in the code now
 // 		e.preventDefault();
-// 		$('button#new-happening').hide()
+// 		$('button#new-happening').hide() -- and where'd this come from?!?
 // 		newHappeningForm();
 // 	})
 // }
@@ -46,26 +60,6 @@
 // 	})
 // }
 
-// function listenHappeningDetailsClick() {
-// 	$('div#happenings-index a').on('click', function (event) {
-// 		event.preventDefault()
-// 		console.log("this is the url: ", this.href);
-// 		url = this.href
-// 		$.ajax({
-// 			url: url,
-// 			type: 'get',
-// 			dataType: 'json'
-// 		}).done(function (data) {
-			
-// 			let event = new Happening(data)
-// 			let html = event.createHappeningHTML()
-
-// 			document.getElementById('event-details').innerHTML = html
-// 			listenNewHappeningClick()
-// 		})
-// 	})
-// }
-
 // class Happening {
 // 	constructor(obj) {
 // 		this.name = obj.name,
@@ -75,35 +69,3 @@
 // 	}
 // }
 
-// Happening.prototype.createHappeningHTML = function () {
-// 	const happenings = (
-// 		this.happenings.map((happening, index) => {
-// 			return `<p id=${index}><em>${happening.user}</em></p>`
-// 		}).join(' ')
-// 		)
-
-// 	return (`
-// 		<div class="container">
-// 			<div class="columns">
-// 				<div class="column is-3">
-// 					<h3 class="name">${this.event_name}</h3>
-// 					<p class="body">${this.cause}</p>
-// 					</div>
-// 					<div class="column is-6">
-// 					<fieldset>
-// 					<strong>happenings: </strong>
-// 					<p>${happenings}</p>
-// 					<button id='add-comment'>add a comment</button>
-// 					</fieldset>
-// 				</div>
-// 			</div>
-// 		</div>
-// 	`)
-// }
-
-// function listenNewHappeningsClick() {
-// 	$('button#add-happening').on('click', function (e) {
-// 		e.preventDefault();
-// 	})
-// }
-// 	
