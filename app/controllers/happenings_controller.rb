@@ -33,7 +33,7 @@ class HappeningsController < ApplicationController
 	def index
 	  if current_user
 	  @happenings = current_user.happenings 
-	  render :layout => false
+	  render :index => false
 	  end
 	end
 

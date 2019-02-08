@@ -2,22 +2,22 @@
 // //we want to interrupt the listing of Happenings (index), 
 // //a newly created Happening, and 
 // //the process of creating a Happening (form)
-$(function () {
-	listenHappeningsClick()
-	// getHappeningsClick() 
-})
+// $(function () {
+// 	listenHappeningsClick()
+// 	// getHappeningsClick() 
+// })
 
-$(function listenHappeningsClick() {
+function listenHappeningsClick() {
 	$('a.load_happenings').on('click', function (e) {
 		
 		$.get(this.href).success(function(response) {
 			$("div.happenings").html(response)
 		})
-
+		debugger
 		e.preventDefault();
 	})
 	
-})
+}
 
 // $(function getHappeningsClick() {
 // 	$.ajax({
@@ -26,19 +26,18 @@ $(function listenHappeningsClick() {
 // 	}).done(function (response) {
 // 		// console.log(response);
 // 		$('div#happenings')
-// 		// document.getElementById("div.happenings").innerHTML = response 
+// 		
 // 	})
 // })
-// function getHappenings(url) {
-// 	$.ajax({
-// 		method: 'GET',
-// 		url: this.href
-// 	}).done(function (data) {
-// 		console.log(data);
 
-// 		document.getElementById('happenings-html-area').innerHTML = data 
-// 	})
-	
+function getHappenings(url) {
+	$.ajax({
+		method: 'GET',
+		url: this.href
+	}).done(function (data) {
+		console.log(data);
+	})
+}	
 // }
 // // function listenNewHappeningFormClick() {
 // // 	$('.ajax-new-happening').on('click', function (e) {

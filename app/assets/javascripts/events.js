@@ -1,8 +1,8 @@
-$(function(){
-	listenEventsClick()
-	getEventsClick()
+// $(function(){
+// 	listenEventsClick()
+// 	getEventsClick()
 	
-})
+// })
 // events click - return index of events
 // happenings click - return index of happenings
 
@@ -14,18 +14,18 @@ function listenEventsClick() {
 		$.get(this.href).success(function(response) {
 			$("div.events").html(response)
 		})
-
+		debugger
 		e.preventDefault();
 	})
 })
-}
+}                
 
 $(function getEventsClick() {
 	$.ajax({
 		method: 'GET',
 		url: this.href
 	}).done(function (response) {
-		console.log(response);
+		// debugger
 
 	})
 })
@@ -54,7 +54,7 @@ $(function getEventsClick() {
 
 
 // // //replace the following accordingly
-// // make sure 'load_Happenings' appears somewhere in the bloody views to give JS direcction
+// // make sure 'load_Happenings' appears in the view to give JS direcction
 // function listenHappeningsClick() {
 // 	$('a.load_happenings').on('click', function (event) {
 // 		event.preventDefault();
