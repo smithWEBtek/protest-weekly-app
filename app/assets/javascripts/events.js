@@ -6,8 +6,10 @@ $(function(){
 // events click - return index of events
 // happenings click - return index of happenings
 
-$(function listenEventsClick() {
-	$('a.load_events').on('click', function (e) {
+function listenEventsClick() {
+	$(function(){
+
+		$('a.load_events').on('click', function (e) {
 		
 		$.get(this.href).success(function(response) {
 			$("div.events").html(response)
@@ -15,8 +17,8 @@ $(function listenEventsClick() {
 
 		e.preventDefault();
 	})
-	
 })
+}
 
 $(function getEventsClick() {
 	$.ajax({
