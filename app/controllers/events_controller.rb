@@ -3,6 +3,21 @@ class EventsController < ApplicationController
 
 #render/respond for js
     
+
+
+def index
+  # @events = Event.includes(:organization).all
+  # @events = Event.order(:datetime).current_events
+  
+  @events = Event.all
+
+
+  respond_to do |f|
+    f.html { render :index }
+    f.json { render json: @events }
+  end
+end
+
   def new
     @event = Event.new
     @happening = @event.happenings.build
@@ -26,14 +41,6 @@ class EventsController < ApplicationController
   def show
   end
 
-  def index
-    @events = Event.includes(:organization).all
-    @events = Event.order(:datetime).current_events
-    respond_to do |f|
-      f.html { render :index, :layout => false }
-      f.json { render json: @events }
-    end
-  end
 
   def edit
   end

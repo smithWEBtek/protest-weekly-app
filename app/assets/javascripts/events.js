@@ -1,22 +1,33 @@
-$(function(){
+$(function () {
 	listenEventsClick()
 	console.log('speak dammit')
 	// getEventsClick()
-	
+
 })
+
+
 // events click - return index of events
 // happenings click - return index of happenings
 
 function listenEventsClick() {
-		$('a.load_events').on('click', function (e) {
-		debugger
-		$.get(this.href).success(function(response) {
-			$("div.events").html(response)
-		})
-		
+	$('a.load_events').on('click', function (e) {
 		e.preventDefault();
+
+		$.ajax({
+			url: this.href,
+			method: 'get',
+			dataType: 'json'
+		}).done(function (response) {
+			console.log("response: ", response);
+
+			let event = new Event(response[0])
+			let eventHtml = event.eventHTML()
+
+			$("div.events").html(eventHtml)
+		})
+
 	})
-}                
+}
 
 $(function getEventsClick() {
 	$.ajax({
@@ -30,16 +41,15 @@ $(function getEventsClick() {
 
 
 // // Object Model
-// class Event {
-// 	constructor(protest) {
-// 		this._name = protest.name,
-// 		this._cause = protest.cause,
-// 		this._location = protest.location
-// 		this._datetime = protest.datetime
-//  		this._organization = protest.organization
-    
-// 	}
-// }
+class Event {
+	constructor(protest) {
+		this.name = protest.name
+		this.cause = protest.cause
+		this.location = protest.location
+		this.datetime = protest.datetime
+		this.organization_name = protest.organization.name
+	}
+}
 
 // class Happening extends Event {
 // 	constructor(protest, willAttend, canDrive) {
@@ -70,7 +80,7 @@ $(function getEventsClick() {
 
 // 		document.getElementById('happenings-html-area').innerHTML = data 
 // 	})
-	
+
 // }
 // // function listenNewHappeningFormClick() {
 // // 	$('.ajax-new-happening').on('click', function (e) {
@@ -114,21 +124,20 @@ $(function getEventsClick() {
 
 
 
-// //prototype of Event class which I don't need since I have class objects
-// Event.prototype.eventHTML = function () {
-// 		// (the follow should match events.index language)
-
-// 	return (`
-// 		<div class="container">
-// 			<div class="columns">
-// 				<div class="column is-5">
-// 					<p class="name">${this.name}</p>
-// 					<p class="cause">${this.cause}</p>
-// 					<p class="location">${this.location}</p>
-// 					<p class="datetime">${this.datetime}</p>
-// 					<p class="event_organization_name">${this.organization_name}</p>
-// 					</div>
-// 			</div>
-// 		</div>
-// 	`)
-// }
+//prototype of Event class which I don't need since I have class objects
+Event.prototype.eventHTML = function () {
+	// (the follow should match events.index language)
+	return (`
+		<div class="container">
+			<div class="columns">
+				<div class="column is-5">
+					<p class="name">${this.name}</p>
+					<p class="cause">${this.cause}</p>
+					<p class="location">${this.location}</p>
+					<p class="datetime">${this.datetime}</p>
+					<p class="organization_name">${this.organization_name}</p>
+					</div>
+			</div>
+		</div>
+	`)
+}

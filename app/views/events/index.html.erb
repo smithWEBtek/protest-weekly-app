@@ -16,6 +16,8 @@
 			<td><strong>Organization</strong></td>		
 		</tr>
 
+	<%= link_to 'Load Events', events_path, class: 'load_events' %>
+
 		<% @events.each do |event| %>
 		<tr>
 			<td><%= link_to event.name, event_path(event), :class => "load_events" %></td>
