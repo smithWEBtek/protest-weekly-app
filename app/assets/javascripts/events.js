@@ -1,23 +1,21 @@
-// $(function(){
-// 	listenEventsClick()
-// 	getEventsClick()
+$(function(){
+	listenEventsClick()
+	console.log('speak dammit')
+	// getEventsClick()
 	
-// })
+})
 // events click - return index of events
 // happenings click - return index of happenings
 
 function listenEventsClick() {
-	$(function(){
-
 		$('a.load_events').on('click', function (e) {
-		
+		debugger
 		$.get(this.href).success(function(response) {
 			$("div.events").html(response)
 		})
-		debugger
+		
 		e.preventDefault();
 	})
-})
 }                
 
 $(function getEventsClick() {

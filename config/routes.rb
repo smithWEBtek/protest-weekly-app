@@ -32,7 +32,8 @@ Rails.application.routes.draw do
     resources :happenings
   end
 
-  get '/events', to: 'events#index'
+  get '/scoped_events', to: 'events#scoped_events'
+  # get '/events', to: 'events#index'
   get '/happenings', to: 'happenings#index'
 
 

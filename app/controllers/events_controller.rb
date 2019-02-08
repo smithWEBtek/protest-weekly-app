@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @happening = @event.happenings.build
     respond_to do |f|
-      f.html { render :new }
+      f.html { render :new, :layout => false }
       f.json { render json: @event }
     end
   end
@@ -29,10 +29,22 @@ class EventsController < ApplicationController
   def index
     @events = Event.includes(:organization).all
     @events = Event.order(:datetime).current_events
-    render :layout => false
+    respond_to do |f|
+      f.html { render :index, :layout => false }
+      f.json { render json: @events }
+    end
   end
 
   def edit
+  end
+
+  def scoped_events
+     @events =  {
+      current_events: Event.current_events,
+      past_events: Event.past_events,
+      last_added: Event.last_added
+     }
+     render json: @events
   end
 
   def last_added
